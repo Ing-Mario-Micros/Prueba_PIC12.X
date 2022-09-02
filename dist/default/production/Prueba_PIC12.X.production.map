@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v2.10\pic\dat\en_msgs.txt \
   -cs -h+dist/default/production\Prueba_PIC12.X.production.sym \
   --cmf=dist/default/production\Prueba_PIC12.X.production.cmf -z -Q12F675 \
-  -oC:\Users\mario\AppData\Local\Temp\sgek.2 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\mario\AppData\Local\Temp\sfp8.2 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/Prueba_PIC12.X.production.map -E1 -ver=XC8 \
   --acfsm=1493 -ASTACK=025h-05Dh -pstack=STACK -ACODE=00h-03FEh \
   -ASTRCODE=00h-03FEh -ASTRING=00h-0FFhx3,0300h-03FEh \
@@ -17,7 +17,7 @@ Linker command line:
   -AIDLOC=02000h-02003h -pidloc=IDLOC -DIDLOC=2 -AEEDATA=00h-07Fh/02100h \
   -peeprom_data=EEDATA -DEEDATA=2 -posccal=03FFh -DCODE=2 -DSTRCODE=2 \
   -DSTRING=2 -DCONST=2 -DENTRY=2 -k \
-  C:\Users\mario\AppData\Local\Temp\sgek.o \
+  C:\Users\mario\AppData\Local\Temp\sfp8.o \
   dist/default/production\Prueba_PIC12.X.production.o 
 
 Object code version is 3.11
@@ -27,15 +27,15 @@ Machine type is 12F675
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\mario\AppData\Local\Temp\sgek.o
+C:\Users\mario\AppData\Local\Temp\sfp8.o
                 end_init                              B        B        1        8       0
                 reset_vec                             0        0        1        0       0
                 config                             2007     2007        1     400E       0
 dist/default/production\Prueba_PIC12.X.production.o
                 cinit                                 C        C        2        8       0
                 intentry                              4        4        7        8       0
-                text1                                3B       3B        E        8       0
-                maintext                              E        E       2D        8       0
+                text1                                6E       6E        E        8       0
+                maintext                              E        E       60        8       0
                 cstackBANK0                          20       20        5       20       1
 
 TOTAL           Name                               Link     Load   Length     Space
@@ -46,8 +46,8 @@ TOTAL           Name                               Link     Load   Length     Sp
                 cinit                                 C        C        2         0
                 intentry                              4        4        7         0
                 reset_vec                             0        0        1         0
-                text1                                3B       3B        E         0
-                maintext                              E        E       2D         0
+                text1                                6E       6E        E         0
+                maintext                              E        E       60         0
 
         CLASS   STRCODE        
 
@@ -85,7 +85,7 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
 
                 reset_vec                      000000  000001  000001         0       0  CODE        2
-                intentry                       000004  000045  000049         8       0  CODE        2
+                intentry                       000004  000078  00007C         8       0  CODE        2
                 cstackBANK0                    000020  000005  000025        20       1  BANK0       1
                 config                         002007  000001  002008      400E       0  CONFIG      2
 
@@ -95,39 +95,38 @@ UNUSED ADDRESS RANGES
         Name                Unused          Largest block    Delta
         BANK0            0025-005D             39           1
         CODE             0001-0003              3           2
-                         0049-03FE            3B6
+                         007C-03FE            383
         CONST            0001-0003              3           2
-                         0049-03FE            100
+                         007C-03FE            100
         EEDATA           2100-217F             80           2
         ENTRY            0001-0003              3           2
-                         0049-03FE            100
+                         007C-03FE            100
         IDLOC            2000-2003              4           2
         RAM              0025-005D             39           1
         SFR0             0000-001F             20           1
         SFR1             0080-00DD             5E           1
         STACK            0025-005D             39           1
         STRCODE          0001-0003              3           2
-                         0049-03FE            3B6
+                         007C-03FE            383
         STRING           0001-0003              3           2
-                         0049-03FE            100
+                         007C-03FE            100
 
                                   Symbol Table
 
 _ANSEL                   (abs)       009F
+_CMCON                   (abs)       0019
 _GIE                     (abs)       005F
-_GP5                     (abs)       002D
+_GP1                     (abs)       0029
+_GPIO                    (abs)       0005
 _GPIO0                   (abs)       0028
-_GPIO1                   (abs)       0029
 _GPIO2                   (abs)       002A
-_GPIO4                   (abs)       002C
-_ISR                     text1       003B
+_GPIO5                   (abs)       002D
+_ISR                     text1       006E
 _OPTION_REG              (abs)       0081
 _T0IE                    (abs)       005D
 _T0IF                    (abs)       005A
 _TMR0                    (abs)       0001
-_TRISIO1                 (abs)       0429
-_TRISIO2                 (abs)       042A
-_TRISIO4                 (abs)       042C
+_TRISIO                  (abs)       0085
 _TRISIO5                 (abs)       042D
 _WPU                     (abs)       0095
 __CFG_BOREN$ON           (abs)       0000
@@ -205,14 +204,14 @@ ___osccal_val            osccal      03FF
 ___sp                    stack       0000
 ___stackhi               (abs)       0000
 ___stacklo               (abs)       0000
-__end_of_ISR             text1       0049
+__end_of_ISR             text1       007C
 __end_of__initialization cinit       000C
-__end_of_main            maintext    003B
+__end_of_main            maintext    006E
 __initialization         cinit       000C
 __pcstackBANK0           cstackBANK0 0020
 __pintentry              intentry    0004
 __pmaintext              maintext    000E
-__ptext1                 text1       003B
+__ptext1                 text1       006E
 __size_of_ISR            (abs)       0000
 __size_of_main           (abs)       0000
 _main                    maintext    000E
@@ -265,7 +264,7 @@ Total ram usage:        3 bytes
 
  *************** function _ISR *****************
  Defined at:
-		line 99 in file "Main12F.c"
+		line 76 in file "Main12F.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -302,8 +301,8 @@ shared
 shared estimated size: 1
 
 Main12F.c
-		_ISR           		CODE           	003B	0000	15
-		_main          		CODE           	000E	0000	46
+		_ISR           		CODE           	006E	0000	15
+		_main          		CODE           	000E	0000	97
 
-Main12F.c estimated size: 61
+Main12F.c estimated size: 112
 

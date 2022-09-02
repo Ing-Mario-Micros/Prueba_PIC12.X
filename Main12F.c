@@ -24,10 +24,10 @@
 
 // Pines del DHT
 #define DATA_DIR TRISIO5
-#define DATA_IN GP5             
+#define DATA_IN GPIO5             
 #define DATA_OUT GPIO5
 
-#define LED_CPU GPIO2
+#define LED_CPU GPIO0
 
 
 
@@ -36,18 +36,13 @@ void __interrupt () ISR (void); //Interrupción
 void main(void) {
     
     ANSEL = 0x00; //Habilitar todos los pines Analogos como digitales
-    
-    TRISIO1 = 0;
-    TRISIO2 = 0;
-    TRISIO4 = 0;
-    GPIO0 = 0;
-    GPIO1 = 0;
-    GPIO2 = 0;
-    GPIO4 = 0;
-    GPIO4=1;
-    
-    
+    CMCON = 0x07;
+    TRISIO = 0b00110000;
+    GPIO = 0;
     WPU=0;
+    GP1=1;
+    
+    
     /*Configuración del Timer*/
     OPTION_REG=0xC7;
     T0IF=0;
@@ -59,40 +54,22 @@ void main(void) {
     GIE=1;
     DATA_DIR=1;
     __delay_ms(1000);
-    GPIO4=0;
+    GP1=0;
     while(1){
-        
-        //GPIO4=0;
-        //__delay_ms(21);//18ms Reales
-        //GPIO4=1;
-        //__delay_ms(21);
-//        GPIO4=0;
-//        __delay_ms(46); // 40ms Reales
-//        GPIO4=1;
-//        __delay_ms(46);
-        
-        //GPIO4=0;
-        //__delay_ms(92);//80ms Reales
-        //GPIO4=1;
-        //__delay_ms(92);
-        
-//        GPIO4=0;
-//        __delay_us(12);//13us Reales
-//        GPIO4=1;
-//        __delay_us(12);
-        
-//        GPIO4=0;
-//            __delay_us(22);//22us Reales
-//            GPIO4=1;
-//            __delay_us(22);
+        GPIO2=0;
+        __delay_ms(1000);
+        GPIO2=1;
+        __delay_ms(1000);
+        DATA_DIR=0;
+        DATA_IN=0;
+        __delay_ms(1000);
+        DATA_DIR=1;
         if(DATA_IN==1){
-            GPIO4=1;
+            GP1=1;
         }
         else{
-            GPIO4=0;
+            GP1=0;
         }
-        
-        
     }
 }
 

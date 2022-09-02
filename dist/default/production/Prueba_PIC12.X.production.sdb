@@ -13,47 +13,45 @@
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
 "36 C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
 [v _main main `(v  1 e 1 0 ]
-"99
+"76
 [v _ISR ISR `II(v  1 e 1 0 ]
 "72 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic12f675.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
+"218
+[v _GPIO GPIO `VEuc  1 e 1 @5 ]
+"564
+[v _CMCON CMCON `VEuc  1 e 1 @25 ]
 "727
 [v _OPTION_REG OPTION_REG `VEuc  1 e 1 @129 ]
+"797
+[v _TRISIO TRISIO `VEuc  1 e 1 @133 ]
 "989
 [v _WPU WPU `VEuc  1 e 1 @149 ]
 "1404
 [v _ANSEL ANSEL `VEuc  1 e 1 @159 ]
 "1573
 [v _GIE GIE `VEb  1 e 0 @95 ]
-"1600
-[v _GP5 GP5 `VEb  1 e 0 @45 ]
+"1588
+[v _GP1 GP1 `VEb  1 e 0 @41 ]
 "1609
 [v _GPIO0 GPIO0 `VEb  1 e 0 @40 ]
-"1612
-[v _GPIO1 GPIO1 `VEb  1 e 0 @41 ]
 "1615
 [v _GPIO2 GPIO2 `VEb  1 e 0 @42 ]
-"1621
-[v _GPIO4 GPIO4 `VEb  1 e 0 @44 ]
+"1624
+[v _GPIO5 GPIO5 `VEb  1 e 0 @45 ]
 "1702
 [v _T0IE T0IE `VEb  1 e 0 @93 ]
 "1705
 [v _T0IF T0IF `VEb  1 e 0 @90 ]
-"1750
-[v _TRISIO1 TRISIO1 `VEb  1 e 0 @1065 ]
-"1753
-[v _TRISIO2 TRISIO2 `VEb  1 e 0 @1066 ]
-"1759
-[v _TRISIO4 TRISIO4 `VEb  1 e 0 @1068 ]
 "1762
 [v _TRISIO5 TRISIO5 `VEb  1 e 0 @1069 ]
 "36 C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
 [v _main main `(v  1 e 1 0 ]
 {
-"97
+"74
 } 0
-"99
+"76
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"104
+"81
 } 0

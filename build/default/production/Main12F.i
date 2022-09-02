@@ -1020,8 +1020,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 9 "Main12F.c" 2
-
+# 10 "Main12F.c" 2
 
 
 
@@ -1038,18 +1037,13 @@ void __attribute__((picinterrupt(("")))) ISR (void);
 void main(void) {
 
     ANSEL = 0x00;
-
-    TRISIO1 = 0;
-    TRISIO2 = 0;
-    TRISIO4 = 0;
-    GPIO0 = 0;
-    GPIO1 = 0;
-    GPIO2 = 0;
-    GPIO4 = 0;
-    GPIO4=1;
-
-
+    CMCON = 0x07;
+    TRISIO = 0b00110000;
+    GPIO = 0;
     WPU=0;
+    GP1=1;
+
+
 
     OPTION_REG=0xC7;
     T0IF=0;
@@ -1061,23 +1055,28 @@ void main(void) {
     GIE=1;
     TRISIO5=1;
     _delay((unsigned long)((1000)*(4000000/4000.0)));
-    GPIO4=0;
+    GP1=0;
     while(1){
-# 88 "Main12F.c"
-        if(GP5==1){
-            GPIO4=1;
+        GPIO2=0;
+        _delay((unsigned long)((1000)*(4000000/4000.0)));
+        GPIO2=1;
+        _delay((unsigned long)((1000)*(4000000/4000.0)));
+        TRISIO5=0;
+        GPIO5=0;
+        _delay((unsigned long)((1000)*(4000000/4000.0)));
+        TRISIO5=1;
+        if(GPIO5==1){
+            GP1=1;
         }
         else{
-            GPIO4=0;
+            GP1=0;
         }
-
-
     }
 }
 
 void __attribute__((picinterrupt(("")))) ISR (void){
     if(T0IF==1){
             T0IF=0;
-            GPIO2=GPIO2^ 1;
+            GPIO0=GPIO0^ 1;
         }
 }

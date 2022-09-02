@@ -1,10 +1,10 @@
-_GP5 2D 0 ABS 0
+_GP1 29 0 ABS 0
 __S0 2008 0 ABS 0
 __S1 25 0 ABS 0
 __S2 0 0 ABS 0
 __S3 0 0 ABS 0
 _GIE 5F 0 ABS 0
-_ISR 3B 0 CODE 0
+_ISR 6E 0 CODE 0
 __Hintentry B 0 CODE 0
 __Lintentry 4 0 CODE 0
 _WPU 95 0 ABS 0
@@ -13,16 +13,17 @@ __pintentry 4 0 CODE 0
 _TMR0 1 0 ABS 0
 _T0IE 5D 0 ABS 0
 _T0IF 5A 0 ABS 0
+_GPIO 5 0 ABS 0
 _main E 0 CODE 0
 ___sp 0 0 STACK 2
 btemp 5E 0 ABS 0
 start B 0 CODE 0
 _GPIO0 28 0 ABS 0
-_GPIO1 29 0 ABS 0
 _GPIO2 2A 0 ABS 0
-_GPIO4 2C 0 ABS 0
+_GPIO5 2D 0 ABS 0
 reset_vec 0 0 CODE 0
 _ANSEL 9F 0 ABS 0
+_CMCON 19 0 ABS 0
 wtemp0 5E 0 ABS 0
 __Hosccal 3FF 0 CODE 0
 __Losccal 3FF 0 CODE 0
@@ -32,7 +33,7 @@ __Lconfig 2007 0 CONFIG 0
 ___osccal_val 3FF 0 CODE 0
 __Hram 7FE 0 ABS 0
 __Lram 7FE 0 ABS 0
-__end_of_ISR 49 0 CODE 0
+__end_of_ISR 7C 0 CODE 0
 __Hfunctab 0 0 ENTRY 0
 __Lfunctab 0 0 ENTRY 0
 _OPTION_REG 81 0 ABS 0
@@ -45,6 +46,7 @@ __Habs1 7FE 0 ABS 0
 __Labs1 7FE 0 ABS 0
 __Hsfr0 7FE 0 ABS 0
 __Lsfr0 7FE 0 ABS 0
+_TRISIO 85 0 ABS 0
 __Hsfr1 7FE 0 ABS 0
 __Lsfr1 7FE 0 ABS 0
 ___stackhi 0 0 ABS 0
@@ -56,15 +58,12 @@ __pcstackBANK0 20 0 BANK0 1
 saved_w 5E 0 ABS 0
 __Hinit B 0 CODE 0
 __Linit B 0 CODE 0
-__end_of_main 3B 0 CODE 0
+__end_of_main 6E 0 CODE 0
 __Htext 7FE 0 ABS 0
 __Ltext 7FE 0 ABS 0
 end_of_initialization C 0 CODE 0
 __size_of_ISR 0 0 ABS 0
 ___stacklo 0 0 ABS 0
-_TRISIO1 429 0 ABS 0
-_TRISIO2 42A 0 ABS 0
-_TRISIO4 42C 0 ABS 0
 _TRISIO5 42D 0 ABS 0
 __Hstrings 7FE 0 ABS 0
 __Lstrings 7FE 0 ABS 0
@@ -75,7 +74,7 @@ __Lbank1 7FE 0 BANK1 1
 ___latbits 0 0 ABS 0
 __Hpowerup 0 0 CODE 0
 __Lpowerup 0 0 CODE 0
-__ptext1 3B 0 CODE 0
+__ptext1 6E 0 CODE 0
 __Hclrtext 7FE 0 ABS 0
 __Lclrtext 7FE 0 ABS 0
 __end_of__initialization C 0 CODE 0
@@ -117,43 +116,47 @@ __CFG_FOSC$INTRCIO 0 0 ABS 0
 __CFG_CP$OFF 0 0 ABS 0
 %segments
 reset_vec 0 1 CODE 0 0
-intentry 8 91 CODE 8 0
+intentry 8 F7 CODE 8 0
 config 400E 400F CONFIG 400E 0
 cstackBANK0 20 24 BANK0 20 1
 %locals
 dist/default/production\Prueba_PIC12.X.production.o
-C:\Users\mario\AppData\Local\Temp\sgek.s
-271 C 0 CODE 0
-274 C 0 CODE 0
+C:\Users\mario\AppData\Local\Temp\sfp8.s
+269 C 0 CODE 0
+272 C 0 CODE 0
+278 C 0 CODE 0
 280 C 0 CODE 0
-282 C 0 CODE 0
-283 D 0 CODE 0
+281 D 0 CODE 0
 Main12F.c
 36 E 0 CODE 0
 38 E 0 CODE 0
-40 10 0 CODE 0
-41 11 0 CODE 0
-42 12 0 CODE 0
-43 13 0 CODE 0
-44 15 0 CODE 0
-45 16 0 CODE 0
-46 17 0 CODE 0
-47 18 0 CODE 0
-50 19 0 CODE 0
-52 1B 0 CODE 0
-53 1D 0 CODE 0
-54 1E 0 CODE 0
-57 20 0 CODE 0
-59 21 0 CODE 0
-60 22 0 CODE 0
-61 24 0 CODE 0
-62 32 0 CODE 0
-88 34 0 CODE 0
-89 38 0 CODE 0
-90 39 0 CODE 0
-99 3B 0 CODE 0
-100 3B 0 CODE 0
-101 3F 0 CODE 0
-102 40 0 CODE 0
-104 42 0 CODE 0
-99 4 0 CODE 0
+39 10 0 CODE 0
+40 13 0 CODE 0
+41 16 0 CODE 0
+42 18 0 CODE 0
+43 1A 0 CODE 0
+47 1C 0 CODE 0
+48 1F 0 CODE 0
+49 20 0 CODE 0
+52 22 0 CODE 0
+54 23 0 CODE 0
+55 24 0 CODE 0
+56 26 0 CODE 0
+57 34 0 CODE 0
+59 36 0 CODE 0
+60 37 0 CODE 0
+61 44 0 CODE 0
+62 46 0 CODE 0
+63 53 0 CODE 0
+64 55 0 CODE 0
+65 57 0 CODE 0
+66 64 0 CODE 0
+67 66 0 CODE 0
+68 6B 0 CODE 0
+69 6C 0 CODE 0
+76 6E 0 CODE 0
+77 6E 0 CODE 0
+78 72 0 CODE 0
+79 73 0 CODE 0
+81 75 0 CODE 0
+76 4 0 CODE 0
