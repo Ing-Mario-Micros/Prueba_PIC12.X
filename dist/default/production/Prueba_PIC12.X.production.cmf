@@ -11,39 +11,44 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\mario\AppData\Local\Temp\sfp8.o
+$C:\Users\mario\AppData\Local\Temp\s5ps.o
 reset_vec CODE 0 0 0 1 2
 end_init CODE 0 B B 1 2
 config CONFIG 0 2007 2007 1 2
 $dist/default/production\Prueba_PIC12.X.production.o
-cinit CODE 0 C C 2 2
-text1 CODE 0 6E 6E E 2
-maintext CODE 0 E E 60 2
-cstackBANK0 BANK0 1 20 20 5 1
+cinit CODE 0 C C 8 2
+text1 CODE 0 9C 9C 19 2
+text2 CODE 0 75 75 27 2
+text3 CODE 0 B5 B5 E 2
+maintext CODE 0 14 14 61 2
+cstackBANK0 BANK0 1 20 20 C 1
 intentry CODE 0 4 4 7 2
+bssBANK0 BANK0 1 2C 2C 2 1
+idataBANK0 CODE 0 C3 C3 2 2
+dataBANK0 BANK0 1 2E 2E 2 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-RAM 25-5D 1
-BANK0 25-5D 1
+RAM 30-5D 1
+BANK0 30-5D 1
 CONST 1-3 2
-CONST 7C-3FE 2
+CONST C5-3FE 2
 ENTRY 1-3 2
-ENTRY 7C-3FE 2
+ENTRY C5-3FE 2
 IDLOC 2000-2003 2
-STACK 25-5D 1
+STACK 30-5D 1
 CODE 1-3 2
-CODE 7C-3FE 2
+CODE C5-3FE 2
 SFR0 0-1F 1
 SFR1 80-DD 1
 EEDATA 2100-217F 2
 STRCODE 1-3 2
-STRCODE 7C-3FE 2
+STRCODE C5-3FE 2
 STRING 1-3 2
-STRING 7C-3FE 2
+STRING C5-3FE 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -58,43 +63,81 @@ STRING 7C-3FE 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Prueba_PIC12.X.production.o
-C cinit CODE >269:C:\Users\mario\AppData\Local\Temp\sfp8.s
-C cinit CODE >272:C:\Users\mario\AppData\Local\Temp\sfp8.s
-C cinit CODE >278:C:\Users\mario\AppData\Local\Temp\sfp8.s
-C cinit CODE >280:C:\Users\mario\AppData\Local\Temp\sfp8.s
-D cinit CODE >281:C:\Users\mario\AppData\Local\Temp\sfp8.s
-4 intentry CODE >76:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-6E text1 CODE >76:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-6E text1 CODE >77:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-72 text1 CODE >78:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-73 text1 CODE >79:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-75 text1 CODE >81:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-E maintext CODE >36:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-E maintext CODE >38:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-10 maintext CODE >39:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-13 maintext CODE >40:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-16 maintext CODE >41:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-18 maintext CODE >42:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-1A maintext CODE >43:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-1C maintext CODE >47:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-1F maintext CODE >48:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-20 maintext CODE >49:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-22 maintext CODE >52:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-23 maintext CODE >54:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-24 maintext CODE >55:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-26 maintext CODE >56:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-34 maintext CODE >57:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-36 maintext CODE >59:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-37 maintext CODE >60:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-44 maintext CODE >61:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-46 maintext CODE >62:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-53 maintext CODE >63:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-55 maintext CODE >64:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-57 maintext CODE >65:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-64 maintext CODE >66:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-66 maintext CODE >67:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-6B maintext CODE >68:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
-6C maintext CODE >69:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+C cinit CODE >283:C:\Users\mario\AppData\Local\Temp\s5ps.s
+C cinit CODE >286:C:\Users\mario\AppData\Local\Temp\s5ps.s
+C cinit CODE >315:C:\Users\mario\AppData\Local\Temp\s5ps.s
+D cinit CODE >316:C:\Users\mario\AppData\Local\Temp\s5ps.s
+E cinit CODE >317:C:\Users\mario\AppData\Local\Temp\s5ps.s
+F cinit CODE >318:C:\Users\mario\AppData\Local\Temp\s5ps.s
+10 cinit CODE >322:C:\Users\mario\AppData\Local\Temp\s5ps.s
+11 cinit CODE >323:C:\Users\mario\AppData\Local\Temp\s5ps.s
+12 cinit CODE >329:C:\Users\mario\AppData\Local\Temp\s5ps.s
+12 cinit CODE >331:C:\Users\mario\AppData\Local\Temp\s5ps.s
+13 cinit CODE >332:C:\Users\mario\AppData\Local\Temp\s5ps.s
+4 intentry CODE >113:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+B5 text3 CODE >113:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+B5 text3 CODE >114:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+B9 text3 CODE >115:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+BA text3 CODE >116:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+BC text3 CODE >118:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+75 text2 CODE >95:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+75 text2 CODE >96:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+77 text2 CODE >97:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+78 text2 CODE >98:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+79 text2 CODE >97:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+79 text2 CODE >99:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+7D text2 CODE >100:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+81 text2 CODE >101:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+87 text2 CODE >102:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+8B text2 CODE >103:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+90 text2 CODE >104:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+92 text2 CODE >105:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+93 text2 CODE >106:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+94 text2 CODE >105:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+94 text2 CODE >107:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+98 text2 CODE >108:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+98 text2 CODE >109:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+99 text2 CODE >110:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+9A text2 CODE >111:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+9B text2 CODE >112:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+9C text1 CODE >87:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+9C text1 CODE >88:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+9E text1 CODE >90:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+A2 text1 CODE >91:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+AC text1 CODE >92:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+B3 text1 CODE >93:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+B4 text1 CODE >94:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+14 maintext CODE >39:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+14 maintext CODE >41:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+16 maintext CODE >42:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+19 maintext CODE >43:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+1C maintext CODE >44:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+1E maintext CODE >45:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+20 maintext CODE >46:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+22 maintext CODE >50:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+25 maintext CODE >51:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+26 maintext CODE >52:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+28 maintext CODE >55:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+29 maintext CODE >57:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+2A maintext CODE >58:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+2C maintext CODE >59:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+3A maintext CODE >60:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+3C maintext CODE >61:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+3C maintext CODE >62:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+49 maintext CODE >63:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+4B maintext CODE >64:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+4D maintext CODE >65:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+55 maintext CODE >66:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+57 maintext CODE >67:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+57 maintext CODE >69:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+5C maintext CODE >70:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+61 maintext CODE >71:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+61 maintext CODE >73:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+66 maintext CODE >74:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+6B maintext CODE >77:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+6C maintext CODE >78:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+72 maintext CODE >79:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+73 maintext CODE >80:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -108,10 +151,12 @@ E maintext CODE >38:C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
 ___latbits 0 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
+__LdataBANK0 7FE 0 ABS 0 dataBANK0 -
 __Hspace_0 2008 0 ABS 0 - -
 __Hspace_1 7FE 0 ABS 0 - -
 __Hspace_2 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
+__HidataBANK0 7FE 0 ABS 0 idataBANK0 -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __CFG_MCLRE$ON 0 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
 __Hstrings 7FE 0 ABS 0 strings -
@@ -119,18 +164,20 @@ _GPIO 5 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
 _T0IE 5D 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
 _T0IF 5A 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
 _TMR0 1 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\mario\AppData\Local\Temp\sfp8.o
-_main 1C 0 CODE 0 maintext dist/default/production\Prueba_PIC12.X.production.o
+___sp 0 0 STACK 2 stack C:\Users\mario\AppData\Local\Temp\s5ps.o
+_main 28 0 CODE 0 maintext dist/default/production\Prueba_PIC12.X.production.o
 btemp 5E 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
-start 16 0 CODE 0 init C:\Users\mario\AppData\Local\Temp\sfp8.o
+start 16 0 CODE 0 init C:\Users\mario\AppData\Local\Temp\s5ps.o
 __size_of_main 0 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
+__LidataBANK0 7FE 0 ABS 0 idataBANK0 -
+LeerBit@res 23 0 BANK0 1 cstackBANK0 dist/default/production\Prueba_PIC12.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\mario\AppData\Local\Temp\sfp8.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\mario\AppData\Local\Temp\sfp8.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\mario\AppData\Local\Temp\sfp8.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\mario\AppData\Local\Temp\sfp8.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\mario\AppData\Local\Temp\sfp8.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\mario\AppData\Local\Temp\sfp8.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\mario\AppData\Local\Temp\s5ps.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\mario\AppData\Local\Temp\s5ps.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\mario\AppData\Local\Temp\s5ps.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\mario\AppData\Local\Temp\s5ps.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\mario\AppData\Local\Temp\s5ps.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\mario\AppData\Local\Temp\s5ps.o
 wtemp0 5E 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
 __Hclrtext 7FE 0 ABS 0 clrtext -
@@ -138,16 +185,18 @@ _TRISIO5 42D 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
 __CFG_FOSC$INTRCIO 0 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
 __Lmaintext 7FE 0 ABS 0 maintext -
 _OPTION_REG 81 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\mario\AppData\Local\Temp\sfp8.o
-___stacklo 0 0 ABS 0 - C:\Users\mario\AppData\Local\Temp\sfp8.o
+___stackhi 0 0 ABS 0 - C:\Users\mario\AppData\Local\Temp\s5ps.o
+___stacklo 0 0 ABS 0 - C:\Users\mario\AppData\Local\Temp\s5ps.o
 start_initialization 18 0 CODE 0 cinit dist/default/production\Prueba_PIC12.X.production.o
+LeerByte@res 27 0 BANK0 1 cstackBANK0 dist/default/production\Prueba_PIC12.X.production.o
 __pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production\Prueba_PIC12.X.production.o
 _TRISIO 85 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\mario\AppData\Local\Temp\sfp8.o
+___int_sp 0 0 STACK 2 stack C:\Users\mario\AppData\Local\Temp\s5ps.o
 __Hbank0 7FE 0 ABS 0 bank0 -
 __Hbank1 7FE 0 BANK1 1 bank1 -
-__Hcinit 1C 0 CODE 0 cinit -
+__Hcinit 28 0 CODE 0 cinit -
 __Hidloc 0 0 IDLOC 0 idloc -
+__size_of_LeerBit 0 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
 __Hstack 0 0 STACK 2 stack -
 __Hmaintext 7FE 0 ABS 0 maintext -
 __Hcommon 7FE 0 ABS 0 common -
@@ -172,48 +221,60 @@ __Ltext 7FE 0 ABS 0 text -
 __LcstackBANK0 7FE 0 ABS 0 cstackBANK0 -
 _GIE 5F 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
 _GP1 29 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
-_ISR DC 0 CODE 0 text1 dist/default/production\Prueba_PIC12.X.production.o
+_GP2 2A 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
+_ISR 16A 0 CODE 0 text3 dist/default/production\Prueba_PIC12.X.production.o
+_Hum 2E 0 BANK0 1 dataBANK0 dist/default/production\Prueba_PIC12.X.production.o
 _WPU 95 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
 __S0 2008 0 ABS 0 - -
-__S1 25 0 ABS 0 - -
+__S1 30 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
+LeerByte@i 28 0 BANK0 1 cstackBANK0 dist/default/production\Prueba_PIC12.X.production.o
+__size_of_LeerByte 0 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
 saved_w 5E 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
 __Hosccal 7FE 0 CODE 0 osccal -
-__end_of_ISR F8 0 CODE 0 text1 dist/default/production\Prueba_PIC12.X.production.o
+__end_of_ISR 186 0 CODE 0 text3 dist/default/production\Prueba_PIC12.X.production.o
 __CFG_BOREN$ON 0 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\mario\AppData\Local\Temp\sfp8.o
-__pmaintext 1C 0 CODE 0 maintext dist/default/production\Prueba_PIC12.X.production.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\mario\AppData\Local\Temp\s5ps.o
+__pdataBANK0 2E 0 BANK0 1 dataBANK0 dist/default/production\Prueba_PIC12.X.production.o
+__LbssBANK0 7FE 0 ABS 0 bssBANK0 -
+__end_of_LeerBit 138 0 CODE 0 text2 dist/default/production\Prueba_PIC12.X.production.o
+__pmaintext 28 0 CODE 0 maintext dist/default/production\Prueba_PIC12.X.production.o
 __Lcommon 7FE 0 ABS 0 common -
 __Lconfig 400E 0 CONFIG 0 config -
 __CFG_CP$OFF 0 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
+_LeerByte 138 0 CODE 0 text1 dist/default/production\Prueba_PIC12.X.production.o
 __CFG_WDTE$OFF 0 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
-___osccal_val 7FE 0 CODE 0 osccal C:\Users\mario\AppData\Local\Temp\sfp8.o
+__end_of_LeerByte 16A 0 CODE 0 text1 dist/default/production\Prueba_PIC12.X.production.o
+___osccal_val 7FE 0 CODE 0 osccal C:\Users\mario\AppData\Local\Temp\s5ps.o
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
 __HcstackBANK0 7FE 0 ABS 0 cstackBANK0 -
 __Lend_init 16 0 CODE 0 end_init -
-end_of_initialization 18 0 CODE 0 cinit dist/default/production\Prueba_PIC12.X.production.o
+end_of_initialization 24 0 CODE 0 cinit dist/default/production\Prueba_PIC12.X.production.o
 __Hintentry 16 0 CODE 0 intentry -
 __Losccal 7FE 0 CODE 0 osccal -
 __Lstrings 7FE 0 ABS 0 strings -
 __Hreset_vec 2 0 CODE 0 reset_vec -
-__ptext1 DC 0 CODE 0 text1 dist/default/production\Prueba_PIC12.X.production.o
+__HbssBANK0 7FE 0 ABS 0 bssBANK0 -
+__ptext1 138 0 CODE 0 text1 dist/default/production\Prueba_PIC12.X.production.o
+__ptext2 EA 0 CODE 0 text2 dist/default/production\Prueba_PIC12.X.production.o
+__ptext3 16A 0 CODE 0 text3 dist/default/production\Prueba_PIC12.X.production.o
 __Lpowerup 0 0 CODE 0 powerup -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
 __Lreset_vec 0 0 CODE 0 reset_vec -
-__end_of__initialization 18 0 CODE 0 cinit dist/default/production\Prueba_PIC12.X.production.o
+__end_of__initialization 24 0 CODE 0 cinit dist/default/production\Prueba_PIC12.X.production.o
 __Lfunctab 0 0 ENTRY 0 functab -
+__pidataBANK0 186 0 CODE 0 idataBANK0 dist/default/production\Prueba_PIC12.X.production.o
 __Lclrtext 7FE 0 ABS 0 clrtext -
 __Hend_init 18 0 CODE 0 end_init -
-__end_of_main DC 0 CODE 0 maintext dist/default/production\Prueba_PIC12.X.production.o
+__end_of_main EA 0 CODE 0 maintext dist/default/production\Prueba_PIC12.X.production.o
 _ANSEL 9F 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
 _CMCON 19 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
 _GPIO0 28 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
-_GPIO2 2A 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
 _GPIO5 2D 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
 __Hram 7FE 0 ABS 0 ram -
 __Lram 7FE 0 ABS 0 ram -
@@ -221,8 +282,11 @@ interrupt_function 8 0 CODE 0 intentry dist/default/production\Prueba_PIC12.X.pr
 __CFG_CPD$OFF 0 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
 __pintentry 8 0 CODE 0 intentry dist/default/production\Prueba_PIC12.X.production.o
 __size_of_ISR 0 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
+__HdataBANK0 7FE 0 ABS 0 dataBANK0 -
 __initialization 18 0 CODE 0 cinit dist/default/production\Prueba_PIC12.X.production.o
 __CFG_PWRTE$OFF 0 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
+_LeerBit EA 0 CODE 0 text2 dist/default/production\Prueba_PIC12.X.production.o
+__pbssBANK0 2C 0 BANK0 1 bssBANK0 dist/default/production\Prueba_PIC12.X.production.o
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -248,8 +312,8 @@ __CFG_PWRTE$OFF 0 0 ABS 0 - dist/default/production\Prueba_PIC12.X.production.o
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-cstackBANK0 1 20 20 5 1
-intentry 0 4 8 78 2
+cstackBANK0 1 20 20 10 1
+intentry 0 4 8 C1 2
 reset_vec 0 0 0 1 2
 config 0 2007 400E 1 2
 # OTES Section

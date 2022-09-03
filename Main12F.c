@@ -29,7 +29,10 @@
 
 #define LED_CPU GPIO0
 
-
+/*-------------------- Variables de lectura en el sensor --------------------*/
+unsigned char Temp=10,Hum=20,Che,bandera = 0;
+unsigned char LeerByte(void);
+unsigned char LeerBit(void);
 
 void __interrupt () ISR (void); //Interrupción 
 
@@ -56,15 +59,23 @@ void main(void) {
     __delay_ms(1000);
     GP1=0;
     while(1){
-        GPIO2=0;
-        __delay_ms(1000);
-        GPIO2=1;
         __delay_ms(1000);
         DATA_DIR=0;
         DATA_IN=0;
-        __delay_ms(1000);
+        __delay_ms(18);
         DATA_DIR=1;
-        if(DATA_IN==1){
+        while(DATA_IN==1){
+            //GP1=1;
+        }
+        __delay_us(120);
+        while(DATA_IN==1){
+            //GP1=1;
+        }
+        Hum=LeerByte();
+        
+        
+        GP1=0;
+        if(Hum==66){
             GP1=1;
         }
         else{
@@ -73,6 +84,32 @@ void main(void) {
     }
 }
 
+unsigned char LeerByte(void){
+  unsigned char res=0,i;
+  
+  for(i=8;i>0;i--){
+    res=(res<<1) | LeerBit();  
+  }
+  return res;
+}
+unsigned char LeerBit(void){
+    unsigned char res=0;
+     while(DATA_IN==0){
+        GP1=1;
+     }
+     __delay_us(13);
+     if(DATA_IN==1) res=0;
+     __delay_us(22);
+     if(DATA_IN==1){
+       res=1;
+       while(DATA_IN==1){
+          GP2=1;
+       }
+     }
+     GP1=0;
+     GP2=0;
+     return res;  
+}
 void __interrupt () ISR (void){ //Interrupción 
     if(T0IF==1){
             T0IF=0;

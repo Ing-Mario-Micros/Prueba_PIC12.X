@@ -1031,7 +1031,11 @@ extern __bank0 __bit __timeout;
 #pragma config BOREN = ON
 #pragma config CP = OFF
 #pragma config CPD = OFF
-# 34 "Main12F.c"
+# 33 "Main12F.c"
+unsigned char Temp=10,Hum=20,Che,bandera = 0;
+unsigned char LeerByte(void);
+unsigned char LeerBit(void);
+
 void __attribute__((picinterrupt(("")))) ISR (void);
 
 void main(void) {
@@ -1057,15 +1061,23 @@ void main(void) {
     _delay((unsigned long)((1000)*(4000000/4000.0)));
     GP1=0;
     while(1){
-        GPIO2=0;
-        _delay((unsigned long)((1000)*(4000000/4000.0)));
-        GPIO2=1;
         _delay((unsigned long)((1000)*(4000000/4000.0)));
         TRISIO5=0;
         GPIO5=0;
-        _delay((unsigned long)((1000)*(4000000/4000.0)));
+        _delay((unsigned long)((18)*(4000000/4000.0)));
         TRISIO5=1;
-        if(GPIO5==1){
+        while(GPIO5==1){
+
+        }
+        _delay((unsigned long)((120)*(4000000/4000000.0)));
+        while(GPIO5==1){
+
+        }
+        Hum=LeerByte();
+
+
+        GP1=0;
+        if(Hum==66){
             GP1=1;
         }
         else{
@@ -1074,6 +1086,32 @@ void main(void) {
     }
 }
 
+unsigned char LeerByte(void){
+  unsigned char res=0,i;
+
+  for(i=8;i>0;i--){
+    res=(res<<1) | LeerBit();
+  }
+  return res;
+}
+unsigned char LeerBit(void){
+    unsigned char res=0;
+     while(GPIO5==0){
+        GP1=1;
+     }
+     _delay((unsigned long)((13)*(4000000/4000000.0)));
+     if(GPIO5==1) res=0;
+     _delay((unsigned long)((22)*(4000000/4000000.0)));
+     if(GPIO5==1){
+       res=1;
+       while(GPIO5==1){
+          GP2=1;
+       }
+     }
+     GP1=0;
+     GP2=0;
+     return res;
+}
 void __attribute__((picinterrupt(("")))) ISR (void){
     if(T0IF==1){
             T0IF=0;
