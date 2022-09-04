@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.10 build 88905656 
-                                                                                               Sun Sep 04 14:15:58 2022
+                                                                                               Sun Sep 04 15:26:22 2022
 
 Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1 
      1                           	processor	12F675
@@ -11,1051 +11,1284 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
      5                           	psect	cinit,global,class=CODE,merge=1,delta=2
      6                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1
      7                           	psect	dataBANK0,global,class=BANK0,space=1,delta=1
-     8                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
-     9                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1
-    10                           	psect	maintext,global,class=CODE,split=1,delta=2
-    11                           	psect	text1,local,class=CODE,merge=1,delta=2
-    12                           	psect	text2,local,class=CODE,merge=1,delta=2
-    13                           	psect	text3,local,class=CODE,merge=1,delta=2
-    14                           	psect	text4,local,class=CODE,merge=1,delta=2
-    15                           	psect	text5,local,class=CODE,merge=1,delta=2
-    16                           	psect	intentry,global,class=CODE,delta=2
-    17                           	dabs	1,0x5E,2
-    18  0000                     
-    19                           ; Version 2.10
-    20                           ; Generated 31/07/2019 GMT
-    21                           ; 
-    22                           ; Copyright © 2019, Microchip Technology Inc. and its subsidiaries ("Microchip")
-    23                           ; All rights reserved.
-    24                           ; 
-    25                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+     8                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1
+     9                           	psect	maintext,global,class=CODE,split=1,delta=2
+    10                           	psect	text1,local,class=CODE,merge=1,delta=2
+    11                           	psect	text2,local,class=CODE,merge=1,delta=2
+    12                           	psect	text3,local,class=CODE,merge=1,delta=2
+    13                           	psect	text4,local,class=CODE,merge=1,delta=2
+    14                           	psect	text5,local,class=CODE,merge=1,delta=2
+    15                           	psect	intentry,global,class=CODE,delta=2
+    16                           	dabs	1,0x5E,2
+    17  0000                     
+    18                           ; Version 2.10
+    19                           ; Generated 31/07/2019 GMT
+    20                           ; 
+    21                           ; Copyright © 2019, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    22                           ; All rights reserved.
+    23                           ; 
+    24                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
       +                          ip").
-    26                           ; 
-    27                           ; Redistribution and use in source and binary forms, with or without modification, are
-    28                           ; permitted provided that the following conditions are met:
-    29                           ; 
-    30                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+    25                           ; 
+    26                           ; Redistribution and use in source and binary forms, with or without modification, are
+    27                           ; permitted provided that the following conditions are met:
+    28                           ; 
+    29                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
       +                          t of
-    31                           ;        conditions and the following disclaimer.
-    32                           ; 
-    33                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+    30                           ;        conditions and the following disclaimer.
+    31                           ; 
+    32                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
       +                          list
-    34                           ;        of conditions and the following disclaimer in the documentation and/or other
-    35                           ;        materials provided with the distribution.
-    36                           ; 
-    37                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+    33                           ;        of conditions and the following disclaimer in the documentation and/or other
+    34                           ;        materials provided with the distribution.
+    35                           ; 
+    36                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
       +                          is
-    38                           ;        software without specific prior written permission.
-    39                           ; 
-    40                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-    41                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+    37                           ;        software without specific prior written permission.
+    38                           ; 
+    39                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    40                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
       +                          OR
-    42                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+    41                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
       +                          T,
-    43                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
-    44                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
-    45                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+    42                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    43                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    44                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
       +                          RICT
-    46                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+    45                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
       +                          SE OF
-    47                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    46                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    47                           ; 
     48                           ; 
-    49                           ; 
-    50                           ; Code-generator required, PIC12F675 Definitions
-    51                           ; 
-    52                           ; SFR Addresses
-    53  0000                     	;# 
-    54  0001                     	;# 
-    55  0002                     	;# 
-    56  0003                     	;# 
-    57  0004                     	;# 
-    58  0005                     	;# 
-    59  000A                     	;# 
-    60  000B                     	;# 
-    61  000C                     	;# 
+    49                           ; Code-generator required, PIC12F675 Definitions
+    50                           ; 
+    51                           ; SFR Addresses
+    52  0000                     	;# 
+    53  0001                     	;# 
+    54  0002                     	;# 
+    55  0003                     	;# 
+    56  0004                     	;# 
+    57  0005                     	;# 
+    58  000A                     	;# 
+    59  000B                     	;# 
+    60  000C                     	;# 
+    61  000E                     	;# 
     62  000E                     	;# 
-    63  000E                     	;# 
-    64  000F                     	;# 
-    65  0010                     	;# 
-    66  0019                     	;# 
-    67  001E                     	;# 
-    68  001F                     	;# 
-    69  0081                     	;# 
-    70  0085                     	;# 
-    71  008C                     	;# 
-    72  008E                     	;# 
-    73  0090                     	;# 
-    74  0095                     	;# 
+    63  000F                     	;# 
+    64  0010                     	;# 
+    65  0019                     	;# 
+    66  001E                     	;# 
+    67  001F                     	;# 
+    68  0081                     	;# 
+    69  0085                     	;# 
+    70  008C                     	;# 
+    71  008E                     	;# 
+    72  0090                     	;# 
+    73  0095                     	;# 
+    74  0096                     	;# 
     75  0096                     	;# 
-    76  0096                     	;# 
-    77  0099                     	;# 
+    76  0099                     	;# 
+    77  009A                     	;# 
     78  009A                     	;# 
-    79  009A                     	;# 
-    80  009B                     	;# 
-    81  009C                     	;# 
-    82  009D                     	;# 
-    83  009E                     	;# 
-    84  009F                     	;# 
-    85  0000                     	;# 
-    86  0001                     	;# 
-    87  0002                     	;# 
-    88  0003                     	;# 
-    89  0004                     	;# 
-    90  0005                     	;# 
-    91  000A                     	;# 
-    92  000B                     	;# 
-    93  000C                     	;# 
+    79  009B                     	;# 
+    80  009C                     	;# 
+    81  009D                     	;# 
+    82  009E                     	;# 
+    83  009F                     	;# 
+    84  0000                     	;# 
+    85  0001                     	;# 
+    86  0002                     	;# 
+    87  0003                     	;# 
+    88  0004                     	;# 
+    89  0005                     	;# 
+    90  000A                     	;# 
+    91  000B                     	;# 
+    92  000C                     	;# 
+    93  000E                     	;# 
     94  000E                     	;# 
-    95  000E                     	;# 
-    96  000F                     	;# 
-    97  0010                     	;# 
-    98  0019                     	;# 
-    99  001E                     	;# 
-   100  001F                     	;# 
-   101  0081                     	;# 
-   102  0085                     	;# 
-   103  008C                     	;# 
-   104  008E                     	;# 
-   105  0090                     	;# 
-   106  0095                     	;# 
+    95  000F                     	;# 
+    96  0010                     	;# 
+    97  0019                     	;# 
+    98  001E                     	;# 
+    99  001F                     	;# 
+   100  0081                     	;# 
+   101  0085                     	;# 
+   102  008C                     	;# 
+   103  008E                     	;# 
+   104  0090                     	;# 
+   105  0095                     	;# 
+   106  0096                     	;# 
    107  0096                     	;# 
-   108  0096                     	;# 
-   109  0099                     	;# 
+   108  0099                     	;# 
+   109  009A                     	;# 
    110  009A                     	;# 
-   111  009A                     	;# 
-   112  009B                     	;# 
-   113  009C                     	;# 
-   114  009D                     	;# 
-   115  009E                     	;# 
-   116  009F                     	;# 
-   117                           
-   118                           	psect	idataBANK0
-   119  0108                     __pidataBANK0:	
-   120                           
-   121                           ;initializer for _Hum
-   122  0108  3414               	retlw	20
-   123                           
-   124                           ;initializer for _Temp
-   125  0109  340A               	retlw	10
-   126  0001                     _TMR0	set	1
-   127  0005                     _GPIO	set	5
-   128  0019                     _CMCON	set	25
-   129  0028                     _GPIO0	set	40
-   130  002A                     _GP2	set	42
-   131  002D                     _GPIO5	set	45
-   132  005F                     _GIE	set	95
-   133  005D                     _T0IE	set	93
-   134  005A                     _T0IF	set	90
-   135  002C                     _GPIO4	set	44
-   136  0029                     _GP1	set	41
-   137  0081                     _OPTION_REG	set	129
-   138  0095                     _WPU	set	149
-   139  0085                     _TRISIO	set	133
-   140  009F                     _ANSEL	set	159
-   141  042D                     _TRISIO5	set	1069
-   142                           
-   143                           ; #config settings
-   144  0000                     
-   145                           	psect	cinit
-   146  000C                     start_initialization:	
-   147  000C                     __initialization:	
-   148                           
-   149                           ; Initialize objects allocated to BANK0
-   150  000C  2108               	fcall	__pidataBANK0	;fetch initializer
-   151  000D  00AE               	movwf	__pdataBANK0& (0+127)
-   152  000E  2109               	fcall	__pidataBANK0+1	;fetch initializer
-   153  000F  00AF               	movwf	(__pdataBANK0+1)& (0+127)
-   154                           
-   155                           ; Clear objects allocated to BANK0
-   156  0010  01AC               	clrf	__pbssBANK0& (0+127)
-   157  0011  01AD               	clrf	(__pbssBANK0+1)& (0+127)
-   158  0012                     end_of_initialization:	
-   159                           ;End of C runtime variable initialization code
-   160                           
-   161  0012                     __end_of__initialization:	
-   162  0012  0183               	clrf	3
-   163  0013  2814               	ljmp	_main	;jump to C main() function
-   164                           
-   165                           	psect	bssBANK0
-   166  002C                     __pbssBANK0:	
-   167  002C                     _bandera:	
-   168  002C                     	ds	1
-   169  002D                     _Che:	
-   170  002D                     	ds	1
-   171                           
-   172                           	psect	dataBANK0
-   173  002E                     __pdataBANK0:	
-   174  002E                     _Hum:	
-   175  002E                     	ds	1
-   176  002F                     _Temp:	
-   177  002F                     	ds	1
-   178                           
-   179                           	psect	cstackCOMMON
-   180  0000                     __pcstackCOMMON:	
-   181  0000                     ??_Transmitir:	
-   182                           
-   183                           	psect	cstackBANK0
-   184  0020                     __pcstackBANK0:	
+   111  009B                     	;# 
+   112  009C                     	;# 
+   113  009D                     	;# 
+   114  009E                     	;# 
+   115  009F                     	;# 
+   116                           
+   117                           	psect	idataBANK0
+   118  0194                     __pidataBANK0:	
+   119                           
+   120                           ;initializer for _Hum
+   121  0194  3414               	retlw	20
+   122                           
+   123                           ;initializer for _Temp
+   124  0195  340A               	retlw	10
+   125  0001                     _TMR0	set	1
+   126  0005                     _GPIO	set	5
+   127  0019                     _CMCON	set	25
+   128  0028                     _GPIO0	set	40
+   129  002A                     _GP2	set	42
+   130  002D                     _GPIO5	set	45
+   131  005F                     _GIE	set	95
+   132  005D                     _T0IE	set	93
+   133  005A                     _T0IF	set	90
+   134  002C                     _GPIO4	set	44
+   135  0029                     _GP1	set	41
+   136  0081                     _OPTION_REG	set	129
+   137  0095                     _WPU	set	149
+   138  0085                     _TRISIO	set	133
+   139  009F                     _ANSEL	set	159
+   140  042D                     _TRISIO5	set	1069
+   141                           
+   142                           ; #config settings
+   143  0000                     
+   144                           	psect	cinit
+   145  000C                     start_initialization:	
+   146  000C                     __initialization:	
+   147                           
+   148                           ; Initialize objects allocated to BANK0
+   149  000C  2194               	fcall	__pidataBANK0	;fetch initializer
+   150  000D  00B3               	movwf	__pdataBANK0& (0+127)
+   151  000E  2195               	fcall	__pidataBANK0+1	;fetch initializer
+   152  000F  00B4               	movwf	(__pdataBANK0+1)& (0+127)
+   153                           
+   154                           ; Clear objects allocated to BANK0
+   155  0010  01B1               	clrf	__pbssBANK0& (0+127)
+   156  0011  01B2               	clrf	(__pbssBANK0+1)& (0+127)
+   157  0012                     end_of_initialization:	
+   158                           ;End of C runtime variable initialization code
+   159                           
+   160  0012                     __end_of__initialization:	
+   161  0012  0183               	clrf	3
+   162  0013  28C9               	ljmp	_main	;jump to C main() function
+   163                           
+   164                           	psect	bssBANK0
+   165  0031                     __pbssBANK0:	
+   166  0031                     _bandera:	
+   167  0031                     	ds	1
+   168  0032                     _Che:	
+   169  0032                     	ds	1
+   170                           
+   171                           	psect	dataBANK0
+   172  0033                     __pdataBANK0:	
+   173  0033                     _Hum:	
+   174  0033                     	ds	1
+   175  0034                     _Temp:	
+   176  0034                     	ds	1
+   177                           
+   178                           	psect	cstackBANK0
+   179  0020                     __pcstackBANK0:	
+   180  0020                     ?_LeerByte:	
+   181  0020                     ?_Transmitir:	
+   182                           ; 1 bytes @ 0x0
+   183                           
+   184  0020                     ?_LeerBit:	
    185                           ; 1 bytes @ 0x0
    186                           
-   187  0020                     ?_LeerByte:	
-   188  0020                     ?_Transmitir:	
-   189                           ; 1 bytes @ 0x0
-   190                           
-   191  0020                     ?_LeerBit:	
-   192                           ; 1 bytes @ 0x0
-   193                           
-   194  0020                     ?_Retardo:	
-   195                           ; 1 bytes @ 0x0
-   196                           
-   197  0020                     ?_main:	
-   198                           ; 1 bytes @ 0x0
+   187  0020                     ?_Retardo:	
+   188                           ; 1 bytes @ 0x0
+   189                           
+   190  0020                     ?_main:	
+   191                           ; 1 bytes @ 0x0
+   192                           
+   193  0020                     ?_ISR:	
+   194                           ; 1 bytes @ 0x0
+   195                           
+   196  0020                     ??_ISR:	
+   197                           ; 1 bytes @ 0x0
+   198                           
    199                           
-   200  0020                     ?_ISR:	
-   201                           ; 1 bytes @ 0x0
-   202                           
-   203  0020                     ??_ISR:	
-   204                           ; 1 bytes @ 0x0
+   200                           ; 1 bytes @ 0x0
+   201  0020                     	ds	2
+   202  0022                     ??_LeerBit:	
+   203  0022                     ??_Retardo:	
+   204                           ; 1 bytes @ 0x2
    205                           
-   206  0020                     Transmitir@BufferTx:	
-   207                           ; 1 bytes @ 0x0
-   208                           
-   209                           
-   210                           ; 1 bytes @ 0x0
-   211  0020                     	ds	2
-   212  0022                     ??_LeerBit:	
-   213  0022                     ??_Retardo:	
-   214                           ; 1 bytes @ 0x2
-   215                           
-   216                           
-   217                           ; 1 bytes @ 0x2
-   218  0022                     	ds	1
-   219  0023                     LeerBit@res:	
-   220                           
-   221                           ; 1 bytes @ 0x3
-   222  0023                     	ds	1
-   223  0024                     ??_LeerByte:	
-   224                           
-   225                           ; 1 bytes @ 0x4
-   226  0024                     	ds	3
-   227  0027                     LeerByte@res:	
-   228                           
-   229                           ; 1 bytes @ 0x7
-   230  0027                     	ds	1
-   231  0028                     LeerByte@i:	
+   206                           
+   207                           ; 1 bytes @ 0x2
+   208  0022                     	ds	1
+   209  0023                     ??_Transmitir:	
+   210  0023                     LeerBit@res:	
+   211                           ; 1 bytes @ 0x3
+   212                           
+   213                           
+   214                           ; 1 bytes @ 0x3
+   215  0023                     	ds	1
+   216  0024                     ??_LeerByte:	
+   217                           
+   218                           ; 1 bytes @ 0x4
+   219  0024                     	ds	1
+   220  0025                     Transmitir@a:	
+   221                           
+   222                           ; 1 bytes @ 0x5
+   223  0025                     	ds	1
+   224  0026                     Transmitir@b:	
+   225                           
+   226                           ; 1 bytes @ 0x6
+   227  0026                     	ds	1
+   228  0027                     LeerByte@res:	
+   229  0027                     Transmitir@c:	
+   230                           ; 1 bytes @ 0x7
+   231                           
    232                           
-   233                           ; 1 bytes @ 0x8
-   234  0028                     	ds	1
-   235  0029                     ??_main:	
-   236                           
-   237                           ; 1 bytes @ 0x9
-   238  0029                     	ds	3
+   233                           ; 1 bytes @ 0x7
+   234  0027                     	ds	1
+   235  0028                     LeerByte@i:	
+   236  0028                     Transmitir@d:	
+   237                           ; 1 bytes @ 0x8
+   238                           
    239                           
-   240                           	psect	maintext
-   241  0014                     __pmaintext:	
-   242 ;;
-   243 ;;Main: autosize = 0, tempsize = 3, incstack = 0, save=0
-   244 ;;
-   245 ;; *************** function _main *****************
-   246 ;; Defined at:
-   247 ;;		line 43 in file "Main12F.c"
-   248 ;; Parameters:    Size  Location     Type
-   249 ;;		None
-   250 ;; Auto vars:     Size  Location     Type
-   251 ;;		None
-   252 ;; Return value:  Size  Location     Type
-   253 ;;                  1    wreg      void 
-   254 ;; Registers used:
-   255 ;;		wreg, status,2, status,0, pclath, cstack
-   256 ;; Tracked objects:
-   257 ;;		On entry : B00/0
-   258 ;;		On exit  : 0/0
-   259 ;;		Unchanged: 0/0
-   260 ;; Data sizes:     COMMON   BANK0
-   261 ;;      Params:         0       0
-   262 ;;      Locals:         0       0
-   263 ;;      Temps:          0       3
-   264 ;;      Totals:         0       3
-   265 ;;Total ram usage:        3 bytes
-   266 ;; Hardware stack levels required when called:    3
-   267 ;; This function calls:
-   268 ;;		_LeerByte
-   269 ;;		_Transmitir
-   270 ;; This function is called by:
-   271 ;;		Startup code after reset
-   272 ;; This function uses a non-reentrant model
-   273 ;;
-   274                           
-   275                           
-   276                           ;psect for function _main
-   277  0014                     _main:	
-   278  0014                     l914:	
-   279                           ;incstack = 0
-   280                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
-   281                           
-   282                           
-   283                           ;Main12F.c: 45:     ANSEL = 0x00;
-   284  0014  1683               	bsf	3,5	;RP0=1, select bank1
-   285  0015  019F               	clrf	31	;volatile
-   286  0016                     l916:	
-   287                           
-   288                           ;Main12F.c: 46:     CMCON = 0x07;
-   289  0016  3007               	movlw	7
-   290  0017  1283               	bcf	3,5	;RP0=0, select bank0
-   291  0018  0099               	movwf	25	;volatile
-   292  0019                     l918:	
-   293                           
-   294                           ;Main12F.c: 47:     TRISIO = 0b00100000;
-   295  0019  3020               	movlw	32
-   296  001A  1683               	bsf	3,5	;RP0=1, select bank1
-   297  001B  0085               	movwf	5	;volatile
-   298                           
-   299                           ;Main12F.c: 48:     GPIO = 0;
-   300  001C  1283               	bcf	3,5	;RP0=0, select bank0
-   301  001D  0185               	clrf	5	;volatile
+   240                           ; 1 bytes @ 0x8
+   241  0028                     	ds	1
+   242  0029                     Transmitir@e:	
+   243                           
+   244                           ; 1 bytes @ 0x9
+   245  0029                     	ds	1
+   246  002A                     Transmitir@f:	
+   247                           
+   248                           ; 1 bytes @ 0xA
+   249  002A                     	ds	1
+   250  002B                     Transmitir@g:	
+   251                           
+   252                           ; 1 bytes @ 0xB
+   253  002B                     	ds	1
+   254  002C                     Transmitir@h:	
+   255                           
+   256                           ; 1 bytes @ 0xC
+   257  002C                     	ds	1
+   258  002D                     Transmitir@BufferTx:	
+   259                           
+   260                           ; 1 bytes @ 0xD
+   261  002D                     	ds	1
+   262  002E                     ??_main:	
+   263                           
+   264                           ; 1 bytes @ 0xE
+   265  002E                     	ds	3
+   266                           
+   267                           	psect	maintext
+   268  00C9                     __pmaintext:	
+   269 ;;
+   270 ;;Main: autosize = 0, tempsize = 3, incstack = 0, save=0
+   271 ;;
+   272 ;; *************** function _main *****************
+   273 ;; Defined at:
+   274 ;;		line 43 in file "Main12F.c"
+   275 ;; Parameters:    Size  Location     Type
+   276 ;;		None
+   277 ;; Auto vars:     Size  Location     Type
+   278 ;;		None
+   279 ;; Return value:  Size  Location     Type
+   280 ;;                  1    wreg      void 
+   281 ;; Registers used:
+   282 ;;		wreg, status,2, status,0, pclath, cstack
+   283 ;; Tracked objects:
+   284 ;;		On entry : B00/0
+   285 ;;		On exit  : 0/0
+   286 ;;		Unchanged: 0/0
+   287 ;; Data sizes:     COMMON   BANK0
+   288 ;;      Params:         0       0
+   289 ;;      Locals:         0       0
+   290 ;;      Temps:          0       3
+   291 ;;      Totals:         0       3
+   292 ;;Total ram usage:        3 bytes
+   293 ;; Hardware stack levels required when called:    3
+   294 ;; This function calls:
+   295 ;;		_LeerByte
+   296 ;;		_Transmitir
+   297 ;; This function is called by:
+   298 ;;		Startup code after reset
+   299 ;; This function uses a non-reentrant model
+   300 ;;
+   301                           
    302                           
-   303                           ;Main12F.c: 49:     WPU=0;
-   304  001E  1683               	bsf	3,5	;RP0=1, select bank1
-   305  001F  0195               	clrf	21	;volatile
-   306  0020                     l920:	
-   307                           
-   308                           ;Main12F.c: 50:     GP1=1;
-   309  0020  1283               	bcf	3,5	;RP0=0, select bank0
-   310  0021  1485               	bsf	5,1	;volatile
-   311  0022                     l922:	
-   312                           
-   313                           ;Main12F.c: 51:     GPIO4=1;
-   314  0022  1605               	bsf	5,4	;volatile
-   315  0023                     l924:	
-   316                           
-   317                           ;Main12F.c: 54:     OPTION_REG=0xC7;
-   318  0023  30C7               	movlw	199
-   319  0024  1683               	bsf	3,5	;RP0=1, select bank1
-   320  0025  0081               	movwf	1	;volatile
-   321  0026                     l926:	
-   322                           
-   323                           ;Main12F.c: 55:     T0IF=0;
-   324  0026  110B               	bcf	11,2	;volatile
-   325  0027                     l928:	
-   326                           
-   327                           ;Main12F.c: 56:     TMR0=0;
-   328  0027  1283               	bcf	3,5	;RP0=0, select bank0
-   329  0028  0181               	clrf	1	;volatile
-   330  0029                     l930:	
-   331                           
-   332                           ;Main12F.c: 59:     T0IE=1;
-   333  0029  168B               	bsf	11,5	;volatile
-   334  002A                     l932:	
-   335                           
-   336                           ;Main12F.c: 61:     GIE=1;
-   337  002A  178B               	bsf	11,7	;volatile
-   338  002B                     l934:	
+   303                           ;psect for function _main
+   304  00C9                     _main:	
+   305  00C9                     l966:	
+   306                           ;incstack = 0
+   307                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   308                           
+   309                           
+   310                           ;Main12F.c: 45:     ANSEL = 0x00;
+   311  00C9  1683               	bsf	3,5	;RP0=1, select bank1
+   312  00CA  019F               	clrf	31	;volatile
+   313  00CB                     l968:	
+   314                           
+   315                           ;Main12F.c: 46:     CMCON = 0x07;
+   316  00CB  3007               	movlw	7
+   317  00CC  1283               	bcf	3,5	;RP0=0, select bank0
+   318  00CD  0099               	movwf	25	;volatile
+   319  00CE                     l970:	
+   320                           
+   321                           ;Main12F.c: 47:     TRISIO = 0b00100000;
+   322  00CE  3020               	movlw	32
+   323  00CF  1683               	bsf	3,5	;RP0=1, select bank1
+   324  00D0  0085               	movwf	5	;volatile
+   325                           
+   326                           ;Main12F.c: 48:     GPIO = 0;
+   327  00D1  1283               	bcf	3,5	;RP0=0, select bank0
+   328  00D2  0185               	clrf	5	;volatile
+   329                           
+   330                           ;Main12F.c: 49:     WPU=0;
+   331  00D3  1683               	bsf	3,5	;RP0=1, select bank1
+   332  00D4  0195               	clrf	21	;volatile
+   333  00D5                     l972:	
+   334                           
+   335                           ;Main12F.c: 50:     GP1=1;
+   336  00D5  1283               	bcf	3,5	;RP0=0, select bank0
+   337  00D6  1485               	bsf	5,1	;volatile
+   338  00D7                     l974:	
    339                           
-   340                           ;Main12F.c: 62:     TRISIO5=1;
-   341  002B  1683               	bsf	3,5	;RP0=1, select bank1
-   342  002C  1685               	bsf	5,5	;volatile
+   340                           ;Main12F.c: 51:     GPIO4=1;
+   341  00D7  1605               	bsf	5,4	;volatile
+   342  00D8                     l976:	
    343                           
-   344                           ;Main12F.c: 63:     _delay((unsigned long)((1000)*(4000000/4000.0)));
-   345  002D  3006               	movlw	6
-   346  002E  1283               	bcf	3,5	;RP0=0, select bank0
-   347  002F  00AB               	movwf	??_main+2
-   348  0030  3013               	movlw	19
-   349  0031  00AA               	movwf	??_main+1
-   350  0032  30AD               	movlw	173
-   351  0033  00A9               	movwf	??_main
-   352  0034                     u217:	
-   353  0034  0BA9               	decfsz	??_main,f
-   354  0035  2834               	goto	u217
-   355  0036  0BAA               	decfsz	??_main+1,f
-   356  0037  2834               	goto	u217
-   357  0038  0BAB               	decfsz	??_main+2,f
-   358  0039  2834               	goto	u217
-   359  003A  283B               	nop2
-   360  003B                     l936:	
-   361                           
-   362                           ;Main12F.c: 64:     GP1=0;
-   363  003B  1283               	bcf	3,5	;RP0=0, select bank0
-   364  003C  1085               	bcf	5,1	;volatile
-   365  003D                     l55:	
-   366                           ;Main12F.c: 65:     while(1){
-   367                           
-   368                           
-   369                           ;Main12F.c: 66:         _delay((unsigned long)((1000)*(4000000/4000.0)));
-   370  003D  3006               	movlw	6
-   371  003E  00AB               	movwf	??_main+2
-   372  003F  3013               	movlw	19
-   373  0040  00AA               	movwf	??_main+1
-   374  0041  30AD               	movlw	173
-   375  0042  00A9               	movwf	??_main
-   376  0043                     u227:	
-   377  0043  0BA9               	decfsz	??_main,f
-   378  0044  2843               	goto	u227
-   379  0045  0BAA               	decfsz	??_main+1,f
-   380  0046  2843               	goto	u227
-   381  0047  0BAB               	decfsz	??_main+2,f
-   382  0048  2843               	goto	u227
-   383  0049  284A               	nop2
-   384  004A                     l938:	
-   385                           
-   386                           ;Main12F.c: 67:         TRISIO5=0;
-   387  004A  1683               	bsf	3,5	;RP0=1, select bank1
-   388  004B  1285               	bcf	5,5	;volatile
-   389  004C                     l940:	
-   390                           
-   391                           ;Main12F.c: 68:         GPIO5=0;
-   392  004C  1283               	bcf	3,5	;RP0=0, select bank0
-   393  004D  1285               	bcf	5,5	;volatile
+   344                           ;Main12F.c: 54:     OPTION_REG=0xC7;
+   345  00D8  30C7               	movlw	199
+   346  00D9  1683               	bsf	3,5	;RP0=1, select bank1
+   347  00DA  0081               	movwf	1	;volatile
+   348  00DB                     l978:	
+   349                           
+   350                           ;Main12F.c: 55:     T0IF=0;
+   351  00DB  110B               	bcf	11,2	;volatile
+   352  00DC                     l980:	
+   353                           
+   354                           ;Main12F.c: 56:     TMR0=0;
+   355  00DC  1283               	bcf	3,5	;RP0=0, select bank0
+   356  00DD  0181               	clrf	1	;volatile
+   357  00DE                     l982:	
+   358                           
+   359                           ;Main12F.c: 59:     T0IE=1;
+   360  00DE  168B               	bsf	11,5	;volatile
+   361  00DF                     l984:	
+   362                           
+   363                           ;Main12F.c: 61:     GIE=1;
+   364  00DF  178B               	bsf	11,7	;volatile
+   365  00E0                     l986:	
+   366                           
+   367                           ;Main12F.c: 62:     TRISIO5=1;
+   368  00E0  1683               	bsf	3,5	;RP0=1, select bank1
+   369  00E1  1685               	bsf	5,5	;volatile
+   370                           
+   371                           ;Main12F.c: 63:     _delay((unsigned long)((1000)*(4000000/4000.0)));
+   372  00E2  3006               	movlw	6
+   373  00E3  1283               	bcf	3,5	;RP0=0, select bank0
+   374  00E4  00B0               	movwf	??_main+2
+   375  00E5  3013               	movlw	19
+   376  00E6  00AF               	movwf	??_main+1
+   377  00E7  30AD               	movlw	173
+   378  00E8  00AE               	movwf	??_main
+   379  00E9                     u657:	
+   380  00E9  0BAE               	decfsz	??_main,f
+   381  00EA  28E9               	goto	u657
+   382  00EB  0BAF               	decfsz	??_main+1,f
+   383  00EC  28E9               	goto	u657
+   384  00ED  0BB0               	decfsz	??_main+2,f
+   385  00EE  28E9               	goto	u657
+   386  00EF  28F0               	nop2
+   387  00F0                     l988:	
+   388                           
+   389                           ;Main12F.c: 64:     GP1=0;
+   390  00F0  1283               	bcf	3,5	;RP0=0, select bank0
+   391  00F1  1085               	bcf	5,1	;volatile
+   392  00F2                     l55:	
+   393                           ;Main12F.c: 65:     while(1){
    394                           
-   395                           ;Main12F.c: 69:         _delay((unsigned long)((18)*(4000000/4000.0)));
-   396  004E  3018               	movlw	24
-   397  004F  00AA               	movwf	??_main+1
-   398  0050  305F               	movlw	95
-   399  0051  00A9               	movwf	??_main
-   400  0052                     u237:	
-   401  0052  0BA9               	decfsz	??_main,f
-   402  0053  2852               	goto	u237
-   403  0054  0BAA               	decfsz	??_main+1,f
-   404  0055  2852               	goto	u237
-   405  0056                     l942:	
-   406                           
-   407                           ;Main12F.c: 70:         TRISIO5=1;
-   408  0056  1683               	bsf	3,5	;RP0=1, select bank1
-   409  0057  1685               	bsf	5,5	;volatile
-   410  0058                     l56:	
-   411                           ;Main12F.c: 73:         }
+   395                           
+   396                           ;Main12F.c: 66:         _delay((unsigned long)((1000)*(4000000/4000.0)));
+   397  00F2  3006               	movlw	6
+   398  00F3  00B0               	movwf	??_main+2
+   399  00F4  3013               	movlw	19
+   400  00F5  00AF               	movwf	??_main+1
+   401  00F6  30AD               	movlw	173
+   402  00F7  00AE               	movwf	??_main
+   403  00F8                     u667:	
+   404  00F8  0BAE               	decfsz	??_main,f
+   405  00F9  28F8               	goto	u667
+   406  00FA  0BAF               	decfsz	??_main+1,f
+   407  00FB  28F8               	goto	u667
+   408  00FC  0BB0               	decfsz	??_main+2,f
+   409  00FD  28F8               	goto	u667
+   410  00FE  28FF               	nop2
+   411  00FF                     l990:	
    412                           
-   413                           
-   414                           ;Main12F.c: 71:         while(GPIO5==1){
-   415  0058  1283               	bcf	3,5	;RP0=0, select bank0
-   416  0059  1A85               	btfsc	5,5	;volatile
-   417  005A  285C               	goto	u161
-   418  005B  285D               	goto	u160
-   419  005C                     u161:	
-   420  005C  2858               	goto	l56
-   421  005D                     u160:	
-   422  005D                     l944:	
-   423                           
-   424                           ;Main12F.c: 74:         _delay((unsigned long)((120)*(4000000/4000000.0)));
-   425  005D  3027               	movlw	39
-   426  005E  00A9               	movwf	??_main
-   427  005F                     u247:	
-   428  005F  0BA9               	decfsz	??_main,f
-   429  0060  285F               	goto	u247
-   430  0061  2862               	nop2
-   431  0062                     l59:	
-   432                           ;Main12F.c: 77:         }
+   413                           ;Main12F.c: 67:         TRISIO5=0;
+   414  00FF  1683               	bsf	3,5	;RP0=1, select bank1
+   415  0100  1285               	bcf	5,5	;volatile
+   416  0101                     l992:	
+   417                           
+   418                           ;Main12F.c: 68:         GPIO5=0;
+   419  0101  1283               	bcf	3,5	;RP0=0, select bank0
+   420  0102  1285               	bcf	5,5	;volatile
+   421                           
+   422                           ;Main12F.c: 69:         _delay((unsigned long)((18)*(4000000/4000.0)));
+   423  0103  3018               	movlw	24
+   424  0104  00AF               	movwf	??_main+1
+   425  0105  305F               	movlw	95
+   426  0106  00AE               	movwf	??_main
+   427  0107                     u677:	
+   428  0107  0BAE               	decfsz	??_main,f
+   429  0108  2907               	goto	u677
+   430  0109  0BAF               	decfsz	??_main+1,f
+   431  010A  2907               	goto	u677
+   432  010B                     l994:	
    433                           
-   434                           
-   435                           ;Main12F.c: 75:         while(GPIO5==1){
-   436  0062  1283               	bcf	3,5	;RP0=0, select bank0
-   437  0063  1A85               	btfsc	5,5	;volatile
-   438  0064  2866               	goto	u171
-   439  0065  2867               	goto	u170
-   440  0066                     u171:	
-   441  0066  2862               	goto	l59
-   442  0067                     u170:	
-   443  0067                     l946:	
-   444                           
-   445                           ;Main12F.c: 78:         Hum=LeerByte();
-   446  0067  20DA               	fcall	_LeerByte
-   447  0068  1283               	bcf	3,5	;RP0=0, select bank0
-   448  0069  00A9               	movwf	??_main
-   449  006A  0829               	movf	??_main,w
-   450  006B  00AE               	movwf	_Hum
-   451                           
-   452                           ;Main12F.c: 79:         LeerByte();
-   453  006C  20DA               	fcall	_LeerByte
-   454                           
-   455                           ;Main12F.c: 80:         Temp=LeerByte();
-   456  006D  20DA               	fcall	_LeerByte
-   457  006E  1283               	bcf	3,5	;RP0=0, select bank0
-   458  006F  00A9               	movwf	??_main
-   459  0070  0829               	movf	??_main,w
-   460  0071  00AF               	movwf	_Temp
+   434                           ;Main12F.c: 70:         TRISIO5=1;
+   435  010B  1683               	bsf	3,5	;RP0=1, select bank1
+   436  010C  1685               	bsf	5,5	;volatile
+   437  010D                     l56:	
+   438                           ;Main12F.c: 73:         }
+   439                           
+   440                           
+   441                           ;Main12F.c: 71:         while(GPIO5==1){
+   442  010D  1283               	bcf	3,5	;RP0=0, select bank0
+   443  010E  1A85               	btfsc	5,5	;volatile
+   444  010F  2911               	goto	u601
+   445  0110  2912               	goto	u600
+   446  0111                     u601:	
+   447  0111  290D               	goto	l56
+   448  0112                     u600:	
+   449  0112                     l996:	
+   450                           
+   451                           ;Main12F.c: 74:         _delay((unsigned long)((120)*(4000000/4000000.0)));
+   452  0112  3027               	movlw	39
+   453  0113  00AE               	movwf	??_main
+   454  0114                     u687:	
+   455  0114  0BAE               	decfsz	??_main,f
+   456  0115  2914               	goto	u687
+   457  0116  2917               	nop2
+   458  0117                     l59:	
+   459                           ;Main12F.c: 77:         }
+   460                           
    461                           
-   462                           ;Main12F.c: 81:         Transmitir(0x99);
-   463  0072  3099               	movlw	153
-   464  0073  208A               	fcall	_Transmitir
-   465  0074                     l948:	
-   466                           
-   467                           ;Main12F.c: 82:         GP1=0;
-   468  0074  1283               	bcf	3,5	;RP0=0, select bank0
-   469  0075  1085               	bcf	5,1	;volatile
-   470  0076                     l950:	
+   462                           ;Main12F.c: 75:         while(GPIO5==1){
+   463  0117  1283               	bcf	3,5	;RP0=0, select bank0
+   464  0118  1A85               	btfsc	5,5	;volatile
+   465  0119  291B               	goto	u611
+   466  011A  291C               	goto	u610
+   467  011B                     u611:	
+   468  011B  2917               	goto	l59
+   469  011C                     u610:	
+   470  011C                     l998:	
    471                           
-   472                           ;Main12F.c: 83:         if(Hum==48){
-   473  0076  3030               	movlw	48
-   474  0077  062E               	xorwf	_Hum,w
-   475  0078  1D03               	btfss	3,2
-   476  0079  287B               	goto	u181
-   477  007A  287C               	goto	u180
-   478  007B                     u181:	
-   479  007B  287E               	goto	l62
-   480  007C                     u180:	
-   481  007C                     l952:	
-   482                           
-   483                           ;Main12F.c: 84:             GP1=1;
-   484  007C  1485               	bsf	5,1	;volatile
-   485                           
-   486                           ;Main12F.c: 85:         }
-   487  007D  287F               	goto	l954
-   488  007E                     l62:	
-   489                           ;Main12F.c: 86:         else{
-   490                           
-   491                           
-   492                           ;Main12F.c: 87:             GP1=0;
-   493  007E  1085               	bcf	5,1	;volatile
-   494  007F                     l954:	
-   495                           
-   496                           ;Main12F.c: 89:         if(Temp==20){
-   497  007F  3014               	movlw	20
-   498  0080  062F               	xorwf	_Temp,w
-   499  0081  1D03               	btfss	3,2
-   500  0082  2884               	goto	u191
-   501  0083  2885               	goto	u190
-   502  0084                     u191:	
-   503  0084  2887               	goto	l64
-   504  0085                     u190:	
-   505  0085                     l956:	
-   506                           
-   507                           ;Main12F.c: 90:             GP2=1;
-   508  0085  1505               	bsf	5,2	;volatile
+   472                           ;Main12F.c: 78:         Hum=LeerByte();
+   473  011C  2166               	fcall	_LeerByte
+   474  011D  1283               	bcf	3,5	;RP0=0, select bank0
+   475  011E  00AE               	movwf	??_main
+   476  011F  082E               	movf	??_main,w
+   477  0120  00B3               	movwf	_Hum
+   478                           
+   479                           ;Main12F.c: 79:         LeerByte();
+   480  0121  2166               	fcall	_LeerByte
+   481                           
+   482                           ;Main12F.c: 80:         Temp=LeerByte();
+   483  0122  2166               	fcall	_LeerByte
+   484  0123  1283               	bcf	3,5	;RP0=0, select bank0
+   485  0124  00AE               	movwf	??_main
+   486  0125  082E               	movf	??_main,w
+   487  0126  00B4               	movwf	_Temp
+   488                           
+   489                           ;Main12F.c: 81:         Transmitir('O');
+   490  0127  304F               	movlw	79
+   491  0128  2014               	fcall	_Transmitir
+   492  0129                     l1000:	
+   493                           
+   494                           ;Main12F.c: 82:         GP1=0;
+   495  0129  1283               	bcf	3,5	;RP0=0, select bank0
+   496  012A  1085               	bcf	5,1	;volatile
+   497  012B                     l1002:	
+   498                           
+   499                           ;Main12F.c: 83:         if(Hum==48){
+   500  012B  3030               	movlw	48
+   501  012C  0633               	xorwf	_Hum,w
+   502  012D  1D03               	btfss	3,2
+   503  012E  2930               	goto	u621
+   504  012F  2931               	goto	u620
+   505  0130                     u621:	
+   506  0130  2933               	goto	l62
+   507  0131                     u620:	
+   508  0131                     l1004:	
    509                           
-   510                           ;Main12F.c: 91:         }
-   511  0086  283D               	goto	l55
-   512  0087                     l64:	
-   513                           ;Main12F.c: 92:         else{
-   514                           
-   515                           
-   516                           ;Main12F.c: 93:             GP2=0;
-   517  0087  1105               	bcf	5,2	;volatile
-   518  0088  283D               	goto	l55
-   519  0089  280B               	ljmp	start
-   520  008A                     __end_of_main:	
-   521                           
-   522                           	psect	text1
-   523  008A                     __ptext1:	
-   524 ;; *************** function _Transmitir *****************
-   525 ;; Defined at:
-   526 ;;		line 124 in file "Main12F.c"
-   527 ;; Parameters:    Size  Location     Type
-   528 ;;  BufferTx        1    wreg     unsigned char 
-   529 ;; Auto vars:     Size  Location     Type
-   530 ;;  BufferTx        1    0[BANK0 ] unsigned char 
-   531 ;;  i               2    0        int 
-   532 ;;  j               2    0        int 
-   533 ;; Return value:  Size  Location     Type
-   534 ;;                  1    wreg      void 
-   535 ;; Registers used:
-   536 ;;		wreg, status,2, status,0, pclath, cstack
-   537 ;; Tracked objects:
-   538 ;;		On entry : 0/0
-   539 ;;		On exit  : 0/0
-   540 ;;		Unchanged: 0/0
-   541 ;; Data sizes:     COMMON   BANK0
-   542 ;;      Params:         0       0
-   543 ;;      Locals:         0       2
-   544 ;;      Temps:          0       0
-   545 ;;      Totals:         0       2
-   546 ;;Total ram usage:        2 bytes
-   547 ;; Hardware stack levels used:    1
-   548 ;; Hardware stack levels required when called:    2
-   549 ;; This function calls:
-   550 ;;		_Retardo
-   551 ;; This function is called by:
-   552 ;;		_main
-   553 ;; This function uses a non-reentrant model
-   554 ;;
-   555                           
-   556                           
-   557                           ;psect for function _Transmitir
-   558  008A                     _Transmitir:	
-   559  008A                     l864:	
-   560                           ;incstack = 0
-   561                           ; Regs used in _Transmitir: [wreg+status,2+status,0+pclath+cstack]
-   562                           
-   563  008A                     l866:	
-   564                           
-   565                           ;Main12F.c: 127:     TMR0=0;
-   566  008A  1283               	bcf	3,5	;RP0=0, select bank0
-   567  008B  0181               	clrf	1	;volatile
-   568  008C                     l868:	
-   569                           
-   570                           ;Main12F.c: 129:     GPIO4=0;
-   571  008C  1205               	bcf	5,4	;volatile
-   572  008D                     l870:	
-   573                           
-   574                           ;Main12F.c: 130:     Retardo();
-   575  008D  2101               	fcall	_Retardo
-   576  008E                     l872:	
-   577                           
-   578                           ;Main12F.c: 133:     TMR0=0;
-   579  008E  1283               	bcf	3,5	;RP0=0, select bank0
-   580  008F  0181               	clrf	1	;volatile
-   581  0090                     l874:	
-   582                           
-   583                           ;Main12F.c: 134:     GPIO4=0;
-   584  0090  1205               	bcf	5,4	;volatile
-   585                           
-   586                           ;Main12F.c: 135:     Retardo();
-   587  0091  2101               	fcall	_Retardo
-   588  0092                     l876:	
+   510                           ;Main12F.c: 84:             GP1=1;
+   511  0131  1485               	bsf	5,1	;volatile
+   512                           
+   513                           ;Main12F.c: 85:         }
+   514  0132  2934               	goto	l1006
+   515  0133                     l62:	
+   516                           ;Main12F.c: 86:         else{
+   517                           
+   518                           
+   519                           ;Main12F.c: 87:             GP1=0;
+   520  0133  1085               	bcf	5,1	;volatile
+   521  0134                     l1006:	
+   522                           
+   523                           ;Main12F.c: 89:         if(Temp==20){
+   524  0134  3014               	movlw	20
+   525  0135  0634               	xorwf	_Temp,w
+   526  0136  1D03               	btfss	3,2
+   527  0137  2939               	goto	u631
+   528  0138  293A               	goto	u630
+   529  0139                     u631:	
+   530  0139  293C               	goto	l64
+   531  013A                     u630:	
+   532  013A                     l1008:	
+   533                           
+   534                           ;Main12F.c: 90:             GP2=1;
+   535  013A  1505               	bsf	5,2	;volatile
+   536                           
+   537                           ;Main12F.c: 91:         }
+   538  013B  28F2               	goto	l55
+   539  013C                     l64:	
+   540                           ;Main12F.c: 92:         else{
+   541                           
+   542                           
+   543                           ;Main12F.c: 93:             GP2=0;
+   544  013C  1105               	bcf	5,2	;volatile
+   545  013D  28F2               	goto	l55
+   546  013E  280B               	ljmp	start
+   547  013F                     __end_of_main:	
+   548                           
+   549                           	psect	text1
+   550  0014                     __ptext1:	
+   551 ;; *************** function _Transmitir *****************
+   552 ;; Defined at:
+   553 ;;		line 124 in file "Main12F.c"
+   554 ;; Parameters:    Size  Location     Type
+   555 ;;  BufferTx        1    wreg     unsigned char 
+   556 ;; Auto vars:     Size  Location     Type
+   557 ;;  BufferTx        1   13[BANK0 ] unsigned char 
+   558 ;;  h               1   12[BANK0 ] unsigned char 
+   559 ;;  g               1   11[BANK0 ] unsigned char 
+   560 ;;  f               1   10[BANK0 ] unsigned char 
+   561 ;;  e               1    9[BANK0 ] unsigned char 
+   562 ;;  d               1    8[BANK0 ] unsigned char 
+   563 ;;  c               1    7[BANK0 ] unsigned char 
+   564 ;;  b               1    6[BANK0 ] unsigned char 
+   565 ;;  a               1    5[BANK0 ] unsigned char 
+   566 ;; Return value:  Size  Location     Type
+   567 ;;                  1    wreg      void 
+   568 ;; Registers used:
+   569 ;;		wreg, status,2, status,0, pclath, cstack
+   570 ;; Tracked objects:
+   571 ;;		On entry : 0/0
+   572 ;;		On exit  : 0/0
+   573 ;;		Unchanged: 0/0
+   574 ;; Data sizes:     COMMON   BANK0
+   575 ;;      Params:         0       0
+   576 ;;      Locals:         0       9
+   577 ;;      Temps:          0       2
+   578 ;;      Totals:         0      11
+   579 ;;Total ram usage:       11 bytes
+   580 ;; Hardware stack levels used:    1
+   581 ;; Hardware stack levels required when called:    2
+   582 ;; This function calls:
+   583 ;;		_Retardo
+   584 ;; This function is called by:
+   585 ;;		_main
+   586 ;; This function uses a non-reentrant model
+   587 ;;
+   588                           
    589                           
-   590                           ;Main12F.c: 137:     TMR0=0;
-   591  0092  1283               	bcf	3,5	;RP0=0, select bank0
-   592  0093  0181               	clrf	1	;volatile
-   593  0094                     l878:	
-   594                           
-   595                           ;Main12F.c: 138:     GPIO4=0;
-   596  0094  1205               	bcf	5,4	;volatile
-   597  0095                     l880:	
-   598                           
-   599                           ;Main12F.c: 139:     Retardo();
-   600  0095  2101               	fcall	_Retardo
-   601                           
-   602                           ;Main12F.c: 141:     TMR0=0;
-   603  0096  1283               	bcf	3,5	;RP0=0, select bank0
-   604  0097  0181               	clrf	1	;volatile
-   605  0098                     l882:	
+   590                           ;psect for function _Transmitir
+   591  0014                     _Transmitir:	
+   592                           
+   593                           ;incstack = 0
+   594                           ; Regs used in _Transmitir: [wreg+status,2+status,0+pclath+cstack]
+   595                           ;Transmitir@BufferTx stored from wreg
+   596  0014  1283               	bcf	3,5	;RP0=0, select bank0
+   597  0015  00AD               	movwf	Transmitir@BufferTx
+   598  0016                     l890:	
+   599                           
+   600                           ;Main12F.c: 125:     char a,b,c,d,e,f,g,h;;Main12F.c: 126:     a=BufferTx>>0;
+   601  0016  082D               	movf	Transmitir@BufferTx,w
+   602  0017  00A3               	movwf	??_Transmitir
+   603  0018  0823               	movf	??_Transmitir,w
+   604  0019  00A5               	movwf	Transmitir@a
+   605  001A                     l892:	
    606                           
-   607                           ;Main12F.c: 142:     GPIO4=0;
-   608  0098  1205               	bcf	5,4	;volatile
-   609  0099                     l884:	
-   610                           
-   611                           ;Main12F.c: 143:     Retardo();
-   612  0099  2101               	fcall	_Retardo
-   613  009A                     l886:	
-   614                           
-   615                           ;Main12F.c: 145:     TMR0=0;
-   616  009A  1283               	bcf	3,5	;RP0=0, select bank0
-   617  009B  0181               	clrf	1	;volatile
-   618  009C                     l888:	
-   619                           
-   620                           ;Main12F.c: 146:     GPIO4=0;
-   621  009C  1205               	bcf	5,4	;volatile
-   622                           
-   623                           ;Main12F.c: 147:     Retardo();
-   624  009D  2101               	fcall	_Retardo
-   625  009E                     l890:	
-   626                           
-   627                           ;Main12F.c: 149:     TMR0=0;
-   628  009E  1283               	bcf	3,5	;RP0=0, select bank0
-   629  009F  0181               	clrf	1	;volatile
-   630  00A0                     l892:	
-   631                           
-   632                           ;Main12F.c: 150:     GPIO4=1;
-   633  00A0  1605               	bsf	5,4	;volatile
-   634  00A1                     l894:	
-   635                           
-   636                           ;Main12F.c: 151:     Retardo();
-   637  00A1  2101               	fcall	_Retardo
-   638                           
-   639                           ;Main12F.c: 153:     TMR0=0;
-   640  00A2  1283               	bcf	3,5	;RP0=0, select bank0
-   641  00A3  0181               	clrf	1	;volatile
-   642  00A4                     l896:	
-   643                           
-   644                           ;Main12F.c: 154:     GPIO4=1;
-   645  00A4  1605               	bsf	5,4	;volatile
-   646  00A5                     l898:	
-   647                           
-   648                           ;Main12F.c: 155:     Retardo();
-   649  00A5  2101               	fcall	_Retardo
-   650  00A6                     l900:	
-   651                           
-   652                           ;Main12F.c: 157:     TMR0=0;
-   653  00A6  1283               	bcf	3,5	;RP0=0, select bank0
-   654  00A7  0181               	clrf	1	;volatile
-   655  00A8                     l902:	
-   656                           
-   657                           ;Main12F.c: 158:     GPIO4=0;
-   658  00A8  1205               	bcf	5,4	;volatile
-   659                           
-   660                           ;Main12F.c: 159:     Retardo();
-   661  00A9  2101               	fcall	_Retardo
-   662  00AA                     l904:	
-   663                           
-   664                           ;Main12F.c: 161:     TMR0=0;
-   665  00AA  1283               	bcf	3,5	;RP0=0, select bank0
-   666  00AB  0181               	clrf	1	;volatile
-   667  00AC                     l906:	
-   668                           
-   669                           ;Main12F.c: 162:     GPIO4=0;
-   670  00AC  1205               	bcf	5,4	;volatile
-   671  00AD                     l908:	
-   672                           
-   673                           ;Main12F.c: 163:     Retardo();
-   674  00AD  2101               	fcall	_Retardo
-   675                           
-   676                           ;Main12F.c: 165:     TMR0=0;
-   677  00AE  1283               	bcf	3,5	;RP0=0, select bank0
-   678  00AF  0181               	clrf	1	;volatile
-   679  00B0                     l910:	
+   607                           ;Main12F.c: 127:     b=BufferTx>>1;
+   608  001A  082D               	movf	Transmitir@BufferTx,w
+   609  001B  00A3               	movwf	??_Transmitir
+   610  001C  1003               	clrc
+   611  001D  0C23               	rrf	??_Transmitir,w
+   612  001E  00A4               	movwf	??_Transmitir+1
+   613  001F  0824               	movf	??_Transmitir+1,w
+   614  0020  00A6               	movwf	Transmitir@b
+   615  0021                     l894:	
+   616                           
+   617                           ;Main12F.c: 128:     c=BufferTx>>2;
+   618  0021  082D               	movf	Transmitir@BufferTx,w
+   619  0022  00A3               	movwf	??_Transmitir
+   620  0023  3002               	movlw	2
+   621  0024                     u385:	
+   622  0024  1003               	clrc
+   623  0025  0CA3               	rrf	??_Transmitir,f
+   624  0026  3EFF               	addlw	-1
+   625  0027  1D03               	skipz
+   626  0028  2824               	goto	u385
+   627  0029  0823               	movf	??_Transmitir,w
+   628  002A  00A4               	movwf	??_Transmitir+1
+   629  002B  0824               	movf	??_Transmitir+1,w
+   630  002C  00A7               	movwf	Transmitir@c
+   631  002D                     l896:	
+   632                           
+   633                           ;Main12F.c: 129:     d=BufferTx>>3;
+   634  002D  082D               	movf	Transmitir@BufferTx,w
+   635  002E  00A3               	movwf	??_Transmitir
+   636  002F  3003               	movlw	3
+   637  0030                     u395:	
+   638  0030  1003               	clrc
+   639  0031  0CA3               	rrf	??_Transmitir,f
+   640  0032  3EFF               	addlw	-1
+   641  0033  1D03               	skipz
+   642  0034  2830               	goto	u395
+   643  0035  0823               	movf	??_Transmitir,w
+   644  0036  00A4               	movwf	??_Transmitir+1
+   645  0037  0824               	movf	??_Transmitir+1,w
+   646  0038  00A8               	movwf	Transmitir@d
+   647  0039                     l898:	
+   648                           
+   649                           ;Main12F.c: 130:     e=BufferTx>>4;
+   650  0039  082D               	movf	Transmitir@BufferTx,w
+   651  003A  00A3               	movwf	??_Transmitir
+   652  003B  3004               	movlw	4
+   653  003C                     u405:	
+   654  003C  1003               	clrc
+   655  003D  0CA3               	rrf	??_Transmitir,f
+   656  003E  3EFF               	addlw	-1
+   657  003F  1D03               	skipz
+   658  0040  283C               	goto	u405
+   659  0041  0823               	movf	??_Transmitir,w
+   660  0042  00A4               	movwf	??_Transmitir+1
+   661  0043  0824               	movf	??_Transmitir+1,w
+   662  0044  00A9               	movwf	Transmitir@e
+   663  0045                     l900:	
+   664                           
+   665                           ;Main12F.c: 131:     f=BufferTx>>5;
+   666  0045  082D               	movf	Transmitir@BufferTx,w
+   667  0046  00A3               	movwf	??_Transmitir
+   668  0047  3005               	movlw	5
+   669  0048                     u415:	
+   670  0048  1003               	clrc
+   671  0049  0CA3               	rrf	??_Transmitir,f
+   672  004A  3EFF               	addlw	-1
+   673  004B  1D03               	skipz
+   674  004C  2848               	goto	u415
+   675  004D  0823               	movf	??_Transmitir,w
+   676  004E  00A4               	movwf	??_Transmitir+1
+   677  004F  0824               	movf	??_Transmitir+1,w
+   678  0050  00AA               	movwf	Transmitir@f
+   679  0051                     l902:	
    680                           
-   681                           ;Main12F.c: 166:     GPIO4=1;
-   682  00B0  1605               	bsf	5,4	;volatile
-   683  00B1                     l912:	
-   684                           
-   685                           ;Main12F.c: 167:     Retardo();
-   686  00B1  2101               	fcall	_Retardo
-   687  00B2                     l87:	
-   688  00B2  0008               	return
-   689  00B3                     __end_of_Transmitir:	
-   690                           
-   691                           	psect	text2
-   692  0101                     __ptext2:	
-   693 ;; *************** function _Retardo *****************
-   694 ;; Defined at:
-   695 ;;		line 169 in file "Main12F.c"
-   696 ;; Parameters:    Size  Location     Type
-   697 ;;		None
-   698 ;; Auto vars:     Size  Location     Type
-   699 ;;		None
-   700 ;; Return value:  Size  Location     Type
-   701 ;;                  1    wreg      void 
-   702 ;; Registers used:
-   703 ;;		wreg
-   704 ;; Tracked objects:
-   705 ;;		On entry : 0/0
-   706 ;;		On exit  : 0/0
-   707 ;;		Unchanged: 0/0
-   708 ;; Data sizes:     COMMON   BANK0
-   709 ;;      Params:         0       0
-   710 ;;      Locals:         0       0
-   711 ;;      Temps:          0       1
-   712 ;;      Totals:         0       1
-   713 ;;Total ram usage:        1 bytes
-   714 ;; Hardware stack levels used:    1
-   715 ;; Hardware stack levels required when called:    1
-   716 ;; This function calls:
-   717 ;;		Nothing
-   718 ;; This function is called by:
-   719 ;;		_Transmitir
-   720 ;; This function uses a non-reentrant model
-   721 ;;
-   722                           
-   723                           
-   724                           ;psect for function _Retardo
-   725  0101                     _Retardo:	
-   726  0101                     l844:	
-   727                           ;incstack = 0
-   728                           ; Regs used in _Retardo: [wreg]
+   681                           ;Main12F.c: 132:     g=BufferTx>>6;
+   682  0051  082D               	movf	Transmitir@BufferTx,w
+   683  0052  00A3               	movwf	??_Transmitir
+   684  0053  3006               	movlw	6
+   685  0054                     u425:	
+   686  0054  1003               	clrc
+   687  0055  0CA3               	rrf	??_Transmitir,f
+   688  0056  3EFF               	addlw	-1
+   689  0057  1D03               	skipz
+   690  0058  2854               	goto	u425
+   691  0059  0823               	movf	??_Transmitir,w
+   692  005A  00A4               	movwf	??_Transmitir+1
+   693  005B  0824               	movf	??_Transmitir+1,w
+   694  005C  00AB               	movwf	Transmitir@g
+   695  005D                     l904:	
+   696                           
+   697                           ;Main12F.c: 133:     h=BufferTx>>7;
+   698  005D  082D               	movf	Transmitir@BufferTx,w
+   699  005E  00A3               	movwf	??_Transmitir
+   700  005F  3007               	movlw	7
+   701  0060                     u435:	
+   702  0060  1003               	clrc
+   703  0061  0CA3               	rrf	??_Transmitir,f
+   704  0062  3EFF               	addlw	-1
+   705  0063  1D03               	skipz
+   706  0064  2860               	goto	u435
+   707  0065  0823               	movf	??_Transmitir,w
+   708  0066  00A4               	movwf	??_Transmitir+1
+   709  0067  0824               	movf	??_Transmitir+1,w
+   710  0068  00AC               	movwf	Transmitir@h
+   711  0069                     l906:	
+   712                           
+   713                           ;Main12F.c: 134:     TMR0=0;
+   714  0069  0181               	clrf	1	;volatile
+   715  006A                     l908:	
+   716                           
+   717                           ;Main12F.c: 136:     GPIO4=0;
+   718  006A  1205               	bcf	5,4	;volatile
+   719  006B                     l910:	
+   720                           
+   721                           ;Main12F.c: 137:     Retardo();
+   722  006B  218D               	fcall	_Retardo
+   723  006C                     l912:	
+   724                           
+   725                           ;Main12F.c: 145:     TMR0=0;
+   726  006C  1283               	bcf	3,5	;RP0=0, select bank0
+   727  006D  0181               	clrf	1	;volatile
+   728  006E                     l914:	
    729                           
-   730                           
-   731                           ;Main12F.c: 170:     _delay((unsigned long)((108)*(4000000/4000000.0)));
-   732  0101  3023               	movlw	35
-   733  0102  1283               	bcf	3,5	;RP0=0, select bank0
-   734  0103  00A2               	movwf	??_Retardo
-   735  0104                     u257:	
-   736  0104  0BA2               	decfsz	??_Retardo,f
-   737  0105  2904               	goto	u257
-   738  0106  2907               	nop2
-   739  0107                     l90:	
-   740  0107  0008               	return
-   741  0108                     __end_of_Retardo:	
-   742                           
-   743                           	psect	text3
-   744  00DA                     __ptext3:	
-   745 ;; *************** function _LeerByte *****************
-   746 ;; Defined at:
-   747 ;;		line 98 in file "Main12F.c"
-   748 ;; Parameters:    Size  Location     Type
-   749 ;;		None
-   750 ;; Auto vars:     Size  Location     Type
-   751 ;;  i               1    8[BANK0 ] unsigned char 
-   752 ;;  res             1    7[BANK0 ] unsigned char 
-   753 ;; Return value:  Size  Location     Type
-   754 ;;                  1    wreg      unsigned char 
-   755 ;; Registers used:
-   756 ;;		wreg, status,2, status,0, pclath, cstack
-   757 ;; Tracked objects:
-   758 ;;		On entry : 0/0
-   759 ;;		On exit  : 0/0
-   760 ;;		Unchanged: 0/0
-   761 ;; Data sizes:     COMMON   BANK0
-   762 ;;      Params:         0       0
-   763 ;;      Locals:         0       2
-   764 ;;      Temps:          0       3
-   765 ;;      Totals:         0       5
-   766 ;;Total ram usage:        5 bytes
-   767 ;; Hardware stack levels used:    1
-   768 ;; Hardware stack levels required when called:    2
-   769 ;; This function calls:
-   770 ;;		_LeerBit
-   771 ;; This function is called by:
-   772 ;;		_main
-   773 ;; This function uses a non-reentrant model
-   774 ;;
+   730                           ;Main12F.c: 146:     GPIO4=a;
+   731  006E  1825               	btfsc	Transmitir@a,0
+   732  006F  2871               	goto	u441
+   733  0070  2874               	goto	u440
+   734  0071                     u441:	
+   735  0071  1283               	bcf	3,5	;RP0=0, select bank0
+   736  0072  1605               	bsf	5,4	;volatile
+   737  0073  2876               	goto	u454
+   738  0074                     u440:	
+   739  0074  1283               	bcf	3,5	;RP0=0, select bank0
+   740  0075  1205               	bcf	5,4	;volatile
+   741  0076                     u454:	
+   742  0076                     l916:	
+   743                           
+   744                           ;Main12F.c: 147:     Retardo();
+   745  0076  218D               	fcall	_Retardo
+   746  0077                     l918:	
+   747                           
+   748                           ;Main12F.c: 149:     TMR0=0;
+   749  0077  1283               	bcf	3,5	;RP0=0, select bank0
+   750  0078  0181               	clrf	1	;volatile
+   751  0079                     l920:	
+   752                           
+   753                           ;Main12F.c: 150:     GPIO4=b;
+   754  0079  1826               	btfsc	Transmitir@b,0
+   755  007A  287C               	goto	u461
+   756  007B  287F               	goto	u460
+   757  007C                     u461:	
+   758  007C  1283               	bcf	3,5	;RP0=0, select bank0
+   759  007D  1605               	bsf	5,4	;volatile
+   760  007E  2881               	goto	u474
+   761  007F                     u460:	
+   762  007F  1283               	bcf	3,5	;RP0=0, select bank0
+   763  0080  1205               	bcf	5,4	;volatile
+   764  0081                     u474:	
+   765  0081                     l922:	
+   766                           
+   767                           ;Main12F.c: 151:     Retardo();
+   768  0081  218D               	fcall	_Retardo
+   769  0082                     l924:	
+   770                           
+   771                           ;Main12F.c: 153:     TMR0=0;
+   772  0082  1283               	bcf	3,5	;RP0=0, select bank0
+   773  0083  0181               	clrf	1	;volatile
+   774  0084                     l926:	
    775                           
-   776                           
-   777                           ;psect for function _LeerByte
-   778  00DA                     _LeerByte:	
-   779  00DA                     l846:	
-   780                           ;incstack = 0
-   781                           ; Regs used in _LeerByte: [wreg+status,2+status,0+pclath+cstack]
-   782                           
-   783                           
-   784                           ;Main12F.c: 99:   unsigned char res=0,i;
-   785  00DA  1283               	bcf	3,5	;RP0=0, select bank0
-   786  00DB  01A7               	clrf	LeerByte@res
-   787  00DC                     l848:	
-   788                           
-   789                           ;Main12F.c: 101:   for(i=8;i>0;i--){
-   790  00DC  3008               	movlw	8
-   791  00DD  00A4               	movwf	??_LeerByte
-   792  00DE  0824               	movf	??_LeerByte,w
-   793  00DF  00A8               	movwf	LeerByte@i
-   794  00E0                     l854:	
-   795                           
-   796                           ;Main12F.c: 102:     res=(res<<1) | LeerBit();
-   797  00E0  20B3               	fcall	_LeerBit
-   798  00E1  1283               	bcf	3,5	;RP0=0, select bank0
-   799  00E2  00A4               	movwf	??_LeerByte
-   800  00E3  0827               	movf	LeerByte@res,w
-   801  00E4  00A5               	movwf	??_LeerByte+1
-   802  00E5  0725               	addwf	??_LeerByte+1,w
-   803  00E6  0424               	iorwf	??_LeerByte,w
-   804  00E7  00A6               	movwf	??_LeerByte+2
-   805  00E8  0826               	movf	??_LeerByte+2,w
-   806  00E9  00A7               	movwf	LeerByte@res
-   807  00EA                     l856:	
-   808                           
-   809                           ;Main12F.c: 103:   }
-   810  00EA  3001               	movlw	1
-   811  00EB  02A8               	subwf	LeerByte@i,f
-   812  00EC                     l858:	
-   813  00EC  0828               	movf	LeerByte@i,w
-   814  00ED  1D03               	btfss	3,2
-   815  00EE  28F0               	goto	u151
-   816  00EF  28F1               	goto	u150
-   817  00F0                     u151:	
-   818  00F0  28E0               	goto	l854
-   819  00F1                     u150:	
-   820  00F1                     l860:	
+   776                           ;Main12F.c: 154:     GPIO4=c;
+   777  0084  1827               	btfsc	Transmitir@c,0
+   778  0085  2887               	goto	u481
+   779  0086  288A               	goto	u480
+   780  0087                     u481:	
+   781  0087  1283               	bcf	3,5	;RP0=0, select bank0
+   782  0088  1605               	bsf	5,4	;volatile
+   783  0089  288C               	goto	u494
+   784  008A                     u480:	
+   785  008A  1283               	bcf	3,5	;RP0=0, select bank0
+   786  008B  1205               	bcf	5,4	;volatile
+   787  008C                     u494:	
+   788  008C                     l928:	
+   789                           
+   790                           ;Main12F.c: 155:     Retardo();
+   791  008C  218D               	fcall	_Retardo
+   792  008D                     l930:	
+   793                           
+   794                           ;Main12F.c: 157:     TMR0=0;
+   795  008D  1283               	bcf	3,5	;RP0=0, select bank0
+   796  008E  0181               	clrf	1	;volatile
+   797  008F                     l932:	
+   798                           
+   799                           ;Main12F.c: 158:     GPIO4=d;
+   800  008F  1828               	btfsc	Transmitir@d,0
+   801  0090  2892               	goto	u501
+   802  0091  2895               	goto	u500
+   803  0092                     u501:	
+   804  0092  1283               	bcf	3,5	;RP0=0, select bank0
+   805  0093  1605               	bsf	5,4	;volatile
+   806  0094  2897               	goto	u514
+   807  0095                     u500:	
+   808  0095  1283               	bcf	3,5	;RP0=0, select bank0
+   809  0096  1205               	bcf	5,4	;volatile
+   810  0097                     u514:	
+   811  0097                     l934:	
+   812                           
+   813                           ;Main12F.c: 159:     Retardo();
+   814  0097  218D               	fcall	_Retardo
+   815  0098                     l936:	
+   816                           
+   817                           ;Main12F.c: 161:     TMR0=0;
+   818  0098  1283               	bcf	3,5	;RP0=0, select bank0
+   819  0099  0181               	clrf	1	;volatile
+   820  009A                     l938:	
    821                           
-   822                           ;Main12F.c: 104:   return res;
-   823  00F1  0827               	movf	LeerByte@res,w
-   824  00F2                     l73:	
-   825  00F2  0008               	return
-   826  00F3                     __end_of_LeerByte:	
-   827                           
-   828                           	psect	text4
-   829  00B3                     __ptext4:	
-   830 ;; *************** function _LeerBit *****************
-   831 ;; Defined at:
-   832 ;;		line 106 in file "Main12F.c"
-   833 ;; Parameters:    Size  Location     Type
-   834 ;;		None
-   835 ;; Auto vars:     Size  Location     Type
-   836 ;;  res             1    3[BANK0 ] unsigned char 
-   837 ;; Return value:  Size  Location     Type
-   838 ;;                  1    wreg      unsigned char 
-   839 ;; Registers used:
-   840 ;;		wreg, status,2
-   841 ;; Tracked objects:
-   842 ;;		On entry : 0/0
-   843 ;;		On exit  : 0/0
-   844 ;;		Unchanged: 0/0
-   845 ;; Data sizes:     COMMON   BANK0
-   846 ;;      Params:         0       0
-   847 ;;      Locals:         0       1
-   848 ;;      Temps:          0       1
-   849 ;;      Totals:         0       2
-   850 ;;Total ram usage:        2 bytes
-   851 ;; Hardware stack levels used:    1
-   852 ;; Hardware stack levels required when called:    1
-   853 ;; This function calls:
-   854 ;;		Nothing
-   855 ;; This function is called by:
-   856 ;;		_LeerByte
-   857 ;; This function uses a non-reentrant model
-   858 ;;
-   859                           
-   860                           
-   861                           ;psect for function _LeerBit
-   862  00B3                     _LeerBit:	
-   863  00B3                     l826:	
-   864                           ;incstack = 0
-   865                           ; Regs used in _LeerBit: [wreg+status,2]
-   866                           
+   822                           ;Main12F.c: 162:     GPIO4=e;
+   823  009A  1829               	btfsc	Transmitir@e,0
+   824  009B  289D               	goto	u521
+   825  009C  28A0               	goto	u520
+   826  009D                     u521:	
+   827  009D  1283               	bcf	3,5	;RP0=0, select bank0
+   828  009E  1605               	bsf	5,4	;volatile
+   829  009F  28A2               	goto	u534
+   830  00A0                     u520:	
+   831  00A0  1283               	bcf	3,5	;RP0=0, select bank0
+   832  00A1  1205               	bcf	5,4	;volatile
+   833  00A2                     u534:	
+   834  00A2                     l940:	
+   835                           
+   836                           ;Main12F.c: 163:     Retardo();
+   837  00A2  218D               	fcall	_Retardo
+   838  00A3                     l942:	
+   839                           
+   840                           ;Main12F.c: 165:     TMR0=0;
+   841  00A3  1283               	bcf	3,5	;RP0=0, select bank0
+   842  00A4  0181               	clrf	1	;volatile
+   843  00A5                     l944:	
+   844                           
+   845                           ;Main12F.c: 166:     GPIO4=f;
+   846  00A5  182A               	btfsc	Transmitir@f,0
+   847  00A6  28A8               	goto	u541
+   848  00A7  28AB               	goto	u540
+   849  00A8                     u541:	
+   850  00A8  1283               	bcf	3,5	;RP0=0, select bank0
+   851  00A9  1605               	bsf	5,4	;volatile
+   852  00AA  28AD               	goto	u554
+   853  00AB                     u540:	
+   854  00AB  1283               	bcf	3,5	;RP0=0, select bank0
+   855  00AC  1205               	bcf	5,4	;volatile
+   856  00AD                     u554:	
+   857  00AD                     l946:	
+   858                           
+   859                           ;Main12F.c: 167:     Retardo();
+   860  00AD  218D               	fcall	_Retardo
+   861  00AE                     l948:	
+   862                           
+   863                           ;Main12F.c: 169:     TMR0=0;
+   864  00AE  1283               	bcf	3,5	;RP0=0, select bank0
+   865  00AF  0181               	clrf	1	;volatile
+   866  00B0                     l950:	
    867                           
-   868                           ;Main12F.c: 107:     unsigned char res=0;
-   869  00B3  1283               	bcf	3,5	;RP0=0, select bank0
-   870  00B4  01A3               	clrf	LeerBit@res
-   871                           
-   872                           ;Main12F.c: 108:      while(GPIO5==0){
-   873  00B5  28B7               	goto	l76
-   874  00B6                     l77:	
-   875                           
-   876                           ;Main12F.c: 109:         GP1=1;
-   877  00B6  1485               	bsf	5,1	;volatile
-   878  00B7                     l76:	
-   879                           ;Main12F.c: 110:      }
-   880                           
+   868                           ;Main12F.c: 170:     GPIO4=g;
+   869  00B0  182B               	btfsc	Transmitir@g,0
+   870  00B1  28B3               	goto	u561
+   871  00B2  28B6               	goto	u560
+   872  00B3                     u561:	
+   873  00B3  1283               	bcf	3,5	;RP0=0, select bank0
+   874  00B4  1605               	bsf	5,4	;volatile
+   875  00B5  28B8               	goto	u574
+   876  00B6                     u560:	
+   877  00B6  1283               	bcf	3,5	;RP0=0, select bank0
+   878  00B7  1205               	bcf	5,4	;volatile
+   879  00B8                     u574:	
+   880  00B8                     l952:	
    881                           
-   882                           ;Main12F.c: 108:      while(GPIO5==0){
-   883  00B7  1E85               	btfss	5,5	;volatile
-   884  00B8  28BA               	goto	u111
-   885  00B9  28BB               	goto	u110
-   886  00BA                     u111:	
-   887  00BA  28B6               	goto	l77
-   888  00BB                     u110:	
-   889  00BB                     l828:	
+   882                           ;Main12F.c: 171:     Retardo();
+   883  00B8  218D               	fcall	_Retardo
+   884  00B9                     l954:	
+   885                           
+   886                           ;Main12F.c: 173:     TMR0=0;
+   887  00B9  1283               	bcf	3,5	;RP0=0, select bank0
+   888  00BA  0181               	clrf	1	;volatile
+   889  00BB                     l956:	
    890                           
-   891                           ;Main12F.c: 111:      _delay((unsigned long)((13)*(4000000/4000000.0)));
-   892  00BB  3004               	movlw	4
-   893  00BC  00A2               	movwf	??_LeerBit
-   894  00BD                     u267:	
-   895  00BD  0BA2               	decfsz	??_LeerBit,f
-   896  00BE  28BD               	goto	u267
-   897  00BF                     l830:	
-   898                           
-   899                           ;Main12F.c: 112:      if(GPIO5==1) res=0;
-   900  00BF  1283               	bcf	3,5	;RP0=0, select bank0
-   901  00C0  1E85               	btfss	5,5	;volatile
-   902  00C1  28C3               	goto	u121
-   903  00C2  28C4               	goto	u120
-   904  00C3                     u121:	
-   905  00C3  28C5               	goto	l834
-   906  00C4                     u120:	
-   907  00C4                     l832:	
-   908  00C4  01A3               	clrf	LeerBit@res
-   909  00C5                     l834:	
-   910                           
-   911                           ;Main12F.c: 113:      _delay((unsigned long)((22)*(4000000/4000000.0)));
-   912  00C5  3007               	movlw	7
-   913  00C6  00A2               	movwf	??_LeerBit
-   914  00C7                     u277:	
-   915  00C7  0BA2               	decfsz	??_LeerBit,f
-   916  00C8  28C7               	goto	u277
-   917  00C9                     l836:	
-   918                           
-   919                           ;Main12F.c: 114:      if(GPIO5==1){
-   920  00C9  1283               	bcf	3,5	;RP0=0, select bank0
-   921  00CA  1E85               	btfss	5,5	;volatile
-   922  00CB  28CD               	goto	u131
-   923  00CC  28CE               	goto	u130
-   924  00CD                     u131:	
-   925  00CD  28D6               	goto	l80
-   926  00CE                     u130:	
-   927  00CE                     l838:	
-   928                           
-   929                           ;Main12F.c: 115:        res=1;
-   930  00CE  01A3               	clrf	LeerBit@res
-   931  00CF  0AA3               	incf	LeerBit@res,f
-   932                           
-   933                           ;Main12F.c: 116:        while(GPIO5==1){
-   934  00D0  28D2               	goto	l81
-   935  00D1                     l82:	
-   936                           
-   937                           ;Main12F.c: 117:           GP2=1;
-   938  00D1  1505               	bsf	5,2	;volatile
-   939  00D2                     l81:	
-   940                           ;Main12F.c: 118:        }
-   941                           
-   942                           
-   943                           ;Main12F.c: 116:        while(GPIO5==1){
-   944  00D2  1A85               	btfsc	5,5	;volatile
-   945  00D3  28D5               	goto	u141
-   946  00D4  28D6               	goto	u140
-   947  00D5                     u141:	
-   948  00D5  28D1               	goto	l82
-   949  00D6                     u140:	
-   950  00D6                     l80:	
-   951                           ;Main12F.c: 119:      }
-   952                           
-   953                           
-   954                           ;Main12F.c: 120:      GP1=0;
-   955  00D6  1085               	bcf	5,1	;volatile
+   891                           ;Main12F.c: 174:     GPIO4=h;
+   892  00BB  182C               	btfsc	Transmitir@h,0
+   893  00BC  28BE               	goto	u581
+   894  00BD  28C1               	goto	u580
+   895  00BE                     u581:	
+   896  00BE  1283               	bcf	3,5	;RP0=0, select bank0
+   897  00BF  1605               	bsf	5,4	;volatile
+   898  00C0  28C3               	goto	u594
+   899  00C1                     u580:	
+   900  00C1  1283               	bcf	3,5	;RP0=0, select bank0
+   901  00C2  1205               	bcf	5,4	;volatile
+   902  00C3                     u594:	
+   903  00C3                     l958:	
+   904                           
+   905                           ;Main12F.c: 175:     Retardo();
+   906  00C3  218D               	fcall	_Retardo
+   907  00C4                     l960:	
+   908                           
+   909                           ;Main12F.c: 177:     TMR0=0;
+   910  00C4  1283               	bcf	3,5	;RP0=0, select bank0
+   911  00C5  0181               	clrf	1	;volatile
+   912  00C6                     l962:	
+   913                           
+   914                           ;Main12F.c: 178:     GPIO4=1;
+   915  00C6  1605               	bsf	5,4	;volatile
+   916  00C7                     l964:	
+   917                           
+   918                           ;Main12F.c: 179:     Retardo();
+   919  00C7  218D               	fcall	_Retardo
+   920  00C8                     l87:	
+   921  00C8  0008               	return
+   922  00C9                     __end_of_Transmitir:	
+   923                           
+   924                           	psect	text2
+   925  018D                     __ptext2:	
+   926 ;; *************** function _Retardo *****************
+   927 ;; Defined at:
+   928 ;;		line 181 in file "Main12F.c"
+   929 ;; Parameters:    Size  Location     Type
+   930 ;;		None
+   931 ;; Auto vars:     Size  Location     Type
+   932 ;;		None
+   933 ;; Return value:  Size  Location     Type
+   934 ;;                  1    wreg      void 
+   935 ;; Registers used:
+   936 ;;		wreg
+   937 ;; Tracked objects:
+   938 ;;		On entry : 0/0
+   939 ;;		On exit  : 0/0
+   940 ;;		Unchanged: 0/0
+   941 ;; Data sizes:     COMMON   BANK0
+   942 ;;      Params:         0       0
+   943 ;;      Locals:         0       0
+   944 ;;      Temps:          0       1
+   945 ;;      Totals:         0       1
+   946 ;;Total ram usage:        1 bytes
+   947 ;; Hardware stack levels used:    1
+   948 ;; Hardware stack levels required when called:    1
+   949 ;; This function calls:
+   950 ;;		Nothing
+   951 ;; This function is called by:
+   952 ;;		_Transmitir
+   953 ;; This function uses a non-reentrant model
+   954 ;;
+   955                           
    956                           
-   957                           ;Main12F.c: 121:      GP2=0;
-   958  00D7  1105               	bcf	5,2	;volatile
-   959  00D8                     l840:	
-   960                           
-   961                           ;Main12F.c: 122:      return res;
-   962  00D8  0823               	movf	LeerBit@res,w
-   963  00D9                     l84:	
-   964  00D9  0008               	return
-   965  00DA                     __end_of_LeerBit:	
-   966                           
-   967                           	psect	text5
-   968  00F3                     __ptext5:	
-   969 ;; *************** function _ISR *****************
-   970 ;; Defined at:
-   971 ;;		line 172 in file "Main12F.c"
-   972 ;; Parameters:    Size  Location     Type
-   973 ;;		None
-   974 ;; Auto vars:     Size  Location     Type
-   975 ;;		None
-   976 ;; Return value:  Size  Location     Type
-   977 ;;                  1    wreg      void 
-   978 ;; Registers used:
-   979 ;;		wreg
-   980 ;; Tracked objects:
-   981 ;;		On entry : 0/0
-   982 ;;		On exit  : 0/0
-   983 ;;		Unchanged: 0/0
-   984 ;; Data sizes:     COMMON   BANK0
-   985 ;;      Params:         0       0
-   986 ;;      Locals:         0       0
-   987 ;;      Temps:          0       2
-   988 ;;      Totals:         0       2
-   989 ;;Total ram usage:        2 bytes
-   990 ;; Hardware stack levels used:    1
-   991 ;; This function calls:
-   992 ;;		Nothing
-   993 ;; This function is called by:
-   994 ;;		Interrupt level 1
-   995 ;; This function uses a non-reentrant model
-   996 ;;
-   997                           
-   998                           
-   999                           ;psect for function _ISR
-  1000  00F3                     _ISR:	
-  1001  00F3                     i1l958:	
-  1002                           
-  1003                           ;Main12F.c: 173:     if(T0IF==1){
-  1004  00F3  1D0B               	btfss	11,2	;volatile
-  1005  00F4  28F6               	goto	u20_21
-  1006  00F5  28F7               	goto	u20_20
-  1007  00F6                     u20_21:	
-  1008  00F6  28FA               	goto	i1l96
-  1009  00F7                     u20_20:	
-  1010  00F7                     i1l960:	
-  1011                           
-  1012                           ;Main12F.c: 174:             T0IF=0;
-  1013  00F7  110B               	bcf	11,2	;volatile
-  1014  00F8                     i1l962:	
+   957                           ;psect for function _Retardo
+   958  018D                     _Retardo:	
+   959  018D                     l870:	
+   960                           ;incstack = 0
+   961                           ; Regs used in _Retardo: [wreg]
+   962                           
+   963                           
+   964                           ;Main12F.c: 182:     _delay((unsigned long)((108)*(4000000/4000000.0)));
+   965  018D  3023               	movlw	35
+   966  018E  1283               	bcf	3,5	;RP0=0, select bank0
+   967  018F  00A2               	movwf	??_Retardo
+   968  0190                     u697:	
+   969  0190  0BA2               	decfsz	??_Retardo,f
+   970  0191  2990               	goto	u697
+   971  0192  2993               	nop2
+   972  0193                     l90:	
+   973  0193  0008               	return
+   974  0194                     __end_of_Retardo:	
+   975                           
+   976                           	psect	text3
+   977  0166                     __ptext3:	
+   978 ;; *************** function _LeerByte *****************
+   979 ;; Defined at:
+   980 ;;		line 98 in file "Main12F.c"
+   981 ;; Parameters:    Size  Location     Type
+   982 ;;		None
+   983 ;; Auto vars:     Size  Location     Type
+   984 ;;  i               1    8[BANK0 ] unsigned char 
+   985 ;;  res             1    7[BANK0 ] unsigned char 
+   986 ;; Return value:  Size  Location     Type
+   987 ;;                  1    wreg      unsigned char 
+   988 ;; Registers used:
+   989 ;;		wreg, status,2, status,0, pclath, cstack
+   990 ;; Tracked objects:
+   991 ;;		On entry : 0/0
+   992 ;;		On exit  : 0/0
+   993 ;;		Unchanged: 0/0
+   994 ;; Data sizes:     COMMON   BANK0
+   995 ;;      Params:         0       0
+   996 ;;      Locals:         0       2
+   997 ;;      Temps:          0       3
+   998 ;;      Totals:         0       5
+   999 ;;Total ram usage:        5 bytes
+  1000 ;; Hardware stack levels used:    1
+  1001 ;; Hardware stack levels required when called:    2
+  1002 ;; This function calls:
+  1003 ;;		_LeerBit
+  1004 ;; This function is called by:
+  1005 ;;		_main
+  1006 ;; This function uses a non-reentrant model
+  1007 ;;
+  1008                           
+  1009                           
+  1010                           ;psect for function _LeerByte
+  1011  0166                     _LeerByte:	
+  1012  0166                     l872:	
+  1013                           ;incstack = 0
+  1014                           ; Regs used in _LeerByte: [wreg+status,2+status,0+pclath+cstack]
   1015                           
-  1016                           ;Main12F.c: 175:             GPIO0=GPIO0^ 1;
-  1017  00F8  3001               	movlw	1
-  1018  00F9  0685               	xorwf	5,f
-  1019  00FA                     i1l96:	
-  1020  00FA  0821               	movf	??_ISR+1,w
-  1021  00FB  008A               	movwf	10
-  1022  00FC  0E20               	swapf	??_ISR^0,w
-  1023  00FD  0083               	movwf	3
-  1024  00FE  0EDE               	swapf	btemp,f
-  1025  00FF  0E5E               	swapf	btemp,w
-  1026  0100  0009               	retfie
-  1027  0101                     __end_of_ISR:	
-  1028  005E                     btemp	set	94	;btemp
-  1029  005E                     wtemp0	set	94
-  1030                           
-  1031                           	psect	intentry
-  1032  0004                     __pintentry:	
-  1033                           ;incstack = 0
-  1034                           ; Regs used in _ISR: [wreg]
-  1035                           
-  1036  0004                     interrupt_function:	
-  1037  005E                     saved_w	set	btemp
-  1038  0004  00DE               	movwf	btemp
-  1039  0005  0E03               	swapf	3,w
-  1040  0006  1283               	bcf	3,5	;RP0=0, select bank0
-  1041  0007  00A0               	movwf	??_ISR
-  1042  0008  080A               	movf	10,w
-  1043  0009  00A1               	movwf	??_ISR+1
-  1044  000A  28F3               	ljmp	_ISR
+  1016                           
+  1017                           ;Main12F.c: 99:   unsigned char res=0,i;
+  1018  0166  1283               	bcf	3,5	;RP0=0, select bank0
+  1019  0167  01A7               	clrf	LeerByte@res
+  1020  0168                     l874:	
+  1021                           
+  1022                           ;Main12F.c: 101:   for(i=8;i>0;i--){
+  1023  0168  3008               	movlw	8
+  1024  0169  00A4               	movwf	??_LeerByte
+  1025  016A  0824               	movf	??_LeerByte,w
+  1026  016B  00A8               	movwf	LeerByte@i
+  1027  016C                     l880:	
+  1028                           
+  1029                           ;Main12F.c: 102:     res=(res<<1) | LeerBit();
+  1030  016C  213F               	fcall	_LeerBit
+  1031  016D  1283               	bcf	3,5	;RP0=0, select bank0
+  1032  016E  00A4               	movwf	??_LeerByte
+  1033  016F  0827               	movf	LeerByte@res,w
+  1034  0170  00A5               	movwf	??_LeerByte+1
+  1035  0171  0725               	addwf	??_LeerByte+1,w
+  1036  0172  0424               	iorwf	??_LeerByte,w
+  1037  0173  00A6               	movwf	??_LeerByte+2
+  1038  0174  0826               	movf	??_LeerByte+2,w
+  1039  0175  00A7               	movwf	LeerByte@res
+  1040  0176                     l882:	
+  1041                           
+  1042                           ;Main12F.c: 103:   }
+  1043  0176  3001               	movlw	1
+  1044  0177  02A8               	subwf	LeerByte@i,f
+  1045  0178                     l884:	
+  1046  0178  0828               	movf	LeerByte@i,w
+  1047  0179  1D03               	btfss	3,2
+  1048  017A  297C               	goto	u371
+  1049  017B  297D               	goto	u370
+  1050  017C                     u371:	
+  1051  017C  296C               	goto	l880
+  1052  017D                     u370:	
+  1053  017D                     l886:	
+  1054                           
+  1055                           ;Main12F.c: 104:   return res;
+  1056  017D  0827               	movf	LeerByte@res,w
+  1057  017E                     l73:	
+  1058  017E  0008               	return
+  1059  017F                     __end_of_LeerByte:	
+  1060                           
+  1061                           	psect	text4
+  1062  013F                     __ptext4:	
+  1063 ;; *************** function _LeerBit *****************
+  1064 ;; Defined at:
+  1065 ;;		line 106 in file "Main12F.c"
+  1066 ;; Parameters:    Size  Location     Type
+  1067 ;;		None
+  1068 ;; Auto vars:     Size  Location     Type
+  1069 ;;  res             1    3[BANK0 ] unsigned char 
+  1070 ;; Return value:  Size  Location     Type
+  1071 ;;                  1    wreg      unsigned char 
+  1072 ;; Registers used:
+  1073 ;;		wreg, status,2
+  1074 ;; Tracked objects:
+  1075 ;;		On entry : 0/0
+  1076 ;;		On exit  : 0/0
+  1077 ;;		Unchanged: 0/0
+  1078 ;; Data sizes:     COMMON   BANK0
+  1079 ;;      Params:         0       0
+  1080 ;;      Locals:         0       1
+  1081 ;;      Temps:          0       1
+  1082 ;;      Totals:         0       2
+  1083 ;;Total ram usage:        2 bytes
+  1084 ;; Hardware stack levels used:    1
+  1085 ;; Hardware stack levels required when called:    1
+  1086 ;; This function calls:
+  1087 ;;		Nothing
+  1088 ;; This function is called by:
+  1089 ;;		_LeerByte
+  1090 ;; This function uses a non-reentrant model
+  1091 ;;
+  1092                           
+  1093                           
+  1094                           ;psect for function _LeerBit
+  1095  013F                     _LeerBit:	
+  1096  013F                     l852:	
+  1097                           ;incstack = 0
+  1098                           ; Regs used in _LeerBit: [wreg+status,2]
+  1099                           
+  1100                           
+  1101                           ;Main12F.c: 107:     unsigned char res=0;
+  1102  013F  1283               	bcf	3,5	;RP0=0, select bank0
+  1103  0140  01A3               	clrf	LeerBit@res
+  1104                           
+  1105                           ;Main12F.c: 108:      while(GPIO5==0){
+  1106  0141  2943               	goto	l76
+  1107  0142                     l77:	
+  1108                           
+  1109                           ;Main12F.c: 109:         GP1=1;
+  1110  0142  1485               	bsf	5,1	;volatile
+  1111  0143                     l76:	
+  1112                           ;Main12F.c: 110:      }
+  1113                           
+  1114                           
+  1115                           ;Main12F.c: 108:      while(GPIO5==0){
+  1116  0143  1E85               	btfss	5,5	;volatile
+  1117  0144  2946               	goto	u331
+  1118  0145  2947               	goto	u330
+  1119  0146                     u331:	
+  1120  0146  2942               	goto	l77
+  1121  0147                     u330:	
+  1122  0147                     l854:	
+  1123                           
+  1124                           ;Main12F.c: 111:      _delay((unsigned long)((13)*(4000000/4000000.0)));
+  1125  0147  3004               	movlw	4
+  1126  0148  00A2               	movwf	??_LeerBit
+  1127  0149                     u707:	
+  1128  0149  0BA2               	decfsz	??_LeerBit,f
+  1129  014A  2949               	goto	u707
+  1130  014B                     l856:	
+  1131                           
+  1132                           ;Main12F.c: 112:      if(GPIO5==1) res=0;
+  1133  014B  1283               	bcf	3,5	;RP0=0, select bank0
+  1134  014C  1E85               	btfss	5,5	;volatile
+  1135  014D  294F               	goto	u341
+  1136  014E  2950               	goto	u340
+  1137  014F                     u341:	
+  1138  014F  2951               	goto	l860
+  1139  0150                     u340:	
+  1140  0150                     l858:	
+  1141  0150  01A3               	clrf	LeerBit@res
+  1142  0151                     l860:	
+  1143                           
+  1144                           ;Main12F.c: 113:      _delay((unsigned long)((22)*(4000000/4000000.0)));
+  1145  0151  3007               	movlw	7
+  1146  0152  00A2               	movwf	??_LeerBit
+  1147  0153                     u717:	
+  1148  0153  0BA2               	decfsz	??_LeerBit,f
+  1149  0154  2953               	goto	u717
+  1150  0155                     l862:	
+  1151                           
+  1152                           ;Main12F.c: 114:      if(GPIO5==1){
+  1153  0155  1283               	bcf	3,5	;RP0=0, select bank0
+  1154  0156  1E85               	btfss	5,5	;volatile
+  1155  0157  2959               	goto	u351
+  1156  0158  295A               	goto	u350
+  1157  0159                     u351:	
+  1158  0159  2962               	goto	l80
+  1159  015A                     u350:	
+  1160  015A                     l864:	
+  1161                           
+  1162                           ;Main12F.c: 115:        res=1;
+  1163  015A  01A3               	clrf	LeerBit@res
+  1164  015B  0AA3               	incf	LeerBit@res,f
+  1165                           
+  1166                           ;Main12F.c: 116:        while(GPIO5==1){
+  1167  015C  295E               	goto	l81
+  1168  015D                     l82:	
+  1169                           
+  1170                           ;Main12F.c: 117:           GP2=1;
+  1171  015D  1505               	bsf	5,2	;volatile
+  1172  015E                     l81:	
+  1173                           ;Main12F.c: 118:        }
+  1174                           
+  1175                           
+  1176                           ;Main12F.c: 116:        while(GPIO5==1){
+  1177  015E  1A85               	btfsc	5,5	;volatile
+  1178  015F  2961               	goto	u361
+  1179  0160  2962               	goto	u360
+  1180  0161                     u361:	
+  1181  0161  295D               	goto	l82
+  1182  0162                     u360:	
+  1183  0162                     l80:	
+  1184                           ;Main12F.c: 119:      }
+  1185                           
+  1186                           
+  1187                           ;Main12F.c: 120:      GP1=0;
+  1188  0162  1085               	bcf	5,1	;volatile
+  1189                           
+  1190                           ;Main12F.c: 121:      GP2=0;
+  1191  0163  1105               	bcf	5,2	;volatile
+  1192  0164                     l866:	
+  1193                           
+  1194                           ;Main12F.c: 122:      return res;
+  1195  0164  0823               	movf	LeerBit@res,w
+  1196  0165                     l84:	
+  1197  0165  0008               	return
+  1198  0166                     __end_of_LeerBit:	
+  1199                           
+  1200                           	psect	text5
+  1201  017F                     __ptext5:	
+  1202 ;; *************** function _ISR *****************
+  1203 ;; Defined at:
+  1204 ;;		line 184 in file "Main12F.c"
+  1205 ;; Parameters:    Size  Location     Type
+  1206 ;;		None
+  1207 ;; Auto vars:     Size  Location     Type
+  1208 ;;		None
+  1209 ;; Return value:  Size  Location     Type
+  1210 ;;                  1    wreg      void 
+  1211 ;; Registers used:
+  1212 ;;		wreg
+  1213 ;; Tracked objects:
+  1214 ;;		On entry : 0/0
+  1215 ;;		On exit  : 0/0
+  1216 ;;		Unchanged: 0/0
+  1217 ;; Data sizes:     COMMON   BANK0
+  1218 ;;      Params:         0       0
+  1219 ;;      Locals:         0       0
+  1220 ;;      Temps:          0       2
+  1221 ;;      Totals:         0       2
+  1222 ;;Total ram usage:        2 bytes
+  1223 ;; Hardware stack levels used:    1
+  1224 ;; This function calls:
+  1225 ;;		Nothing
+  1226 ;; This function is called by:
+  1227 ;;		Interrupt level 1
+  1228 ;; This function uses a non-reentrant model
+  1229 ;;
+  1230                           
+  1231                           
+  1232                           ;psect for function _ISR
+  1233  017F                     _ISR:	
+  1234  017F                     i1l1010:	
+  1235                           
+  1236                           ;Main12F.c: 185:     if(T0IF==1){
+  1237  017F  1D0B               	btfss	11,2	;volatile
+  1238  0180  2982               	goto	u64_21
+  1239  0181  2983               	goto	u64_20
+  1240  0182                     u64_21:	
+  1241  0182  2986               	goto	i1l96
+  1242  0183                     u64_20:	
+  1243  0183                     i1l1012:	
+  1244                           
+  1245                           ;Main12F.c: 186:             T0IF=0;
+  1246  0183  110B               	bcf	11,2	;volatile
+  1247  0184                     i1l1014:	
+  1248                           
+  1249                           ;Main12F.c: 187:             GPIO0=GPIO0^ 1;
+  1250  0184  3001               	movlw	1
+  1251  0185  0685               	xorwf	5,f
+  1252  0186                     i1l96:	
+  1253  0186  0821               	movf	??_ISR+1,w
+  1254  0187  008A               	movwf	10
+  1255  0188  0E20               	swapf	??_ISR^0,w
+  1256  0189  0083               	movwf	3
+  1257  018A  0EDE               	swapf	btemp,f
+  1258  018B  0E5E               	swapf	btemp,w
+  1259  018C  0009               	retfie
+  1260  018D                     __end_of_ISR:	
+  1261  005E                     btemp	set	94	;btemp
+  1262  005E                     wtemp0	set	94
+  1263                           
+  1264                           	psect	intentry
+  1265  0004                     __pintentry:	
+  1266                           ;incstack = 0
+  1267                           ; Regs used in _ISR: [wreg]
+  1268                           
+  1269  0004                     interrupt_function:	
+  1270  005E                     saved_w	set	btemp
+  1271  0004  00DE               	movwf	btemp
+  1272  0005  0E03               	swapf	3,w
+  1273  0006  1283               	bcf	3,5	;RP0=0, select bank0
+  1274  0007  00A0               	movwf	??_ISR
+  1275  0008  080A               	movf	10,w
+  1276  0009  00A1               	movwf	??_ISR+1
+  1277  000A  297F               	ljmp	_ISR
 
 
 Data Sizes:
@@ -1069,7 +1302,7 @@ Data Sizes:
 Auto Spaces:
     Space          Size  Autos    Used
     COMMON            0      0       0
-    BANK0            62     12      16
+    BANK0            62     17      21
 
 Pointer List with Targets:
 
@@ -1085,7 +1318,7 @@ Critical Paths under _ISR in COMMON
 
 Critical Paths under _main in BANK0
 
-    _main->_LeerByte
+    _main->_Transmitir
     _Transmitir->_Retardo
     _LeerByte->_LeerBit
 
@@ -1098,13 +1331,13 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (0) _main                                                 3     3      0     118
-                                              9 BANK0      3     3      0
+ (0) _main                                                 3     3      0     477
+                                             14 BANK0      3     3      0
                            _LeerByte
                          _Transmitir
  ---------------------------------------------------------------------------------
- (1) _Transmitir                                           5     5      0       1
-                                              3 BANK0      2     2      0
+ (1) _Transmitir                                          11    11      0     360
+                                              3 BANK0     11    11      0
                             _Retardo
  ---------------------------------------------------------------------------------
  (2) _Retardo                                              1     1      0       0
@@ -1141,85 +1374,101 @@ Call Graph Tables:
 Name               Size   Autos  Total    Cost      Usage
 SFR1                 0      0       0       2        0.0%
 BITSFR1              0      0       0       2        0.0%
-BANK0               3E      C      10       4       25.8%
+BANK0               3E     11      15       4       33.9%
 BITBANK0            3E      0       0       3        0.0%
 SFR0                 0      0       0       1        0.0%
 BITSFR0              0      0       0       1        0.0%
 COMMON               0      0       0       1        0.0%
 BITCOMMON            0      0       0       0        0.0%
 CODE                 0      0       0       0        0.0%
-DATA                 0      0      10       6        0.0%
-ABS                  0      0      10       5        0.0%
+DATA                 0      0      15       6        0.0%
+ABS                  0      0      15       5        0.0%
 NULL                 0      0       0       0        0.0%
 STACK                0      0       0       2        0.0%
 EEDATA              80      0       0       0        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.10 build 88905656 
-Symbol Table                                                                                   Sun Sep 04 14:15:58 2022
+Symbol Table                                                                                   Sun Sep 04 15:26:22 2022
 
-            __CFG_CP$OFF 0000                       l62 007E                       l55 003D  
-                     l80 00D6                       l64 0087                       l56 0058  
-                     l81 00D2                       l73 00F2                       l82 00D1  
-                     l90 0107                       l59 0062                       l84 00D9  
-                     l76 00B7                       l77 00B6                       l87 00B2  
-     Transmitir@BufferTx 0020                      l900 00A6                      l830 00BF  
-                    l910 00B0                      l902 00A8                      l840 00D8  
-                    l832 00C4                      l912 00B1                      l904 00AA  
-                    l920 0020                      l834 00C5                      l826 00B3  
-                    l906 00AC                      l930 0029                      l922 0022  
-                    l914 0014                      l836 00C9                      l828 00BB  
-                    l860 00F1                      l844 0101                      l908 00AD  
-                    l940 004C                      l932 002A                      l924 0023  
-                    l916 0016                      l838 00CE                      l854 00E0  
-                    l846 00DA                      l870 008D                      l950 0076  
-                    l942 0056                      l934 002B                      l926 0026  
-                    l918 0019                      l856 00EA                      l848 00DC  
-                    l880 0095                      l872 008E                      l864 008A  
-                    l952 007C                      l944 005D                      l936 003B  
-                    l928 0027                      l858 00EC                      l890 009E  
-                    l882 0098                      l874 0090                      l866 008A  
-                    l954 007F                      l946 0067                      l938 004A  
-                    l892 00A0                      l884 0099                      l876 0092  
-                    l868 008C                      l956 0085                      l948 0074  
-                    _GP1 0029                      l894 00A1                      l886 009A  
-                    l878 0094                      _GP2 002A                      l896 00A4  
-                    l888 009C                      l898 00A5                      _GIE 005F  
-                    u110 00BB                      u111 00BA                      u120 00C4  
-                    u121 00C3                      u130 00CE                      u131 00CD  
-                    u140 00D6                      u141 00D5                      u150 00F1  
-                    u151 00F0                      u160 005D                      u161 005C  
-                    u217 0034                      u170 0067                      u171 0066  
-                    u227 0043                      u180 007C                      u181 007B  
-                    u237 0052                      u190 0085                      u191 0084  
-                    u247 005F                      u257 0104             __CFG_CPD$OFF 0000  
-                    u267 00BD                      _ISR 00F3                      u277 00C7  
-                    _Che 002D                      _WPU 0095                      _Hum 002E  
-                   ?_ISR 0020                     _T0IE 005D                     _T0IF 005A  
-                   _GPIO 0005                     i1l96 00FA                     _TMR0 0001  
-                   _Temp 002F                     _main 0014                     btemp 005E  
-          __CFG_BOREN$ON 0000                     start 000B            __CFG_MCLRE$ON 0000  
-        __end_of_LeerBit 00DA                    ??_ISR 0020          __end_of_Retardo 0108  
-                  ?_main 0020            __CFG_WDTE$OFF 0000                    _CMCON 0019  
-                  _ANSEL 009F                    _GPIO0 0028                    _GPIO4 002C  
-                  _GPIO5 002D                    i1l960 00F7                    i1l962 00F8  
-                  i1l958 00F3                    u20_20 00F7                    u20_21 00F6  
-                  pclath 000A                    status 0003                    wtemp0 005E  
-        __initialization 000C         __end_of_LeerByte 00F3             __end_of_main 008A  
-                 ??_main 0029                   _TRISIO 0085                ??_LeerBit 0022  
-         __CFG_PWRTE$OFF 0000                ??_Retardo 0022                   saved_w 005E  
-             _Transmitir 008A  __end_of__initialization 0012           __pcstackCOMMON 0000  
-           __pidataBANK0 0108                ?_LeerByte 0020               __pbssBANK0 002C  
-             __pmaintext 0014               __pintentry 0004                  _TRISIO5 042D  
-            ?_Transmitir 0020               ??_LeerByte 0024                  _LeerBit 00B3  
-                _Retardo 0101                  _bandera 002C                  __ptext1 008A  
-                __ptext2 0101                  __ptext3 00DA                  __ptext4 00B3  
-                __ptext5 00F3             __size_of_ISR 000E     end_of_initialization 0012  
-    __size_of_Transmitir 0029                LeerByte@i 0028      start_initialization 000C  
-            __end_of_ISR 0101        __size_of_LeerByte 0019              __pdataBANK0 002E  
-              ___latbits 0000            __pcstackBANK0 0020             ??_Transmitir 0000  
-               ?_LeerBit 0020                 ?_Retardo 0020       __end_of_Transmitir 00B3  
-      interrupt_function 0004                 _LeerByte 00DA         __size_of_LeerBit 0027  
-       __size_of_Retardo 0007            __size_of_main 0076                 intlevel1 0000  
-             _OPTION_REG 0081        __CFG_FOSC$INTRCIO 0000               LeerBit@res 0023  
-            LeerByte@res 0027  
+            __CFG_CP$OFF 0000                       l62 0133                       l55 00F2  
+                     l80 0162                       l64 013C                       l56 010D  
+                     l81 015E                       l73 017E                       l82 015D  
+                     l90 0193                       l59 0117                       l84 0165  
+                     l76 0143                       l77 0142                       l87 00C8  
+     Transmitir@BufferTx 002D                      l900 0045                      l910 006B  
+                    l902 0051                      l920 0079                      l912 006C  
+                    l904 005D                      l930 008D                      l922 0081  
+                    l914 006E                      l906 0069                      l860 0151  
+                    l852 013F                      l940 00A2                      l932 008F  
+                    l924 0082                      l916 0076                      l908 006A  
+                    l862 0155                      l854 0147                      l870 018D  
+                    l950 00B0                      l942 00A3                      l934 0097  
+                    l926 0084                      l918 0077                      l864 015A  
+                    l856 014B                      l880 016C                      l872 0166  
+                    l960 00C4                      l952 00B8                      l944 00A5  
+                    l936 0098                      l928 008C                      l866 0164  
+                    l858 0150                      l882 0176                      l874 0168  
+                    l962 00C6                      l954 00B9                      l946 00AD  
+                    l938 009A                      l890 0016                      l970 00CE  
+                    l884 0178                      l964 00C7                      l956 00BB  
+                    l948 00AE                      l892 001A                      l980 00DC  
+                    l972 00D5                      _GP1 0029                      l886 017D  
+                    l958 00C3                      l894 0021                      l990 00FF  
+                    l982 00DE                      l974 00D7                      l966 00C9  
+                    _GP2 002A                      l896 002D                      l992 0101  
+                    l984 00DF                      l976 00D8                      l968 00CB  
+                    l898 0039                      l994 010B                      l986 00E0  
+                    l978 00DB                      _GIE 005F                      l996 0112  
+                    l988 00F0                      l998 011C                      u330 0147  
+                    u331 0146                      u340 0150                      u500 0095  
+                    u341 014F                      u501 0092                      u405 003C  
+                    u350 015A                      u351 0159                      u415 0048  
+                    u360 0162                      u520 00A0                      u440 0074  
+                    u600 0112                      u361 0161                      u521 009D  
+                    u441 0071                      u425 0054                      u601 0111  
+                    u370 017D                      u514 0097                      u610 011C  
+           __CFG_CPD$OFF 0000                      u371 017C                      u435 0060  
+                    u611 011B                      u540 00AB                      u460 007F  
+                    u620 0131                      _ISR 017F                      u541 00A8  
+                    u461 007C                      u621 0130                      u534 00A2  
+                    u454 0076                      u630 013A                      u631 0139  
+                    u560 00B6                      u480 008A                      u561 00B3  
+                    u481 0087                      u385 0024                      u554 00AD  
+                    u474 0081                      u707 0149                      u395 0030  
+                    u580 00C1                      u717 0153                      u581 00BE  
+                    u574 00B8                      u494 008C                      u657 00E9  
+                    u594 00C3                      u667 00F8                      u677 0107  
+                    u687 0114                      u697 0190                      _Che 0032  
+                    _WPU 0095                      _Hum 0033                     ?_ISR 0020  
+                   l1000 0129                     l1002 012B                     l1004 0131  
+                   l1006 0134                     l1008 013A                     _T0IE 005D  
+                   _T0IF 005A                     _GPIO 0005                     i1l96 0186  
+                   _TMR0 0001                     _Temp 0034                     _main 00C9  
+                   btemp 005E            __CFG_BOREN$ON 0000                     start 000B  
+          __CFG_MCLRE$ON 0000          __end_of_LeerBit 0166                    ??_ISR 0020  
+        __end_of_Retardo 0194                    ?_main 0020            __CFG_WDTE$OFF 0000  
+                  _CMCON 0019                    _ANSEL 009F                    _GPIO0 0028  
+                  _GPIO4 002C                    _GPIO5 002D                    u64_20 0183  
+                  u64_21 0182                    pclath 000A                    status 0003  
+                  wtemp0 005E          __initialization 000C         __end_of_LeerByte 017F  
+           __end_of_main 013F                   ??_main 002E                   i1l1010 017F  
+                 i1l1012 0183                   i1l1014 0184                   _TRISIO 0085  
+              ??_LeerBit 0022           __CFG_PWRTE$OFF 0000                ??_Retardo 0022  
+                 saved_w 005E               _Transmitir 0014  __end_of__initialization 0012  
+           __pidataBANK0 0194                ?_LeerByte 0020               __pbssBANK0 0031  
+             __pmaintext 00C9               __pintentry 0004                  _TRISIO5 042D  
+            ?_Transmitir 0020               ??_LeerByte 0024                  _LeerBit 013F  
+                _Retardo 018D                  _bandera 0031                  __ptext1 0014  
+                __ptext2 018D                  __ptext3 0166                  __ptext4 013F  
+                __ptext5 017F             __size_of_ISR 000E     end_of_initialization 0012  
+    __size_of_Transmitir 00B5                LeerByte@i 0028              Transmitir@a 0025  
+            Transmitir@b 0026              Transmitir@c 0027              Transmitir@d 0028  
+            Transmitir@e 0029              Transmitir@f 002A              Transmitir@g 002B  
+            Transmitir@h 002C      start_initialization 000C              __end_of_ISR 018D  
+      __size_of_LeerByte 0019              __pdataBANK0 0033                ___latbits 0000  
+          __pcstackBANK0 0020             ??_Transmitir 0023                 ?_LeerBit 0020  
+               ?_Retardo 0020       __end_of_Transmitir 00C9        interrupt_function 0004  
+               _LeerByte 0166         __size_of_LeerBit 0027         __size_of_Retardo 0007  
+          __size_of_main 0076                 intlevel1 0000               _OPTION_REG 0081  
+      __CFG_FOSC$INTRCIO 0000               LeerBit@res 0023              LeerByte@res 0027  

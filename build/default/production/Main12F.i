@@ -1036,7 +1036,7 @@ unsigned char Temp=10,Hum=20,Che,bandera = 0;
 unsigned char LeerByte(void);
 unsigned char LeerBit(void);
 
-void Transmitir(unsigned char);
+void Transmitir(char);
 void Retardo (void);
 void __attribute__((picinterrupt(("")))) ISR (void);
 
@@ -1078,7 +1078,7 @@ void main(void) {
         Hum=LeerByte();
         LeerByte();
         Temp=LeerByte();
-        Transmitir(0x99);
+        Transmitir('O');
         GP1=0;
         if(Hum==48){
             GP1=1;
@@ -1121,45 +1121,57 @@ unsigned char LeerBit(void){
      GP2=0;
      return res;
 }
-void Transmitir(unsigned char BufferTx){
-    int i,j;
-    i=140;
+void Transmitir(char BufferTx){
+    char a,b,c,d,e,f,g,h;
+    a=BufferTx>>0;
+    b=BufferTx>>1;
+    c=BufferTx>>2;
+    d=BufferTx>>3;
+    e=BufferTx>>4;
+    f=BufferTx>>5;
+    g=BufferTx>>6;
+    h=BufferTx>>7;
     TMR0=0;
 
     GPIO4=0;
     Retardo();
 
 
+
+
+
+
+
     TMR0=0;
-    GPIO4=0;
+    GPIO4=a;
     Retardo();
 
     TMR0=0;
-    GPIO4=0;
+    GPIO4=b;
     Retardo();
 
     TMR0=0;
-    GPIO4=0;
+    GPIO4=c;
     Retardo();
 
     TMR0=0;
-    GPIO4=0;
+    GPIO4=d;
     Retardo();
 
     TMR0=0;
-    GPIO4=1;
+    GPIO4=e;
     Retardo();
 
     TMR0=0;
-    GPIO4=1;
+    GPIO4=f;
     Retardo();
 
     TMR0=0;
-    GPIO4=0;
+    GPIO4=g;
     Retardo();
 
     TMR0=0;
-    GPIO4=0;
+    GPIO4=h;
     Retardo();
 
     TMR0=0;
