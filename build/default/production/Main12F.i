@@ -1064,22 +1064,30 @@ void main(void) {
     GP1=0;
     while(1){
         _delay((unsigned long)((1000)*(4000000/4000.0)));
+        bandera=0;
         TRISIO5=0;
         GPIO5=0;
         _delay((unsigned long)((18)*(4000000/4000.0)));
         TRISIO5=1;
+        TMR0=0;
         while(GPIO5==1){
-
+            if(bandera==1)break;
         }
         _delay((unsigned long)((120)*(4000000/4000000.0)));
+        TMR0=0;
         while(GPIO5==1){
-
+            if(bandera==1)break;
         }
         Hum=LeerByte();
         LeerByte();
         Temp=LeerByte();
         LeerByte();
         Che=LeerByte();
+        if(bandera==1){
+            bandera=0;
+            Temp=0;
+            Hum=0;
+        }
         Transmitir('T');
         Transmitir(Temp/10 + 48);
         Transmitir(Temp%10 + 48);
@@ -1114,7 +1122,9 @@ unsigned char LeerByte(void){
 }
 unsigned char LeerBit(void){
     unsigned char res=0;
-     while(GPIO5==0){
+    TMR0=0;
+    while(GPIO5==0){
+        if(bandera==1)break;
         GP1=1;
      }
      _delay((unsigned long)((13)*(4000000/4000000.0)));
@@ -1122,8 +1132,10 @@ unsigned char LeerBit(void){
      _delay((unsigned long)((22)*(4000000/4000000.0)));
      if(GPIO5==1){
        res=1;
+       TMR0=0;
        while(GPIO5==1){
-          GP2=1;
+           if(bandera==1)break;
+           GP2=1;
        }
      }
      GP1=0;
@@ -1194,5 +1206,6 @@ void __attribute__((picinterrupt(("")))) ISR (void){
     if(T0IF==1){
             T0IF=0;
             GPIO0=GPIO0^ 1;
+            bandera=1;
         }
 }

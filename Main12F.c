@@ -64,22 +64,30 @@ void main(void) {
     GP1=0;
     while(1){
         __delay_ms(1000);
+        bandera=0;
         DATA_DIR=0;
         DATA_IN=0;
         __delay_ms(18);
         DATA_DIR=1;
+        TMR0=0;
         while(DATA_IN==1){
-            //GP1=1;
+            if(bandera==1)break;
         }
         __delay_us(120);
+        TMR0=0;
         while(DATA_IN==1){
-            //GP1=1;
+            if(bandera==1)break;//GP1=1;
         }
         Hum=LeerByte();
         LeerByte();
         Temp=LeerByte();
         LeerByte();
         Che=LeerByte();
+        if(bandera==1){
+            bandera=0;
+            Temp=0;
+            Hum=0;
+        }
         Transmitir('T');
         Transmitir(Temp/10 + 48);
         Transmitir(Temp%10 + 48);
@@ -114,7 +122,9 @@ unsigned char LeerByte(void){
 }
 unsigned char LeerBit(void){
     unsigned char res=0;
-     while(DATA_IN==0){
+    TMR0=0; 
+    while(DATA_IN==0){
+        if(bandera==1)break;
         GP1=1;
      }
      __delay_us(13);
@@ -122,8 +132,10 @@ unsigned char LeerBit(void){
      __delay_us(22);
      if(DATA_IN==1){
        res=1;
+       TMR0=0;
        while(DATA_IN==1){
-          GP2=1;
+           if(bandera==1)break;
+           GP2=1;
        }
      }
      GP1=0;
@@ -194,5 +206,6 @@ void __interrupt () ISR (void){ //Interrupción
     if(T0IF==1){
             T0IF=0;
             LED_CPU=LED_CPU^ 1; // Conmutar PinC13 LED CPU
+            bandera=1;
         }
 }

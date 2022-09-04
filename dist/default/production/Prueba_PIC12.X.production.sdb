@@ -17,15 +17,15 @@
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
 "43 C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
 [v _main main `(v  1 e 1 0 ]
-"107
-[v _LeerByte LeerByte `(uc  1 e 1 0 ]
 "115
+[v _LeerByte LeerByte `(uc  1 e 1 0 ]
+"123
 [v _LeerBit LeerBit `(uc  1 e 1 0 ]
-"133
+"145
 [v _Transmitir Transmitir `(v  1 e 1 0 ]
-"190
+"202
 [v _Retardo Retardo `(v  1 e 1 0 ]
-"193
+"205
 [v _ISR ISR `II(v  1 e 1 0 ]
 "72 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic12f675.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
@@ -63,10 +63,11 @@
 [v _Temp Temp `uc  1 e 1 0 ]
 [v _Hum Hum `uc  1 e 1 0 ]
 [v _Che Che `uc  1 e 1 0 ]
+[v _bandera bandera `uc  1 e 1 0 ]
 "43
 [v _main main `(v  1 e 1 0 ]
 {
-"105
+"113
 } 0
 "5 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
@@ -92,11 +93,11 @@
 [v ___awdiv@dividend dividend `i  1 p 2 4 ]
 "41
 } 0
-"133 C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
+"145 C:\Users\mario\MPLABXProjects\Prueba_PIC12.X\Main12F.c
 [v _Transmitir Transmitir `(v  1 e 1 0 ]
 {
 [v Transmitir@BufferTx BufferTx `uc  1 a 1 wreg ]
-"134
+"146
 [v Transmitir@h h `uc  1 a 1 12 ]
 [v Transmitir@g g `uc  1 a 1 11 ]
 [v Transmitir@f f `uc  1 a 1 10 ]
@@ -105,34 +106,34 @@
 [v Transmitir@c c `uc  1 a 1 7 ]
 [v Transmitir@b b `uc  1 a 1 6 ]
 [v Transmitir@a a `uc  1 a 1 5 ]
-"133
+"145
 [v Transmitir@BufferTx BufferTx `uc  1 a 1 wreg ]
-"135
+"147
 [v Transmitir@BufferTx BufferTx `uc  1 a 1 13 ]
-"189
+"201
 } 0
-"190
+"202
 [v _Retardo Retardo `(v  1 e 1 0 ]
 {
-"192
-} 0
-"107
-[v _LeerByte LeerByte `(uc  1 e 1 0 ]
-{
-"108
-[v LeerByte@i i `uc  1 a 1 8 ]
-[v LeerByte@res res `uc  1 a 1 7 ]
-"114
+"204
 } 0
 "115
-[v _LeerBit LeerBit `(uc  1 e 1 0 ]
+[v _LeerByte LeerByte `(uc  1 e 1 0 ]
 {
 "116
-[v LeerBit@res res `uc  1 a 1 3 ]
-"132
+[v LeerByte@i i `uc  1 a 1 8 ]
+[v LeerByte@res res `uc  1 a 1 7 ]
+"122
 } 0
-"193
+"123
+[v _LeerBit LeerBit `(uc  1 e 1 0 ]
+{
+"124
+[v LeerBit@res res `uc  1 a 1 3 ]
+"144
+} 0
+"205
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"198
+"211
 } 0

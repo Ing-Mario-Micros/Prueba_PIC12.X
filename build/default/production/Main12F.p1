@@ -251,266 +251,318 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Main12F.c: 66:         _delay((unsigned long)((1000)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "67
-[; ;Main12F.c: 67:         TRISIO5=0;
-[e = _TRISIO5 -> -> 0 `i `b ]
+[; ;Main12F.c: 67:         bandera=0;
+[e = _bandera -> -> 0 `i `uc ]
 "68
-[; ;Main12F.c: 68:         GPIO5=0;
-[e = _GPIO5 -> -> 0 `i `b ]
+[; ;Main12F.c: 68:         TRISIO5=0;
+[e = _TRISIO5 -> -> 0 `i `b ]
 "69
-[; ;Main12F.c: 69:         _delay((unsigned long)((18)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 18 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;Main12F.c: 69:         GPIO5=0;
+[e = _GPIO5 -> -> 0 `i `b ]
 "70
-[; ;Main12F.c: 70:         TRISIO5=1;
-[e = _TRISIO5 -> -> 1 `i `b ]
+[; ;Main12F.c: 70:         _delay((unsigned long)((18)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 18 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "71
-[; ;Main12F.c: 71:         while(GPIO5==1){
+[; ;Main12F.c: 71:         TRISIO5=1;
+[e = _TRISIO5 -> -> 1 `i `b ]
+"72
+[; ;Main12F.c: 72:         TMR0=0;
+[e = _TMR0 -> -> 0 `i `uc ]
+"73
+[; ;Main12F.c: 73:         while(GPIO5==1){
 [e $U 85  ]
 [e :U 86 ]
 {
-"73
-[; ;Main12F.c: 73:         }
-}
-[e :U 85 ]
-"71
-[; ;Main12F.c: 71:         while(GPIO5==1){
-[e $ == -> _GPIO5 `i -> 1 `i 86  ]
-[e :U 87 ]
 "74
-[; ;Main12F.c: 74:         _delay((unsigned long)((120)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 120 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
-"75
-[; ;Main12F.c: 75:         while(GPIO5==1){
-[e $U 88  ]
-[e :U 89 ]
-{
-"77
-[; ;Main12F.c: 77:         }
-}
+[; ;Main12F.c: 74:             if(bandera==1)break;
+[e $ ! == -> _bandera `i -> 1 `i 88  ]
+[e $U 87  ]
 [e :U 88 ]
 "75
-[; ;Main12F.c: 75:         while(GPIO5==1){
-[e $ == -> _GPIO5 `i -> 1 `i 89  ]
-[e :U 90 ]
+[; ;Main12F.c: 75:         }
+}
+[e :U 85 ]
+"73
+[; ;Main12F.c: 73:         while(GPIO5==1){
+[e $ == -> _GPIO5 `i -> 1 `i 86  ]
+[e :U 87 ]
+"76
+[; ;Main12F.c: 76:         _delay((unsigned long)((120)*(4000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 120 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+"77
+[; ;Main12F.c: 77:         TMR0=0;
+[e = _TMR0 -> -> 0 `i `uc ]
 "78
-[; ;Main12F.c: 78:         Hum=LeerByte();
-[e = _Hum ( _LeerByte ..  ]
+[; ;Main12F.c: 78:         while(GPIO5==1){
+[e $U 89  ]
+[e :U 90 ]
+{
 "79
-[; ;Main12F.c: 79:         LeerByte();
-[e ( _LeerByte ..  ]
-"80
-[; ;Main12F.c: 80:         Temp=LeerByte();
-[e = _Temp ( _LeerByte ..  ]
-"81
-[; ;Main12F.c: 81:         LeerByte();
-[e ( _LeerByte ..  ]
-"82
-[; ;Main12F.c: 82:         Che=LeerByte();
-[e = _Che ( _LeerByte ..  ]
-"83
-[; ;Main12F.c: 83:         Transmitir('T');
-[e ( _Transmitir (1 -> -> 84 `ui `uc ]
-"84
-[; ;Main12F.c: 84:         Transmitir(Temp/10 + 48);
-[e ( _Transmitir (1 -> + / -> _Temp `i -> 10 `i -> 48 `i `uc ]
-"85
-[; ;Main12F.c: 85:         Transmitir(Temp%10 + 48);
-[e ( _Transmitir (1 -> + % -> _Temp `i -> 10 `i -> 48 `i `uc ]
-"86
-[; ;Main12F.c: 86:         Transmitir(' ');
-[e ( _Transmitir (1 -> -> 32 `ui `uc ]
-"87
-[; ;Main12F.c: 87:         Transmitir('H');
-[e ( _Transmitir (1 -> -> 72 `ui `uc ]
-"88
-[; ;Main12F.c: 88:         Transmitir(Hum/10 + 48);
-[e ( _Transmitir (1 -> + / -> _Hum `i -> 10 `i -> 48 `i `uc ]
-"89
-[; ;Main12F.c: 89:         Transmitir(Hum%10 + 48);
-[e ( _Transmitir (1 -> + % -> _Hum `i -> 10 `i -> 48 `i `uc ]
-"90
-[; ;Main12F.c: 90:         Transmitir('\n');
-[e ( _Transmitir (1 -> -> 10 `ui `uc ]
-"91
-[; ;Main12F.c: 91:         GP1=0;
-[e = _GP1 -> -> 0 `i `b ]
-"92
-[; ;Main12F.c: 92:         if(Hum==48){
-[e $ ! == -> _Hum `i -> 48 `i 91  ]
-{
-"93
-[; ;Main12F.c: 93:             GP1=1;
-[e = _GP1 -> -> 1 `i `b ]
-"94
-[; ;Main12F.c: 94:         }
-}
-[e $U 92  ]
-"95
-[; ;Main12F.c: 95:         else{
-[e :U 91 ]
-{
-"96
-[; ;Main12F.c: 96:             GP1=0;
-[e = _GP1 -> -> 0 `i `b ]
-"97
-[; ;Main12F.c: 97:         }
-}
+[; ;Main12F.c: 79:             if(bandera==1)break;
+[e $ ! == -> _bandera `i -> 1 `i 92  ]
+[e $U 91  ]
 [e :U 92 ]
-"98
-[; ;Main12F.c: 98:         if(Temp==20){
-[e $ ! == -> _Temp `i -> 20 `i 93  ]
-{
-"99
-[; ;Main12F.c: 99:             GP2=1;
-[e = _GP2 -> -> 1 `i `b ]
-"100
-[; ;Main12F.c: 100:         }
+"80
+[; ;Main12F.c: 80:         }
 }
-[e $U 94  ]
-"101
-[; ;Main12F.c: 101:         else{
+[e :U 89 ]
+"78
+[; ;Main12F.c: 78:         while(GPIO5==1){
+[e $ == -> _GPIO5 `i -> 1 `i 90  ]
+[e :U 91 ]
+"81
+[; ;Main12F.c: 81:         Hum=LeerByte();
+[e = _Hum ( _LeerByte ..  ]
+"82
+[; ;Main12F.c: 82:         LeerByte();
+[e ( _LeerByte ..  ]
+"83
+[; ;Main12F.c: 83:         Temp=LeerByte();
+[e = _Temp ( _LeerByte ..  ]
+"84
+[; ;Main12F.c: 84:         LeerByte();
+[e ( _LeerByte ..  ]
+"85
+[; ;Main12F.c: 85:         Che=LeerByte();
+[e = _Che ( _LeerByte ..  ]
+"86
+[; ;Main12F.c: 86:         if(bandera==1){
+[e $ ! == -> _bandera `i -> 1 `i 93  ]
+{
+"87
+[; ;Main12F.c: 87:             bandera=0;
+[e = _bandera -> -> 0 `i `uc ]
+"88
+[; ;Main12F.c: 88:             Temp=0;
+[e = _Temp -> -> 0 `i `uc ]
+"89
+[; ;Main12F.c: 89:             Hum=0;
+[e = _Hum -> -> 0 `i `uc ]
+"90
+[; ;Main12F.c: 90:         }
+}
 [e :U 93 ]
+"91
+[; ;Main12F.c: 91:         Transmitir('T');
+[e ( _Transmitir (1 -> -> 84 `ui `uc ]
+"92
+[; ;Main12F.c: 92:         Transmitir(Temp/10 + 48);
+[e ( _Transmitir (1 -> + / -> _Temp `i -> 10 `i -> 48 `i `uc ]
+"93
+[; ;Main12F.c: 93:         Transmitir(Temp%10 + 48);
+[e ( _Transmitir (1 -> + % -> _Temp `i -> 10 `i -> 48 `i `uc ]
+"94
+[; ;Main12F.c: 94:         Transmitir(' ');
+[e ( _Transmitir (1 -> -> 32 `ui `uc ]
+"95
+[; ;Main12F.c: 95:         Transmitir('H');
+[e ( _Transmitir (1 -> -> 72 `ui `uc ]
+"96
+[; ;Main12F.c: 96:         Transmitir(Hum/10 + 48);
+[e ( _Transmitir (1 -> + / -> _Hum `i -> 10 `i -> 48 `i `uc ]
+"97
+[; ;Main12F.c: 97:         Transmitir(Hum%10 + 48);
+[e ( _Transmitir (1 -> + % -> _Hum `i -> 10 `i -> 48 `i `uc ]
+"98
+[; ;Main12F.c: 98:         Transmitir('\n');
+[e ( _Transmitir (1 -> -> 10 `ui `uc ]
+"99
+[; ;Main12F.c: 99:         GP1=0;
+[e = _GP1 -> -> 0 `i `b ]
+"100
+[; ;Main12F.c: 100:         if(Hum==48){
+[e $ ! == -> _Hum `i -> 48 `i 94  ]
 {
+"101
+[; ;Main12F.c: 101:             GP1=1;
+[e = _GP1 -> -> 1 `i `b ]
 "102
-[; ;Main12F.c: 102:             GP2=0;
-[e = _GP2 -> -> 0 `i `b ]
-"103
-[; ;Main12F.c: 103:         }
+[; ;Main12F.c: 102:         }
 }
+[e $U 95  ]
+"103
+[; ;Main12F.c: 103:         else{
 [e :U 94 ]
+{
 "104
-[; ;Main12F.c: 104:     }
+[; ;Main12F.c: 104:             GP1=0;
+[e = _GP1 -> -> 0 `i `b ]
+"105
+[; ;Main12F.c: 105:         }
+}
+[e :U 95 ]
+"106
+[; ;Main12F.c: 106:         if(Temp==20){
+[e $ ! == -> _Temp `i -> 20 `i 96  ]
+{
+"107
+[; ;Main12F.c: 107:             GP2=1;
+[e = _GP2 -> -> 1 `i `b ]
+"108
+[; ;Main12F.c: 108:         }
+}
+[e $U 97  ]
+"109
+[; ;Main12F.c: 109:         else{
+[e :U 96 ]
+{
+"110
+[; ;Main12F.c: 110:             GP2=0;
+[e = _GP2 -> -> 0 `i `b ]
+"111
+[; ;Main12F.c: 111:         }
+}
+[e :U 97 ]
+"112
+[; ;Main12F.c: 112:     }
 }
 [e :U 82 ]
 [e $U 83  ]
 [e :U 84 ]
-"105
-[; ;Main12F.c: 105: }
+"113
+[; ;Main12F.c: 113: }
 [e :UE 81 ]
 }
-"107
-[; ;Main12F.c: 107: unsigned char LeerByte(void){
+"115
+[; ;Main12F.c: 115: unsigned char LeerByte(void){
 [v _LeerByte `(uc ~T0 @X0 1 ef ]
 {
 [e :U _LeerByte ]
 [f ]
-"108
-[; ;Main12F.c: 108:   unsigned char res=0,i;
+"116
+[; ;Main12F.c: 116:   unsigned char res=0,i;
 [v _res `uc ~T0 @X0 1 a ]
 [e = _res -> -> 0 `i `uc ]
 [v _i `uc ~T0 @X0 1 a ]
-"110
-[; ;Main12F.c: 110:   for(i=8;i>0;i--){
+"118
+[; ;Main12F.c: 118:   for(i=8;i>0;i--){
 {
 [e = _i -> -> 8 `i `uc ]
-[e $ > -> _i `i -> 0 `i 96  ]
-[e $U 97  ]
-[e :U 96 ]
+[e $ > -> _i `i -> 0 `i 99  ]
+[e $U 100  ]
+[e :U 99 ]
 {
-"111
-[; ;Main12F.c: 111:     res=(res<<1) | LeerBit();
+"119
+[; ;Main12F.c: 119:     res=(res<<1) | LeerBit();
 [e = _res -> | << -> _res `i -> 1 `i -> ( _LeerBit ..  `i `uc ]
-"112
-[; ;Main12F.c: 112:   }
+"120
+[; ;Main12F.c: 120:   }
 }
 [e -- _i -> -> 1 `i `uc ]
-[e $ > -> _i `i -> 0 `i 96  ]
-[e :U 97 ]
+[e $ > -> _i `i -> 0 `i 99  ]
+[e :U 100 ]
 }
-"113
-[; ;Main12F.c: 113:   return res;
+"121
+[; ;Main12F.c: 121:   return res;
 [e ) _res ]
-[e $UE 95  ]
-"114
-[; ;Main12F.c: 114: }
-[e :UE 95 ]
+[e $UE 98  ]
+"122
+[; ;Main12F.c: 122: }
+[e :UE 98 ]
 }
-"115
-[; ;Main12F.c: 115: unsigned char LeerBit(void){
+"123
+[; ;Main12F.c: 123: unsigned char LeerBit(void){
 [v _LeerBit `(uc ~T0 @X0 1 ef ]
 {
 [e :U _LeerBit ]
 [f ]
-"116
-[; ;Main12F.c: 116:     unsigned char res=0;
+"124
+[; ;Main12F.c: 124:     unsigned char res=0;
 [v _res `uc ~T0 @X0 1 a ]
 [e = _res -> -> 0 `i `uc ]
-"117
-[; ;Main12F.c: 117:      while(GPIO5==0){
-[e $U 100  ]
-[e :U 101 ]
-{
-"118
-[; ;Main12F.c: 118:         GP1=1;
-[e = _GP1 -> -> 1 `i `b ]
-"119
-[; ;Main12F.c: 119:      }
-}
-[e :U 100 ]
-"117
-[; ;Main12F.c: 117:      while(GPIO5==0){
-[e $ == -> _GPIO5 `i -> 0 `i 101  ]
-[e :U 102 ]
-"120
-[; ;Main12F.c: 120:      _delay((unsigned long)((13)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 13 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
-"121
-[; ;Main12F.c: 121:      if(GPIO5==1) res=0;
-[e $ ! == -> _GPIO5 `i -> 1 `i 103  ]
-[e = _res -> -> 0 `i `uc ]
-[e :U 103 ]
-"122
-[; ;Main12F.c: 122:      _delay((unsigned long)((22)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 22 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
-"123
-[; ;Main12F.c: 123:      if(GPIO5==1){
-[e $ ! == -> _GPIO5 `i -> 1 `i 104  ]
-{
-"124
-[; ;Main12F.c: 124:        res=1;
-[e = _res -> -> 1 `i `uc ]
 "125
-[; ;Main12F.c: 125:        while(GPIO5==1){
+[; ;Main12F.c: 125:     TMR0=0;
+[e = _TMR0 -> -> 0 `i `uc ]
+"126
+[; ;Main12F.c: 126:     while(GPIO5==0){
+[e $U 103  ]
+[e :U 104 ]
+{
+"127
+[; ;Main12F.c: 127:         if(bandera==1)break;
+[e $ ! == -> _bandera `i -> 1 `i 106  ]
 [e $U 105  ]
 [e :U 106 ]
-{
-"126
-[; ;Main12F.c: 126:           GP2=1;
-[e = _GP2 -> -> 1 `i `b ]
-"127
-[; ;Main12F.c: 127:        }
-}
-[e :U 105 ]
-"125
-[; ;Main12F.c: 125:        while(GPIO5==1){
-[e $ == -> _GPIO5 `i -> 1 `i 106  ]
-[e :U 107 ]
 "128
-[; ;Main12F.c: 128:      }
-}
-[e :U 104 ]
+[; ;Main12F.c: 128:         GP1=1;
+[e = _GP1 -> -> 1 `i `b ]
 "129
-[; ;Main12F.c: 129:      GP1=0;
-[e = _GP1 -> -> 0 `i `b ]
-"130
-[; ;Main12F.c: 130:      GP2=0;
-[e = _GP2 -> -> 0 `i `b ]
-"131
-[; ;Main12F.c: 131:      return res;
-[e ) _res ]
-[e $UE 99  ]
-"132
-[; ;Main12F.c: 132: }
-[e :UE 99 ]
+[; ;Main12F.c: 129:      }
 }
+[e :U 103 ]
+"126
+[; ;Main12F.c: 126:     while(GPIO5==0){
+[e $ == -> _GPIO5 `i -> 0 `i 104  ]
+[e :U 105 ]
+"130
+[; ;Main12F.c: 130:      _delay((unsigned long)((13)*(4000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 13 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+"131
+[; ;Main12F.c: 131:      if(GPIO5==1) res=0;
+[e $ ! == -> _GPIO5 `i -> 1 `i 107  ]
+[e = _res -> -> 0 `i `uc ]
+[e :U 107 ]
+"132
+[; ;Main12F.c: 132:      _delay((unsigned long)((22)*(4000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 22 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
 "133
-[; ;Main12F.c: 133: void Transmitir(char BufferTx){
+[; ;Main12F.c: 133:      if(GPIO5==1){
+[e $ ! == -> _GPIO5 `i -> 1 `i 108  ]
+{
+"134
+[; ;Main12F.c: 134:        res=1;
+[e = _res -> -> 1 `i `uc ]
+"135
+[; ;Main12F.c: 135:        TMR0=0;
+[e = _TMR0 -> -> 0 `i `uc ]
+"136
+[; ;Main12F.c: 136:        while(GPIO5==1){
+[e $U 109  ]
+[e :U 110 ]
+{
+"137
+[; ;Main12F.c: 137:            if(bandera==1)break;
+[e $ ! == -> _bandera `i -> 1 `i 112  ]
+[e $U 111  ]
+[e :U 112 ]
+"138
+[; ;Main12F.c: 138:            GP2=1;
+[e = _GP2 -> -> 1 `i `b ]
+"139
+[; ;Main12F.c: 139:        }
+}
+[e :U 109 ]
+"136
+[; ;Main12F.c: 136:        while(GPIO5==1){
+[e $ == -> _GPIO5 `i -> 1 `i 110  ]
+[e :U 111 ]
+"140
+[; ;Main12F.c: 140:      }
+}
+[e :U 108 ]
+"141
+[; ;Main12F.c: 141:      GP1=0;
+[e = _GP1 -> -> 0 `i `b ]
+"142
+[; ;Main12F.c: 142:      GP2=0;
+[e = _GP2 -> -> 0 `i `b ]
+"143
+[; ;Main12F.c: 143:      return res;
+[e ) _res ]
+[e $UE 102  ]
+"144
+[; ;Main12F.c: 144: }
+[e :UE 102 ]
+}
+"145
+[; ;Main12F.c: 145: void Transmitir(char BufferTx){
 [v _Transmitir `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _Transmitir ]
 [v _BufferTx `uc ~T0 @X0 1 r1 ]
 [f ]
-"134
-[; ;Main12F.c: 134:     char a,b,c,d,e,f,g,h;
+"146
+[; ;Main12F.c: 146:     char a,b,c,d,e,f,g,h;
 [v _a `uc ~T0 @X0 1 a ]
 [v _b `uc ~T0 @X0 1 a ]
 [v _c `uc ~T0 @X0 1 a ]
@@ -519,72 +571,45 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _f `uc ~T0 @X0 1 a ]
 [v _g `uc ~T0 @X0 1 a ]
 [v _h `uc ~T0 @X0 1 a ]
-"135
-[; ;Main12F.c: 135:     a=BufferTx>>0;
+"147
+[; ;Main12F.c: 147:     a=BufferTx>>0;
 [e = _a -> >> -> _BufferTx `i -> 0 `i `uc ]
-"136
-[; ;Main12F.c: 136:     b=BufferTx>>1;
+"148
+[; ;Main12F.c: 148:     b=BufferTx>>1;
 [e = _b -> >> -> _BufferTx `i -> 1 `i `uc ]
-"137
-[; ;Main12F.c: 137:     c=BufferTx>>2;
+"149
+[; ;Main12F.c: 149:     c=BufferTx>>2;
 [e = _c -> >> -> _BufferTx `i -> 2 `i `uc ]
-"138
-[; ;Main12F.c: 138:     d=BufferTx>>3;
+"150
+[; ;Main12F.c: 150:     d=BufferTx>>3;
 [e = _d -> >> -> _BufferTx `i -> 3 `i `uc ]
-"139
-[; ;Main12F.c: 139:     e=BufferTx>>4;
+"151
+[; ;Main12F.c: 151:     e=BufferTx>>4;
 [e = _e -> >> -> _BufferTx `i -> 4 `i `uc ]
-"140
-[; ;Main12F.c: 140:     f=BufferTx>>5;
+"152
+[; ;Main12F.c: 152:     f=BufferTx>>5;
 [e = _f -> >> -> _BufferTx `i -> 5 `i `uc ]
-"141
-[; ;Main12F.c: 141:     g=BufferTx>>6;
+"153
+[; ;Main12F.c: 153:     g=BufferTx>>6;
 [e = _g -> >> -> _BufferTx `i -> 6 `i `uc ]
-"142
-[; ;Main12F.c: 142:     h=BufferTx>>7;
-[e = _h -> >> -> _BufferTx `i -> 7 `i `uc ]
-"143
-[; ;Main12F.c: 143:     TMR0=0;
-[e = _TMR0 -> -> 0 `i `uc ]
-"145
-[; ;Main12F.c: 145:     GPIO4=0;
-[e = _GPIO4 -> -> 0 `i `b ]
-"146
-[; ;Main12F.c: 146:     Retardo();
-[e ( _Retardo ..  ]
 "154
-[; ;Main12F.c: 154:     TMR0=0;
-[e = _TMR0 -> -> 0 `i `uc ]
+[; ;Main12F.c: 154:     h=BufferTx>>7;
+[e = _h -> >> -> _BufferTx `i -> 7 `i `uc ]
 "155
-[; ;Main12F.c: 155:     GPIO4=a;
-[e = _GPIO4 -> _a `b ]
-"156
-[; ;Main12F.c: 156:     Retardo();
-[e ( _Retardo ..  ]
+[; ;Main12F.c: 155:     TMR0=0;
+[e = _TMR0 -> -> 0 `i `uc ]
+"157
+[; ;Main12F.c: 157:     GPIO4=0;
+[e = _GPIO4 -> -> 0 `i `b ]
 "158
-[; ;Main12F.c: 158:     TMR0=0;
-[e = _TMR0 -> -> 0 `i `uc ]
-"159
-[; ;Main12F.c: 159:     GPIO4=b;
-[e = _GPIO4 -> _b `b ]
-"160
-[; ;Main12F.c: 160:     Retardo();
-[e ( _Retardo ..  ]
-"162
-[; ;Main12F.c: 162:     TMR0=0;
-[e = _TMR0 -> -> 0 `i `uc ]
-"163
-[; ;Main12F.c: 163:     GPIO4=c;
-[e = _GPIO4 -> _c `b ]
-"164
-[; ;Main12F.c: 164:     Retardo();
+[; ;Main12F.c: 158:     Retardo();
 [e ( _Retardo ..  ]
 "166
 [; ;Main12F.c: 166:     TMR0=0;
 [e = _TMR0 -> -> 0 `i `uc ]
 "167
-[; ;Main12F.c: 167:     GPIO4=d;
-[e = _GPIO4 -> _d `b ]
+[; ;Main12F.c: 167:     GPIO4=a;
+[e = _GPIO4 -> _a `b ]
 "168
 [; ;Main12F.c: 168:     Retardo();
 [e ( _Retardo ..  ]
@@ -592,8 +617,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Main12F.c: 170:     TMR0=0;
 [e = _TMR0 -> -> 0 `i `uc ]
 "171
-[; ;Main12F.c: 171:     GPIO4=e;
-[e = _GPIO4 -> _e `b ]
+[; ;Main12F.c: 171:     GPIO4=b;
+[e = _GPIO4 -> _b `b ]
 "172
 [; ;Main12F.c: 172:     Retardo();
 [e ( _Retardo ..  ]
@@ -601,8 +626,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Main12F.c: 174:     TMR0=0;
 [e = _TMR0 -> -> 0 `i `uc ]
 "175
-[; ;Main12F.c: 175:     GPIO4=f;
-[e = _GPIO4 -> _f `b ]
+[; ;Main12F.c: 175:     GPIO4=c;
+[e = _GPIO4 -> _c `b ]
 "176
 [; ;Main12F.c: 176:     Retardo();
 [e ( _Retardo ..  ]
@@ -610,8 +635,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Main12F.c: 178:     TMR0=0;
 [e = _TMR0 -> -> 0 `i `uc ]
 "179
-[; ;Main12F.c: 179:     GPIO4=g;
-[e = _GPIO4 -> _g `b ]
+[; ;Main12F.c: 179:     GPIO4=d;
+[e = _GPIO4 -> _d `b ]
 "180
 [; ;Main12F.c: 180:     Retardo();
 [e ( _Retardo ..  ]
@@ -619,8 +644,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Main12F.c: 182:     TMR0=0;
 [e = _TMR0 -> -> 0 `i `uc ]
 "183
-[; ;Main12F.c: 183:     GPIO4=h;
-[e = _GPIO4 -> _h `b ]
+[; ;Main12F.c: 183:     GPIO4=e;
+[e = _GPIO4 -> _e `b ]
 "184
 [; ;Main12F.c: 184:     Retardo();
 [e ( _Retardo ..  ]
@@ -628,50 +653,80 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Main12F.c: 186:     TMR0=0;
 [e = _TMR0 -> -> 0 `i `uc ]
 "187
-[; ;Main12F.c: 187:     GPIO4=1;
-[e = _GPIO4 -> -> 1 `i `b ]
+[; ;Main12F.c: 187:     GPIO4=f;
+[e = _GPIO4 -> _f `b ]
 "188
 [; ;Main12F.c: 188:     Retardo();
 [e ( _Retardo ..  ]
-"189
-[; ;Main12F.c: 189: }
-[e :UE 108 ]
-}
 "190
-[; ;Main12F.c: 190: void Retardo (void){
+[; ;Main12F.c: 190:     TMR0=0;
+[e = _TMR0 -> -> 0 `i `uc ]
+"191
+[; ;Main12F.c: 191:     GPIO4=g;
+[e = _GPIO4 -> _g `b ]
+"192
+[; ;Main12F.c: 192:     Retardo();
+[e ( _Retardo ..  ]
+"194
+[; ;Main12F.c: 194:     TMR0=0;
+[e = _TMR0 -> -> 0 `i `uc ]
+"195
+[; ;Main12F.c: 195:     GPIO4=h;
+[e = _GPIO4 -> _h `b ]
+"196
+[; ;Main12F.c: 196:     Retardo();
+[e ( _Retardo ..  ]
+"198
+[; ;Main12F.c: 198:     TMR0=0;
+[e = _TMR0 -> -> 0 `i `uc ]
+"199
+[; ;Main12F.c: 199:     GPIO4=1;
+[e = _GPIO4 -> -> 1 `i `b ]
+"200
+[; ;Main12F.c: 200:     Retardo();
+[e ( _Retardo ..  ]
+"201
+[; ;Main12F.c: 201: }
+[e :UE 113 ]
+}
+"202
+[; ;Main12F.c: 202: void Retardo (void){
 [v _Retardo `(v ~T0 @X0 1 ef ]
 {
 [e :U _Retardo ]
 [f ]
-"191
-[; ;Main12F.c: 191:     _delay((unsigned long)((108)*(4000000/4000000.0)));
+"203
+[; ;Main12F.c: 203:     _delay((unsigned long)((108)*(4000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 108 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
-"192
-[; ;Main12F.c: 192: }
-[e :UE 109 ]
+"204
+[; ;Main12F.c: 204: }
+[e :UE 114 ]
 }
 [v $root$_ISR `(v ~T0 @X0 0 e ]
-"193
-[; ;Main12F.c: 193: void __attribute__((picinterrupt(("")))) ISR (void){
+"205
+[; ;Main12F.c: 205: void __attribute__((picinterrupt(("")))) ISR (void){
 [v _ISR `(v ~T2 @X0 1 ef ]
 {
 [e :U _ISR ]
 [f ]
-"194
-[; ;Main12F.c: 194:     if(T0IF==1){
-[e $ ! == -> _T0IF `i -> 1 `i 111  ]
+"206
+[; ;Main12F.c: 206:     if(T0IF==1){
+[e $ ! == -> _T0IF `i -> 1 `i 116  ]
 {
-"195
-[; ;Main12F.c: 195:             T0IF=0;
+"207
+[; ;Main12F.c: 207:             T0IF=0;
 [e = _T0IF -> -> 0 `i `b ]
-"196
-[; ;Main12F.c: 196:             GPIO0=GPIO0^ 1;
+"208
+[; ;Main12F.c: 208:             GPIO0=GPIO0^ 1;
 [e = _GPIO0 -> ^ -> _GPIO0 `i -> 1 `i `b ]
-"197
-[; ;Main12F.c: 197:         }
+"209
+[; ;Main12F.c: 209:             bandera=1;
+[e = _bandera -> -> 1 `i `uc ]
+"210
+[; ;Main12F.c: 210:         }
 }
-[e :U 111 ]
-"198
-[; ;Main12F.c: 198: }
-[e :UE 110 ]
+[e :U 116 ]
+"211
+[; ;Main12F.c: 211: }
+[e :UE 115 ]
 }
