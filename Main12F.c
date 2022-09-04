@@ -78,7 +78,16 @@ void main(void) {
         Hum=LeerByte();
         LeerByte();
         Temp=LeerByte();
-        Transmitir('O');
+        LeerByte();
+        Che=LeerByte();
+        Transmitir('T');
+        Transmitir(Temp/10 + 48);
+        Transmitir(Temp%10 + 48);
+        Transmitir(' ');
+        Transmitir('H');
+        Transmitir(Hum/10 + 48);
+        Transmitir(Hum%10 + 48);
+        Transmitir('\n');
         GP1=0;
         if(Hum==48){
             GP1=1;
