@@ -18,6 +18,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1588
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic12f675.h: 1588: extern volatile __bit GP1 __attribute__((address(0x29)));
 [v _GP1 `Vb ~T0 @X0 0 e@41 ]
+"1621
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic12f675.h: 1621: extern volatile __bit GPIO4 __attribute__((address(0x2C)));
+[v _GPIO4 `Vb ~T0 @X0 0 e@44 ]
 "727
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic12f675.h: 727: extern volatile unsigned char OPTION_REG __attribute__((address(0x081)));
 [v _OPTION_REG `Vuc ~T0 @X0 0 e@129 ]
@@ -43,18 +46,24 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1624 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic12f675.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic12f675.h: 1624: extern volatile __bit GPIO5 __attribute__((address(0x2D)));
 [v _GPIO5 `Vb ~T0 @X0 0 e@45 ]
-"34 Main12F.c
-[; ;Main12F.c: 34: unsigned char LeerByte(void);
+"36 Main12F.c
+[; ;Main12F.c: 36: unsigned char LeerByte(void);
 [v _LeerByte `(uc ~T0 @X0 0 ef ]
-"35
-[; ;Main12F.c: 35: unsigned char LeerBit(void);
-[v _LeerBit `(uc ~T0 @X0 0 ef ]
+"39
+[; ;Main12F.c: 39: void Transmitir(unsigned char);
+[v _Transmitir `(v ~T0 @X0 0 ef1`uc ]
 "1591 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic12f675.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic12f675.h: 1591: extern volatile __bit GP2 __attribute__((address(0x2A)));
 [v _GP2 `Vb ~T0 @X0 0 e@42 ]
+"37 Main12F.c
+[; ;Main12F.c: 37: unsigned char LeerBit(void);
+[v _LeerBit `(uc ~T0 @X0 0 ef ]
+"40
+[; ;Main12F.c: 40: void Retardo (void);
+[v _Retardo `(v ~T0 @X0 0 ef ]
 [t ~ __interrupt . k ]
 [t T2 __interrupt ]
-"1609
+"1609 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic12f675.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic12f675.h: 1609: extern volatile __bit GPIO0 __attribute__((address(0x28)));
 [v _GPIO0 `Vb ~T0 @X0 0 e@40 ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic12f675.h
@@ -167,8 +176,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x CP = OFF ]
 "19
 [p x CPD = OFF ]
-"33
-[; ;Main12F.c: 33: unsigned char Temp=10,Hum=20,Che,bandera = 0;
+"35
+[; ;Main12F.c: 35: unsigned char Temp=10,Hum=20,Che,bandera = 0;
 [v _Temp `uc ~T0 @X0 1 e ]
 [i _Temp
 -> -> 10 `i `uc
@@ -183,277 +192,432 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"39
-[; ;Main12F.c: 39: void main(void) {
+"43
+[; ;Main12F.c: 43: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"41
-[; ;Main12F.c: 41:     ANSEL = 0x00;
-[e = _ANSEL -> -> 0 `i `uc ]
-"42
-[; ;Main12F.c: 42:     CMCON = 0x07;
-[e = _CMCON -> -> 7 `i `uc ]
-"43
-[; ;Main12F.c: 43:     TRISIO = 0b00110000;
-[e = _TRISIO -> -> 48 `i `uc ]
-"44
-[; ;Main12F.c: 44:     GPIO = 0;
-[e = _GPIO -> -> 0 `i `uc ]
 "45
-[; ;Main12F.c: 45:     WPU=0;
-[e = _WPU -> -> 0 `i `uc ]
+[; ;Main12F.c: 45:     ANSEL = 0x00;
+[e = _ANSEL -> -> 0 `i `uc ]
 "46
-[; ;Main12F.c: 46:     GP1=1;
-[e = _GP1 -> -> 1 `i `b ]
+[; ;Main12F.c: 46:     CMCON = 0x07;
+[e = _CMCON -> -> 7 `i `uc ]
+"47
+[; ;Main12F.c: 47:     TRISIO = 0b00100000;
+[e = _TRISIO -> -> 32 `i `uc ]
+"48
+[; ;Main12F.c: 48:     GPIO = 0;
+[e = _GPIO -> -> 0 `i `uc ]
+"49
+[; ;Main12F.c: 49:     WPU=0;
+[e = _WPU -> -> 0 `i `uc ]
 "50
-[; ;Main12F.c: 50:     OPTION_REG=0xC7;
-[e = _OPTION_REG -> -> 199 `i `uc ]
+[; ;Main12F.c: 50:     GP1=1;
+[e = _GP1 -> -> 1 `i `b ]
 "51
-[; ;Main12F.c: 51:     T0IF=0;
-[e = _T0IF -> -> 0 `i `b ]
-"52
-[; ;Main12F.c: 52:     TMR0=0;
-[e = _TMR0 -> -> 0 `i `uc ]
+[; ;Main12F.c: 51:     GPIO4=1;
+[e = _GPIO4 -> -> 1 `i `b ]
+"54
+[; ;Main12F.c: 54:     OPTION_REG=0xC7;
+[e = _OPTION_REG -> -> 199 `i `uc ]
 "55
-[; ;Main12F.c: 55:     T0IE=1;
-[e = _T0IE -> -> 1 `i `b ]
-"57
-[; ;Main12F.c: 57:     GIE=1;
-[e = _GIE -> -> 1 `i `b ]
-"58
-[; ;Main12F.c: 58:     TRISIO5=1;
-[e = _TRISIO5 -> -> 1 `i `b ]
+[; ;Main12F.c: 55:     T0IF=0;
+[e = _T0IF -> -> 0 `i `b ]
+"56
+[; ;Main12F.c: 56:     TMR0=0;
+[e = _TMR0 -> -> 0 `i `uc ]
 "59
-[; ;Main12F.c: 59:     _delay((unsigned long)((1000)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"60
-[; ;Main12F.c: 60:     GP1=0;
-[e = _GP1 -> -> 0 `i `b ]
+[; ;Main12F.c: 59:     T0IE=1;
+[e = _T0IE -> -> 1 `i `b ]
 "61
-[; ;Main12F.c: 61:     while(1){
+[; ;Main12F.c: 61:     GIE=1;
+[e = _GIE -> -> 1 `i `b ]
+"62
+[; ;Main12F.c: 62:     TRISIO5=1;
+[e = _TRISIO5 -> -> 1 `i `b ]
+"63
+[; ;Main12F.c: 63:     _delay((unsigned long)((1000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"64
+[; ;Main12F.c: 64:     GP1=0;
+[e = _GP1 -> -> 0 `i `b ]
+"65
+[; ;Main12F.c: 65:     while(1){
 [e :U 83 ]
 {
-"62
-[; ;Main12F.c: 62:         _delay((unsigned long)((1000)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"63
-[; ;Main12F.c: 63:         TRISIO5=0;
-[e = _TRISIO5 -> -> 0 `i `b ]
-"64
-[; ;Main12F.c: 64:         GPIO5=0;
-[e = _GPIO5 -> -> 0 `i `b ]
-"65
-[; ;Main12F.c: 65:         _delay((unsigned long)((18)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 18 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "66
-[; ;Main12F.c: 66:         TRISIO5=1;
-[e = _TRISIO5 -> -> 1 `i `b ]
+[; ;Main12F.c: 66:         _delay((unsigned long)((1000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "67
-[; ;Main12F.c: 67:         while(GPIO5==1){
-[e $U 85  ]
-[e :U 86 ]
-{
+[; ;Main12F.c: 67:         TRISIO5=0;
+[e = _TRISIO5 -> -> 0 `i `b ]
+"68
+[; ;Main12F.c: 68:         GPIO5=0;
+[e = _GPIO5 -> -> 0 `i `b ]
 "69
-[; ;Main12F.c: 69:         }
-}
-[e :U 85 ]
-"67
-[; ;Main12F.c: 67:         while(GPIO5==1){
-[e $ == -> _GPIO5 `i -> 1 `i 86  ]
-[e :U 87 ]
+[; ;Main12F.c: 69:         _delay((unsigned long)((18)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 18 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "70
-[; ;Main12F.c: 70:         _delay((unsigned long)((120)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 120 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;Main12F.c: 70:         TRISIO5=1;
+[e = _TRISIO5 -> -> 1 `i `b ]
 "71
 [; ;Main12F.c: 71:         while(GPIO5==1){
-[e $U 88  ]
-[e :U 89 ]
+[e $U 85  ]
+[e :U 86 ]
 {
 "73
 [; ;Main12F.c: 73:         }
 }
-[e :U 88 ]
+[e :U 85 ]
 "71
 [; ;Main12F.c: 71:         while(GPIO5==1){
+[e $ == -> _GPIO5 `i -> 1 `i 86  ]
+[e :U 87 ]
+"74
+[; ;Main12F.c: 74:         _delay((unsigned long)((120)*(4000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 120 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+"75
+[; ;Main12F.c: 75:         while(GPIO5==1){
+[e $U 88  ]
+[e :U 89 ]
+{
+"77
+[; ;Main12F.c: 77:         }
+}
+[e :U 88 ]
+"75
+[; ;Main12F.c: 75:         while(GPIO5==1){
 [e $ == -> _GPIO5 `i -> 1 `i 89  ]
 [e :U 90 ]
-"74
-[; ;Main12F.c: 74:         Hum=LeerByte();
-[e = _Hum ( _LeerByte ..  ]
-"77
-[; ;Main12F.c: 77:         GP1=0;
-[e = _GP1 -> -> 0 `i `b ]
 "78
-[; ;Main12F.c: 78:         if(Hum==66){
-[e $ ! == -> _Hum `i -> 66 `i 91  ]
-{
+[; ;Main12F.c: 78:         Hum=LeerByte();
+[e = _Hum ( _LeerByte ..  ]
 "79
-[; ;Main12F.c: 79:             GP1=1;
-[e = _GP1 -> -> 1 `i `b ]
+[; ;Main12F.c: 79:         LeerByte();
+[e ( _LeerByte ..  ]
 "80
-[; ;Main12F.c: 80:         }
-}
-[e $U 92  ]
+[; ;Main12F.c: 80:         Temp=LeerByte();
+[e = _Temp ( _LeerByte ..  ]
 "81
-[; ;Main12F.c: 81:         else{
-[e :U 91 ]
-{
+[; ;Main12F.c: 81:         Transmitir(0x99);
+[e ( _Transmitir (1 -> -> 153 `i `uc ]
 "82
-[; ;Main12F.c: 82:             GP1=0;
+[; ;Main12F.c: 82:         GP1=0;
 [e = _GP1 -> -> 0 `i `b ]
 "83
-[; ;Main12F.c: 83:         }
+[; ;Main12F.c: 83:         if(Hum==48){
+[e $ ! == -> _Hum `i -> 48 `i 91  ]
+{
+"84
+[; ;Main12F.c: 84:             GP1=1;
+[e = _GP1 -> -> 1 `i `b ]
+"85
+[; ;Main12F.c: 85:         }
+}
+[e $U 92  ]
+"86
+[; ;Main12F.c: 86:         else{
+[e :U 91 ]
+{
+"87
+[; ;Main12F.c: 87:             GP1=0;
+[e = _GP1 -> -> 0 `i `b ]
+"88
+[; ;Main12F.c: 88:         }
 }
 [e :U 92 ]
-"84
-[; ;Main12F.c: 84:     }
+"89
+[; ;Main12F.c: 89:         if(Temp==20){
+[e $ ! == -> _Temp `i -> 20 `i 93  ]
+{
+"90
+[; ;Main12F.c: 90:             GP2=1;
+[e = _GP2 -> -> 1 `i `b ]
+"91
+[; ;Main12F.c: 91:         }
+}
+[e $U 94  ]
+"92
+[; ;Main12F.c: 92:         else{
+[e :U 93 ]
+{
+"93
+[; ;Main12F.c: 93:             GP2=0;
+[e = _GP2 -> -> 0 `i `b ]
+"94
+[; ;Main12F.c: 94:         }
+}
+[e :U 94 ]
+"95
+[; ;Main12F.c: 95:     }
 }
 [e :U 82 ]
 [e $U 83  ]
 [e :U 84 ]
-"85
-[; ;Main12F.c: 85: }
+"96
+[; ;Main12F.c: 96: }
 [e :UE 81 ]
 }
-"87
-[; ;Main12F.c: 87: unsigned char LeerByte(void){
+"98
+[; ;Main12F.c: 98: unsigned char LeerByte(void){
 [v _LeerByte `(uc ~T0 @X0 1 ef ]
 {
 [e :U _LeerByte ]
 [f ]
-"88
-[; ;Main12F.c: 88:   unsigned char res=0,i;
+"99
+[; ;Main12F.c: 99:   unsigned char res=0,i;
 [v _res `uc ~T0 @X0 1 a ]
 [e = _res -> -> 0 `i `uc ]
 [v _i `uc ~T0 @X0 1 a ]
-"90
-[; ;Main12F.c: 90:   for(i=8;i>0;i--){
+"101
+[; ;Main12F.c: 101:   for(i=8;i>0;i--){
 {
 [e = _i -> -> 8 `i `uc ]
-[e $ > -> _i `i -> 0 `i 94  ]
-[e $U 95  ]
-[e :U 94 ]
+[e $ > -> _i `i -> 0 `i 96  ]
+[e $U 97  ]
+[e :U 96 ]
 {
-"91
-[; ;Main12F.c: 91:     res=(res<<1) | LeerBit();
+"102
+[; ;Main12F.c: 102:     res=(res<<1) | LeerBit();
 [e = _res -> | << -> _res `i -> 1 `i -> ( _LeerBit ..  `i `uc ]
-"92
-[; ;Main12F.c: 92:   }
+"103
+[; ;Main12F.c: 103:   }
 }
 [e -- _i -> -> 1 `i `uc ]
-[e $ > -> _i `i -> 0 `i 94  ]
-[e :U 95 ]
+[e $ > -> _i `i -> 0 `i 96  ]
+[e :U 97 ]
 }
-"93
-[; ;Main12F.c: 93:   return res;
+"104
+[; ;Main12F.c: 104:   return res;
 [e ) _res ]
-[e $UE 93  ]
-"94
-[; ;Main12F.c: 94: }
-[e :UE 93 ]
+[e $UE 95  ]
+"105
+[; ;Main12F.c: 105: }
+[e :UE 95 ]
 }
-"95
-[; ;Main12F.c: 95: unsigned char LeerBit(void){
+"106
+[; ;Main12F.c: 106: unsigned char LeerBit(void){
 [v _LeerBit `(uc ~T0 @X0 1 ef ]
 {
 [e :U _LeerBit ]
 [f ]
-"96
-[; ;Main12F.c: 96:     unsigned char res=0;
+"107
+[; ;Main12F.c: 107:     unsigned char res=0;
 [v _res `uc ~T0 @X0 1 a ]
 [e = _res -> -> 0 `i `uc ]
-"97
-[; ;Main12F.c: 97:      while(GPIO5==0){
-[e $U 98  ]
-[e :U 99 ]
-{
-"98
-[; ;Main12F.c: 98:         GP1=1;
-[e = _GP1 -> -> 1 `i `b ]
-"99
-[; ;Main12F.c: 99:      }
-}
-[e :U 98 ]
-"97
-[; ;Main12F.c: 97:      while(GPIO5==0){
-[e $ == -> _GPIO5 `i -> 0 `i 99  ]
-[e :U 100 ]
-"100
-[; ;Main12F.c: 100:      _delay((unsigned long)((13)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 13 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
-"101
-[; ;Main12F.c: 101:      if(GPIO5==1) res=0;
-[e $ ! == -> _GPIO5 `i -> 1 `i 101  ]
-[e = _res -> -> 0 `i `uc ]
-[e :U 101 ]
-"102
-[; ;Main12F.c: 102:      _delay((unsigned long)((22)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 22 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
-"103
-[; ;Main12F.c: 103:      if(GPIO5==1){
-[e $ ! == -> _GPIO5 `i -> 1 `i 102  ]
-{
-"104
-[; ;Main12F.c: 104:        res=1;
-[e = _res -> -> 1 `i `uc ]
-"105
-[; ;Main12F.c: 105:        while(GPIO5==1){
-[e $U 103  ]
-[e :U 104 ]
-{
-"106
-[; ;Main12F.c: 106:           GP2=1;
-[e = _GP2 -> -> 1 `i `b ]
-"107
-[; ;Main12F.c: 107:        }
-}
-[e :U 103 ]
-"105
-[; ;Main12F.c: 105:        while(GPIO5==1){
-[e $ == -> _GPIO5 `i -> 1 `i 104  ]
-[e :U 105 ]
 "108
-[; ;Main12F.c: 108:      }
-}
-[e :U 102 ]
+[; ;Main12F.c: 108:      while(GPIO5==0){
+[e $U 100  ]
+[e :U 101 ]
+{
 "109
-[; ;Main12F.c: 109:      GP1=0;
-[e = _GP1 -> -> 0 `i `b ]
+[; ;Main12F.c: 109:         GP1=1;
+[e = _GP1 -> -> 1 `i `b ]
 "110
-[; ;Main12F.c: 110:      GP2=0;
-[e = _GP2 -> -> 0 `i `b ]
+[; ;Main12F.c: 110:      }
+}
+[e :U 100 ]
+"108
+[; ;Main12F.c: 108:      while(GPIO5==0){
+[e $ == -> _GPIO5 `i -> 0 `i 101  ]
+[e :U 102 ]
 "111
-[; ;Main12F.c: 111:      return res;
-[e ) _res ]
-[e $UE 97  ]
+[; ;Main12F.c: 111:      _delay((unsigned long)((13)*(4000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 13 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
 "112
-[; ;Main12F.c: 112: }
-[e :UE 97 ]
+[; ;Main12F.c: 112:      if(GPIO5==1) res=0;
+[e $ ! == -> _GPIO5 `i -> 1 `i 103  ]
+[e = _res -> -> 0 `i `uc ]
+[e :U 103 ]
+"113
+[; ;Main12F.c: 113:      _delay((unsigned long)((22)*(4000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 22 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+"114
+[; ;Main12F.c: 114:      if(GPIO5==1){
+[e $ ! == -> _GPIO5 `i -> 1 `i 104  ]
+{
+"115
+[; ;Main12F.c: 115:        res=1;
+[e = _res -> -> 1 `i `uc ]
+"116
+[; ;Main12F.c: 116:        while(GPIO5==1){
+[e $U 105  ]
+[e :U 106 ]
+{
+"117
+[; ;Main12F.c: 117:           GP2=1;
+[e = _GP2 -> -> 1 `i `b ]
+"118
+[; ;Main12F.c: 118:        }
+}
+[e :U 105 ]
+"116
+[; ;Main12F.c: 116:        while(GPIO5==1){
+[e $ == -> _GPIO5 `i -> 1 `i 106  ]
+[e :U 107 ]
+"119
+[; ;Main12F.c: 119:      }
+}
+[e :U 104 ]
+"120
+[; ;Main12F.c: 120:      GP1=0;
+[e = _GP1 -> -> 0 `i `b ]
+"121
+[; ;Main12F.c: 121:      GP2=0;
+[e = _GP2 -> -> 0 `i `b ]
+"122
+[; ;Main12F.c: 122:      return res;
+[e ) _res ]
+[e $UE 99  ]
+"123
+[; ;Main12F.c: 123: }
+[e :UE 99 ]
+}
+"124
+[; ;Main12F.c: 124: void Transmitir(unsigned char BufferTx){
+[v _Transmitir `(v ~T0 @X0 1 ef1`uc ]
+{
+[e :U _Transmitir ]
+[v _BufferTx `uc ~T0 @X0 1 r1 ]
+[f ]
+"125
+[; ;Main12F.c: 125:     int i,j;
+[v _i `i ~T0 @X0 1 a ]
+[v _j `i ~T0 @X0 1 a ]
+"126
+[; ;Main12F.c: 126:     i=140;
+[e = _i -> 140 `i ]
+"127
+[; ;Main12F.c: 127:     TMR0=0;
+[e = _TMR0 -> -> 0 `i `uc ]
+"129
+[; ;Main12F.c: 129:     GPIO4=0;
+[e = _GPIO4 -> -> 0 `i `b ]
+"130
+[; ;Main12F.c: 130:     Retardo();
+[e ( _Retardo ..  ]
+"133
+[; ;Main12F.c: 133:     TMR0=0;
+[e = _TMR0 -> -> 0 `i `uc ]
+"134
+[; ;Main12F.c: 134:     GPIO4=0;
+[e = _GPIO4 -> -> 0 `i `b ]
+"135
+[; ;Main12F.c: 135:     Retardo();
+[e ( _Retardo ..  ]
+"137
+[; ;Main12F.c: 137:     TMR0=0;
+[e = _TMR0 -> -> 0 `i `uc ]
+"138
+[; ;Main12F.c: 138:     GPIO4=0;
+[e = _GPIO4 -> -> 0 `i `b ]
+"139
+[; ;Main12F.c: 139:     Retardo();
+[e ( _Retardo ..  ]
+"141
+[; ;Main12F.c: 141:     TMR0=0;
+[e = _TMR0 -> -> 0 `i `uc ]
+"142
+[; ;Main12F.c: 142:     GPIO4=0;
+[e = _GPIO4 -> -> 0 `i `b ]
+"143
+[; ;Main12F.c: 143:     Retardo();
+[e ( _Retardo ..  ]
+"145
+[; ;Main12F.c: 145:     TMR0=0;
+[e = _TMR0 -> -> 0 `i `uc ]
+"146
+[; ;Main12F.c: 146:     GPIO4=0;
+[e = _GPIO4 -> -> 0 `i `b ]
+"147
+[; ;Main12F.c: 147:     Retardo();
+[e ( _Retardo ..  ]
+"149
+[; ;Main12F.c: 149:     TMR0=0;
+[e = _TMR0 -> -> 0 `i `uc ]
+"150
+[; ;Main12F.c: 150:     GPIO4=1;
+[e = _GPIO4 -> -> 1 `i `b ]
+"151
+[; ;Main12F.c: 151:     Retardo();
+[e ( _Retardo ..  ]
+"153
+[; ;Main12F.c: 153:     TMR0=0;
+[e = _TMR0 -> -> 0 `i `uc ]
+"154
+[; ;Main12F.c: 154:     GPIO4=1;
+[e = _GPIO4 -> -> 1 `i `b ]
+"155
+[; ;Main12F.c: 155:     Retardo();
+[e ( _Retardo ..  ]
+"157
+[; ;Main12F.c: 157:     TMR0=0;
+[e = _TMR0 -> -> 0 `i `uc ]
+"158
+[; ;Main12F.c: 158:     GPIO4=0;
+[e = _GPIO4 -> -> 0 `i `b ]
+"159
+[; ;Main12F.c: 159:     Retardo();
+[e ( _Retardo ..  ]
+"161
+[; ;Main12F.c: 161:     TMR0=0;
+[e = _TMR0 -> -> 0 `i `uc ]
+"162
+[; ;Main12F.c: 162:     GPIO4=0;
+[e = _GPIO4 -> -> 0 `i `b ]
+"163
+[; ;Main12F.c: 163:     Retardo();
+[e ( _Retardo ..  ]
+"165
+[; ;Main12F.c: 165:     TMR0=0;
+[e = _TMR0 -> -> 0 `i `uc ]
+"166
+[; ;Main12F.c: 166:     GPIO4=1;
+[e = _GPIO4 -> -> 1 `i `b ]
+"167
+[; ;Main12F.c: 167:     Retardo();
+[e ( _Retardo ..  ]
+"168
+[; ;Main12F.c: 168: }
+[e :UE 108 ]
+}
+"169
+[; ;Main12F.c: 169: void Retardo (void){
+[v _Retardo `(v ~T0 @X0 1 ef ]
+{
+[e :U _Retardo ]
+[f ]
+"170
+[; ;Main12F.c: 170:     _delay((unsigned long)((108)*(4000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 108 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+"171
+[; ;Main12F.c: 171: }
+[e :UE 109 ]
 }
 [v $root$_ISR `(v ~T0 @X0 0 e ]
-"113
-[; ;Main12F.c: 113: void __attribute__((picinterrupt(("")))) ISR (void){
+"172
+[; ;Main12F.c: 172: void __attribute__((picinterrupt(("")))) ISR (void){
 [v _ISR `(v ~T2 @X0 1 ef ]
 {
 [e :U _ISR ]
 [f ]
-"114
-[; ;Main12F.c: 114:     if(T0IF==1){
-[e $ ! == -> _T0IF `i -> 1 `i 107  ]
+"173
+[; ;Main12F.c: 173:     if(T0IF==1){
+[e $ ! == -> _T0IF `i -> 1 `i 111  ]
 {
-"115
-[; ;Main12F.c: 115:             T0IF=0;
+"174
+[; ;Main12F.c: 174:             T0IF=0;
 [e = _T0IF -> -> 0 `i `b ]
-"116
-[; ;Main12F.c: 116:             GPIO0=GPIO0^ 1;
+"175
+[; ;Main12F.c: 175:             GPIO0=GPIO0^ 1;
 [e = _GPIO0 -> ^ -> _GPIO0 `i -> 1 `i `b ]
-"117
-[; ;Main12F.c: 117:         }
+"176
+[; ;Main12F.c: 176:         }
 }
-[e :U 107 ]
-"118
-[; ;Main12F.c: 118: }
-[e :UE 106 ]
+[e :U 111 ]
+"177
+[; ;Main12F.c: 177: }
+[e :UE 110 ]
 }

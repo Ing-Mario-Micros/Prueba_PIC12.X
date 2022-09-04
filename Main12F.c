@@ -27,6 +27,8 @@
 #define DATA_IN GPIO5             
 #define DATA_OUT GPIO5
 
+#define PINTX GPIO4
+
 #define LED_CPU GPIO0
 
 /*-------------------- Variables de lectura en el sensor --------------------*/
@@ -34,17 +36,19 @@ unsigned char Temp=10,Hum=20,Che,bandera = 0;
 unsigned char LeerByte(void);
 unsigned char LeerBit(void);
 
+void Transmitir(unsigned char);
+void Retardo (void);
 void __interrupt () ISR (void); //Interrupción 
 
 void main(void) {
     
     ANSEL = 0x00; //Habilitar todos los pines Analogos como digitales
     CMCON = 0x07;
-    TRISIO = 0b00110000;
+    TRISIO = 0b00100000;
     GPIO = 0;
     WPU=0;
     GP1=1;
-    
+    PINTX=1;
     
     /*Configuración del Timer*/
     OPTION_REG=0xC7;
@@ -72,14 +76,21 @@ void main(void) {
             //GP1=1;
         }
         Hum=LeerByte();
-        
-        
+        LeerByte();
+        Temp=LeerByte();
+        Transmitir(0x99);
         GP1=0;
-        if(Hum==66){
+        if(Hum==48){
             GP1=1;
         }
         else{
             GP1=0;
+        }
+        if(Temp==20){
+            GP2=1;
+        }
+        else{
+            GP2=0;
         }
     }
 }
@@ -109,6 +120,54 @@ unsigned char LeerBit(void){
      GP1=0;
      GP2=0;
      return res;  
+}
+void Transmitir(unsigned char BufferTx){
+    int i,j;
+    i=140;
+    TMR0=0;
+    /*Start*/
+    PINTX=0;
+    Retardo();
+    /*Dato A enviar*/
+    //D0
+    TMR0=0;
+    PINTX=0;
+    Retardo();
+    //D1
+    TMR0=0;
+    PINTX=0;
+    Retardo();
+    //D2
+    TMR0=0;
+    PINTX=0;
+    Retardo();
+    //D3
+    TMR0=0;
+    PINTX=0;
+    Retardo();
+    //D4
+    TMR0=0;
+    PINTX=1;
+    Retardo();
+    //D5
+    TMR0=0;
+    PINTX=1;
+    Retardo();
+    //D6
+    TMR0=0;
+    PINTX=0;
+    Retardo();
+    //D7
+    TMR0=0;
+    PINTX=0;
+    Retardo();
+    /*Stop*/
+    TMR0=0;
+    PINTX=1;
+    Retardo();
+}
+void Retardo (void){
+    __delay_us(108);
 }
 void __interrupt () ISR (void){ //Interrupción 
     if(T0IF==1){

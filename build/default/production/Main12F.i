@@ -1031,22 +1031,24 @@ extern __bank0 __bit __timeout;
 #pragma config BOREN = ON
 #pragma config CP = OFF
 #pragma config CPD = OFF
-# 33 "Main12F.c"
+# 35 "Main12F.c"
 unsigned char Temp=10,Hum=20,Che,bandera = 0;
 unsigned char LeerByte(void);
 unsigned char LeerBit(void);
 
+void Transmitir(unsigned char);
+void Retardo (void);
 void __attribute__((picinterrupt(("")))) ISR (void);
 
 void main(void) {
 
     ANSEL = 0x00;
     CMCON = 0x07;
-    TRISIO = 0b00110000;
+    TRISIO = 0b00100000;
     GPIO = 0;
     WPU=0;
     GP1=1;
-
+    GPIO4=1;
 
 
     OPTION_REG=0xC7;
@@ -1074,14 +1076,21 @@ void main(void) {
 
         }
         Hum=LeerByte();
-
-
+        LeerByte();
+        Temp=LeerByte();
+        Transmitir(0x99);
         GP1=0;
-        if(Hum==66){
+        if(Hum==48){
             GP1=1;
         }
         else{
             GP1=0;
+        }
+        if(Temp==20){
+            GP2=1;
+        }
+        else{
+            GP2=0;
         }
     }
 }
@@ -1111,6 +1120,54 @@ unsigned char LeerBit(void){
      GP1=0;
      GP2=0;
      return res;
+}
+void Transmitir(unsigned char BufferTx){
+    int i,j;
+    i=140;
+    TMR0=0;
+
+    GPIO4=0;
+    Retardo();
+
+
+    TMR0=0;
+    GPIO4=0;
+    Retardo();
+
+    TMR0=0;
+    GPIO4=0;
+    Retardo();
+
+    TMR0=0;
+    GPIO4=0;
+    Retardo();
+
+    TMR0=0;
+    GPIO4=0;
+    Retardo();
+
+    TMR0=0;
+    GPIO4=1;
+    Retardo();
+
+    TMR0=0;
+    GPIO4=1;
+    Retardo();
+
+    TMR0=0;
+    GPIO4=0;
+    Retardo();
+
+    TMR0=0;
+    GPIO4=0;
+    Retardo();
+
+    TMR0=0;
+    GPIO4=1;
+    Retardo();
+}
+void Retardo (void){
+    _delay((unsigned long)((108)*(4000000/4000000.0)));
 }
 void __attribute__((picinterrupt(("")))) ISR (void){
     if(T0IF==1){
